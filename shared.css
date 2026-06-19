@@ -1,0 +1,230 @@
+/* ============================================================
+   EQV Group — shared styles
+   Edit this file to change colours, fonts, or nav across
+   the whole site at once.
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500&display=swap');
+
+/* ── Tokens ── */
+:root {
+  --navy:       #1B4F8A;
+  --navy-light: #2a6ab8;
+  --grey:       #9A9A9A;
+  --light-grey: #CCCCCC;
+  --bg:         #ffffff;
+  --ink:        #1a1a1a;
+  --ink-muted:  #555555;
+
+  --nav-h: 72px;
+
+  --font-display: 'DM Serif Display', Georgia, serif;
+  --font-body:    'Inter', system-ui, sans-serif;
+}
+
+/* ── Reset ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  font-family: var(--font-body);
+  font-weight: 300;
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Navigation ── */
+.site-nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: var(--nav-h);
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--light-grey);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 3rem;
+  z-index: 200;
+}
+
+.nav-brand {
+  display: flex;
+  align-items: baseline;
+  gap: 0.35em;
+  text-decoration: none;
+}
+
+.brand-eqv {
+  font-family: var(--font-body);
+  font-size: clamp(22px, 3vw, 30px);
+  font-weight: 300;
+  color: var(--grey);
+  letter-spacing: -0.01em;
+}
+
+.brand-group {
+  font-family: var(--font-body);
+  font-size: clamp(9px, 1vw, 12px);
+  font-weight: 500;
+  color: var(--navy);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+}
+
+.nav-link {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  color: var(--ink-muted);
+  text-decoration: none;
+  position: relative;
+  transition: color 0.2s;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -3px; left: 0; right: 0;
+  height: 1px;
+  background: var(--navy);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s ease;
+}
+
+.nav-link:hover,
+.nav-link.active { color: var(--navy); }
+
+.nav-link.active::after,
+.nav-link:hover::after { transform: scaleX(1); }
+
+/* Hamburger (mobile) */
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+.nav-hamburger span {
+  display: block;
+  width: 22px;
+  height: 1px;
+  background: var(--ink);
+  transition: transform 0.2s, opacity 0.2s;
+}
+
+@media (max-width: 640px) {
+  .site-nav { padding: 0 1.5rem; }
+
+  .nav-hamburger { display: flex; }
+
+  .nav-links {
+    position: fixed;
+    top: var(--nav-h); left: 0; right: 0;
+    background: var(--bg);
+    border-bottom: 1px solid var(--light-grey);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    padding: 1rem 1.5rem 1.5rem;
+    transform: translateY(-110%);
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    pointer-events: none;
+  }
+
+  .nav-links.open {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .nav-links li { width: 100%; }
+
+  .nav-link {
+    display: block;
+    padding: 0.75rem 0;
+    font-size: 15px;
+    border-bottom: 1px solid var(--light-grey);
+  }
+  .nav-links li:last-child .nav-link { border-bottom: none; }
+}
+
+/* ── Page shell ── */
+.page-content {
+  margin-top: var(--nav-h);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Footer ── */
+.site-footer {
+  padding: 2rem 3rem;
+  font-size: 11px;
+  color: var(--light-grey);
+  letter-spacing: 0.08em;
+  border-top: 1px solid #f0f0f0;
+}
+
+@media (max-width: 640px) {
+  .site-footer { padding: 2rem 1.5rem; }
+}
+
+/* ── Shared utilities ── */
+.container {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 3rem;
+}
+
+@media (max-width: 640px) {
+  .container { padding: 0 1.5rem; }
+}
+
+.divider {
+  width: 32px;
+  height: 1px;
+  background: var(--light-grey);
+  margin: 2rem 0;
+}
+
+/* Display / body type helpers */
+.display-italic {
+  font-family: var(--font-display);
+  font-style: italic;
+}
+
+.cta-link {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--navy);
+  text-decoration: none;
+  border-bottom: 1px solid var(--navy);
+  padding-bottom: 2px;
+  transition: opacity 0.2s ease;
+}
+.cta-link:hover { opacity: 0.6; }

@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RELAY — EQV Group</title>
+  <meta name="description" content="RELAY by EQV Group — AI-powered EdTech for K–12 schools. Apply to become a pilot school." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500&display=swap" />
+  <link rel="stylesheet" href="shared.css" />
+  <style>
+    /* ═══════════════════════════════════════════════
+       RELAY — "site within a site"
+       Dark navy world, distinct from white EQV pages.
+       Palette pulled directly from the pitch deck.
+    ═══════════════════════════════════════════════ */
+
+    :root {
+      --relay-bg:        #151f35;
+      --relay-surface:   #1b2744;
+      --relay-card:      #edf0f7;
+      --relay-card-text: #1b2744;
+      --relay-white:     #ffffff;
+      --relay-grey:      rgba(255,255,255,0.55);
+      --relay-blue:      #3a6bc4;
+      --relay-accent:    #ffffff;
+    }
+
+    /* Override body for dark world */
+    body {
+      background: var(--relay-bg);
+    }
+
+    /* Nav override — keep it but make it dark */
+    .site-nav {
+      background: rgba(21, 31, 53, 0.92) !important;
+      border-bottom-color: rgba(255,255,255,0.1) !important;
+    }
+    .brand-eqv  { color: rgba(255,255,255,0.45) !important; }
+    .brand-group { color: rgba(255,255,255,0.7) !important; }
+    .nav-link   { color: rgba(255,255,255,0.5) !important; }
+    .nav-link:hover,
+    .nav-link.active { color: #fff !important; }
+    .nav-link::after { background: #fff !important; }
+    .nav-hamburger span { background: #fff !important; }
+    .site-footer {
+      background: var(--relay-surface);
+      color: rgba(255,255,255,0.3);
+      border-top-color: rgba(255,255,255,0.08);
+    }
+
+    /* ── HERO ── */
+    .relay-hero {
+      min-height: 92vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 6rem 0 5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Subtle radial glow behind hero text */
+    .relay-hero::before {
+      content: '';
+      position: absolute;
+      top: -10%;
+      left: -5%;
+      width: 60%;
+      height: 80%;
+      background: radial-gradient(ellipse at 30% 40%, rgba(58,107,196,0.18) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .relay-eyebrow {
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--relay-blue);
+      margin-bottom: 1.8rem;
+    }
+
+    .relay-wordmark {
+      font-family: var(--font-body);
+      font-size: clamp(72px, 14vw, 130px);
+      font-weight: 300;
+      color: var(--relay-white);
+      letter-spacing: -0.05em;
+      line-height: 0.9;
+      margin-bottom: 1.5rem;
+    }
+
+    .relay-hero-tagline {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: clamp(20px, 3.2vw, 30px);
+      color: var(--relay-grey);
+      margin-bottom: 2.5rem;
+      max-width: 560px;
+      line-height: 1.35;
+    }
+
+    .relay-hero-body {
+      font-family: var(--font-body);
+      font-size: 15px;
+      font-weight: 300;
+      color: var(--relay-grey);
+      line-height: 1.85;
+      max-width: 520px;
+      margin-bottom: 3rem;
+    }
+
+    .relay-cta-row {
+      display: flex;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background: var(--relay-white);
+      color: var(--relay-surface);
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 0.85rem 2rem;
+      transition: background 0.2s, color 0.2s;
+    }
+    .btn-primary:hover {
+      background: var(--relay-blue);
+      color: #fff;
+    }
+
+    .btn-ghost {
+      display: inline-block;
+      color: rgba(255,255,255,0.6);
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(255,255,255,0.25);
+      padding-bottom: 2px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .btn-ghost:hover {
+      color: #fff;
+      border-color: #fff;
+    }
+
+    /* ── STATS BAND ── */
+    .stats-band {
+      background: var(--relay-surface);
+      padding: 3rem 0;
+      border-top: 1px solid rgba(255,255,255,0.07);
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+
+    .stats-inner {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    .stat-item {
+      text-align: center;
+    }
+
+    .stat-number {
+      font-family: var(--font-body);
+      font-size: clamp(36px, 5vw, 54px);
+      font-weight: 300;
+      color: var(--relay-white);
+      letter-spacing: -0.03em;
+      line-height: 1;
+      margin-bottom: 0.4rem;
+    }
+
+    .stat-label {
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--relay-grey);
+      line-height: 1.5;
+    }
+
+    .stat-source {
+      font-size: 10px;
+      color: rgba(255,255,255,0.25);
+      letter-spacing: 0.06em;
+      font-style: italic;
+      margin-top: 0.3rem;
+    }
+
+    @media (max-width: 640px) {
+      .stats-inner { grid-template-columns: 1fr; gap: 2rem; }
+    }
+
+    /* ── FRAMEWORK SECTION ── */
+    .framework-section {
+      padding: 6rem 0;
+    }
+
+    .section-eyebrow {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--relay-blue);
+      margin-bottom: 1.2rem;
+    }
+
+    .section-heading {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: clamp(28px, 4.5vw, 46px);
+      font-weight: 400;
+      color: var(--relay-white);
+      line-height: 1.1;
+      margin-bottom: 1rem;
+    }
+
+    .section-sub {
+      font-size: 15px;
+      font-weight: 300;
+      color: var(--relay-grey);
+      max-width: 520px;
+      line-height: 1.75;
+      margin-bottom: 4rem;
+    }
+
+    /* Steps — vertical stack on mobile, flowing on desktop */
+    .steps-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .step {
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      gap: 0 2rem;
+      padding: 2.4rem 0;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+    }
+    .step:last-child { border-bottom: 1px solid rgba(255,255,255,0.08); }
+    .step.visible { opacity: 1; transform: translateY(0); }
+
+    .step-number {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: var(--relay-surface);
+      border: 1px solid rgba(255,255,255,0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-body);
+      font-size: 18px;
+      font-weight: 300;
+      color: var(--relay-white);
+      flex-shrink: 0;
+      margin-top: 4px;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .step:hover .step-number {
+      background: var(--relay-blue);
+      border-color: var(--relay-blue);
+    }
+
+    .step-content {}
+
+    .step-title {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: clamp(20px, 2.8vw, 26px);
+      color: var(--relay-white);
+      margin-bottom: 0.5rem;
+      line-height: 1.2;
+    }
+
+    .step-body {
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--relay-grey);
+      line-height: 1.75;
+    }
+
+    .step-caption {
+      font-size: 11px;
+      color: rgba(255,255,255,0.2);
+      letter-spacing: 0.06em;
+      font-style: italic;
+      margin-top: 0.8rem;
+    }
+
+    @media (max-width: 500px) {
+      .step { grid-template-columns: 52px 1fr; gap: 0 1.2rem; }
+    }
+
+    /* ── DIFFERENTIATORS ── */
+    .diff-section {
+      padding: 5rem 0;
+      background: var(--relay-surface);
+      border-top: 1px solid rgba(255,255,255,0.07);
+    }
+
+    .diff-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .diff-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      padding: 1.8rem;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .diff-card:hover {
+      background: rgba(255,255,255,0.07);
+      border-color: rgba(255,255,255,0.18);
+    }
+
+    .diff-num {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      color: var(--relay-blue);
+      margin-bottom: 0.8rem;
+    }
+
+    .diff-title {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 19px;
+      color: var(--relay-white);
+      margin-bottom: 0.5rem;
+    }
+
+    .diff-body {
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--relay-grey);
+      line-height: 1.7;
+    }
+
+    /* ── PILOT APPLICATION ── */
+    .pilot-section {
+      padding: 6rem 0;
+    }
+
+    .pilot-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    @media (max-width: 720px) {
+      .pilot-inner { grid-template-columns: 1fr; gap: 3rem; }
+    }
+
+    .pilot-left {}
+    .pilot-left .section-sub { margin-bottom: 2rem; }
+
+    .pilot-criteria {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      margin-top: 1.5rem;
+    }
+
+    .pilot-criteria li {
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--relay-grey);
+      padding-left: 1.2rem;
+      position: relative;
+      line-height: 1.6;
+    }
+    .pilot-criteria li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--relay-blue);
+      font-weight: 400;
+    }
+
+    /* Application form */
+    .apply-form {
+      background: var(--relay-surface);
+      padding: 2.5rem;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .form-title {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 22px;
+      color: var(--relay-white);
+      margin-bottom: 0.4rem;
+    }
+
+    .form-sub {
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--relay-grey);
+      margin-bottom: 2rem;
+      line-height: 1.6;
+    }
+
+    .form-group {
+      margin-bottom: 1.2rem;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.45);
+      margin-bottom: 0.4rem;
+    }
+
+    .form-input,
+    .form-select,
+    .form-textarea {
+      width: 100%;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.12);
+      color: var(--relay-white);
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 300;
+      padding: 0.7rem 0.9rem;
+      outline: none;
+      transition: border-color 0.2s, background 0.2s;
+      appearance: none;
+      -webkit-appearance: none;
+      border-radius: 0;
+    }
+    .form-input::placeholder,
+    .form-textarea::placeholder { color: rgba(255,255,255,0.2); }
+    .form-input:focus,
+    .form-select:focus,
+    .form-textarea:focus {
+      border-color: var(--relay-blue);
+      background: rgba(58,107,196,0.08);
+    }
+
+    .form-select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='rgba(255,255,255,0.3)'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 0.9rem center;
+      padding-right: 2.2rem;
+      cursor: pointer;
+    }
+    .form-select option { background: #1b2744; color: #fff; }
+
+    .form-textarea { resize: vertical; min-height: 90px; }
+
+    .form-submit {
+      width: 100%;
+      background: var(--relay-white);
+      color: var(--relay-surface);
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border: none;
+      padding: 0.9rem;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+      margin-top: 0.5rem;
+    }
+    .form-submit:hover {
+      background: var(--relay-blue);
+      color: #fff;
+    }
+
+    .form-note {
+      font-size: 11px;
+      color: rgba(255,255,255,0.2);
+      margin-top: 1rem;
+      line-height: 1.6;
+      text-align: center;
+    }
+
+    /* Thank you state */
+    .form-thankyou {
+      display: none;
+      text-align: center;
+      padding: 2rem 0;
+    }
+    .form-thankyou.show { display: block; }
+    .apply-form.submitted .form-fields { display: none; }
+    .apply-form.submitted .form-thankyou { display: block; }
+
+    .thankyou-mark {
+      font-size: 32px;
+      margin-bottom: 1rem;
+      color: var(--relay-blue);
+    }
+
+    .thankyou-heading {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 24px;
+      color: var(--relay-white);
+      margin-bottom: 0.6rem;
+    }
+
+    .thankyou-body {
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--relay-grey);
+      line-height: 1.7;
+    }
+  </style>
+</head>
+<body>
+  <!-- nav.js injects nav — dark overrides above handle the appearance -->
+
+  <div class="page-content">
+
+    <!-- ══ HERO ══ -->
+    <section class="relay-hero">
+      <div class="container">
+        <p class="relay-eyebrow">EQV Group · Product</p>
+        <h1 class="relay-wordmark">RELAY</h1>
+        <p class="relay-hero-tagline">Understand the why behind every answer.</p>
+        <p class="relay-hero-body">
+          RELAY is an AI-powered EdTech tool for K–12 schools — built on
+          learning science, not assumptions. It gives students the guardrails
+          that research shows improve outcomes, and teachers the visibility
+          they need without adding to their workload.
+        </p>
+        <div class="relay-cta-row">
+          <a class="btn-primary" href="#apply">Apply as a pilot school</a>
+          <a class="btn-ghost"   href="#framework">Our approach ↓</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ STATS ══ -->
+    <div class="stats-band">
+      <div class="container">
+        <div class="stats-inner">
+          <div class="stat-item">
+            <div class="stat-number">+127%</div>
+            <div class="stat-label">better outcomes with guardrailed AI vs no AI</div>
+            <div class="stat-source">Bastani et al., PNAS 2025</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">−17%</div>
+            <div class="stat-label">exam scores with unrestricted AI access</div>
+            <div class="stat-source">Bastani et al., PNAS 2025</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">71%</div>
+            <div class="stat-label">of students used GenAI for school in 2024</div>
+            <div class="stat-source">Bueie et al., 2026</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ 5-STEP FRAMEWORK ══ -->
+    <section class="framework-section" id="framework">
+      <div class="container">
+        <p class="section-eyebrow">Our approach</p>
+        <h2 class="section-heading">5-Step Engagement<br>Framework</h2>
+        <p class="section-sub">
+          Every school that partners with RELAY moves through the same
+          structured process. Each step builds on the last: collaborative,
+          trust-centred, and grounded in evidence at every stage.
+        </p>
+
+        <div class="steps-list">
+
+          <div class="step">
+            <div class="step-number">1</div>
+            <div class="step-content">
+              <h3 class="step-title">Understand Context</h3>
+              <p class="step-body">We interview stakeholders across the school, including leaders, teachers, and where appropriate, students, to map challenges, priorities, goals, culture, attitudes, and existing policy. No two schools are the same; this step ensures we design for yours.</p>
+              <p class="step-caption">Stakeholder interviews · Policy audit · Culture mapping</p>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-number">2</div>
+            <div class="step-content">
+              <h3 class="step-title">Collaboratively Design</h3>
+              <p class="step-body">We co-design a bespoke engagement journey with your team, for both teachers and students. The journey moves through three phases: Foundation, Fluency, and Future, each building capability before the next begins.</p>
+              <p class="step-caption">Co-design workshops · Foundation → Fluency → Future</p>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-number">3</div>
+            <div class="step-content">
+              <h3 class="step-title">Pilot</h3>
+              <p class="step-body">We test with safeguards in place. Drawing on both qualitative and quantitative data, we refine the approach and measure real impact before any broader rollout. This is the phase pilot schools enter.</p>
+              <p class="step-caption">Controlled pilot · Data collection · Impact measurement</p>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-number">4</div>
+            <div class="step-content">
+              <h3 class="step-title">Implement &amp; Adapt</h3>
+              <p class="step-body">Leader-led rollout with accountability champions embedded across departments. We review and refine continuously, building an ongoing relationship with the school rather than a one-off implementation.</p>
+              <p class="step-caption">Leader-led rollout · Accountability champions · Continuous review</p>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-number">5</div>
+            <div class="step-content">
+              <h3 class="step-title">Achieve Impact</h3>
+              <p class="step-body">Delivery of meaningful learning outcomes across the school. We workshop on trust — across every stakeholder relationship — and audit trust levels to confirm the impact is real and lasting.</p>
+              <p class="step-caption">Learning outcomes · Trust audit · Stakeholder review</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ DIFFERENTIATORS ══ -->
+    <section class="diff-section">
+      <div class="container">
+        <p class="section-eyebrow">What makes RELAY different</p>
+        <h2 class="section-heading">Built differently,<br>by design.</h2>
+        <div class="diff-grid">
+          <div class="diff-card">
+            <div class="diff-num">01</div>
+            <div class="diff-title">No Grade · No Judgment</div>
+            <p class="diff-body">Purely formative. Students explain honestly, not to perform for a mark. Removes the facade of understanding.</p>
+          </div>
+          <div class="diff-card">
+            <div class="diff-num">02</div>
+            <div class="diff-title">Student-Facing Pedagogy</div>
+            <p class="diff-body">Built on co-regulation and self-regulated learning, not productivity shortcuts. Designed for how students actually learn.</p>
+          </div>
+          <div class="diff-card">
+            <div class="diff-num">03</div>
+            <div class="diff-title">Cross-Curricular, K–12</div>
+            <p class="diff-body">One consistent tool across every subject and year level. Not locked to maths or a single subject area.</p>
+          </div>
+          <div class="diff-card">
+            <div class="diff-num">04</div>
+            <div class="diff-title">School-Context Customisation</div>
+            <p class="diff-body">Shaped to your curriculum, ethos, and student cohort, not a one-size-fits-all subscription.</p>
+          </div>
+          <div class="diff-card">
+            <div class="diff-num">05</div>
+            <div class="diff-title">AI Implementation Strategy</div>
+            <p class="diff-body">The plan behind the tool. Guardrailed AI outperforms unrestricted AI by 127% (Bastani et al., 2025). The variable is always design.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ PILOT APPLICATION ══ -->
+    <section class="pilot-section" id="apply">
+      <div class="container">
+        <div class="pilot-inner">
+
+          <div class="pilot-left">
+            <p class="section-eyebrow">Pilot programme</p>
+            <h2 class="section-heading">Apply as a<br>pilot school.</h2>
+            <p class="section-sub">
+              We're partnering with a small number of K–12 independent schools
+              for our initial pilot. Pilot schools work directly with the EQV
+              team through Steps 1–3 of our framework at a discounted rate,
+              with pricing agreed before any work begins.
+            </p>
+            <p class="section-sub" style="margin-bottom:0;">
+              We're looking for schools that:
+            </p>
+            <ul class="pilot-criteria">
+              <li>Are grappling with how to implement AI responsibly</li>
+              <li>Have leadership willing to be involved in the process</li>
+              <li>Want outcomes grounded in learning science, not hype</li>
+              <li>Are open to collaborative design, not just off-the-shelf tools</li>
+            </ul>
+          </div>
+
+          <div class="pilot-right">
+            <div class="apply-form" id="applyForm">
+              <div class="form-fields">
+                <p class="form-title">Register your interest</p>
+                <p class="form-sub">We'll follow up within 3 business days to discuss fit and next steps.</p>
+
+                <div class="form-group">
+                  <label class="form-label" for="f-name">Your name</label>
+                  <input class="form-input" id="f-name" type="text" placeholder="Jane Smith" />
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="f-role">Your role</label>
+                  <select class="form-select" id="f-role">
+                    <option value="" disabled selected>Select role</option>
+                    <option>Principal</option>
+                    <option>Deputy Principal</option>
+                    <option>Head of Learning / Curriculum</option>
+                    <option>Head of Department</option>
+                    <option>Teacher</option>
+                    <option>Other</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="f-school">School name</label>
+                  <input class="form-input" id="f-school" type="text" placeholder="St. Somewhere College" />
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="f-email">Email address</label>
+                  <input class="form-input" id="f-email" type="email" placeholder="jane@school.edu.au" />
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="f-msg">What's prompting your interest? <span style="opacity:0.4">(optional)</span></label>
+                  <textarea class="form-textarea" id="f-msg" placeholder="A sentence or two is fine."></textarea>
+                </div>
+
+                <button class="form-submit" onclick="submitForm()">Submit application</button>
+                <p class="form-note">Your information is used only to follow up on this application and will not be shared.</p>
+              </div>
+
+              <div class="form-thankyou">
+                <div class="thankyou-mark">✓</div>
+                <p class="thankyou-heading">Thank you.</p>
+                <p class="thankyou-body">We've received your application and will be in touch within 3 business days.<br><br>In the meantime, feel free to reach us at <a href="mailto:hello@eqvgroup.com.au" style="color:var(--relay-blue);">hello@eqvgroup.com.au</a></p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <footer class="site-footer container">
+      © 2026 Esse Quam Videri Group Pty. Limited
+    </footer>
+
+  </div><!-- /.page-content -->
+
+  <script src="nav.js"></script>
+  <script>
+    /* ── Scroll-triggered step reveals ── */
+    const steps = document.querySelectorAll('.step');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    steps.forEach(s => observer.observe(s));
+
+    /* ── Form submit (mailto fallback — replace with Netlify Forms or Formspree in production) ── */
+    function submitForm() {
+      const name   = document.getElementById('f-name').value.trim();
+      const role   = document.getElementById('f-role').value;
+      const school = document.getElementById('f-school').value.trim();
+      const email  = document.getElementById('f-email').value.trim();
+
+      if (!name || !school || !email || !role) {
+        alert('Please fill in your name, role, school, and email.');
+        return;
+      }
+
+      const msg = document.getElementById('f-msg').value.trim();
+      const subject = encodeURIComponent(`RELAY Pilot Application — ${school}`);
+      const body = encodeURIComponent(
+        `Name: ${name}\nRole: ${role}\nSchool: ${school}\nEmail: ${email}\n\nMessage:\n${msg || '(none)'}`
+      );
+
+      window.location.href = `mailto:hello@eqvgroup.com.au?subject=${subject}&body=${body}`;
+
+      // Show thank you state after short delay
+      setTimeout(() => {
+        document.getElementById('applyForm').classList.add('submitted');
+      }, 800);
+    }
+  </script>
+</body>
+</html>

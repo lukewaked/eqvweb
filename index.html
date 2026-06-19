@@ -5,77 +5,52 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>EQV Group</title>
   <meta name="description" content="EQV Group — Products that make you be, rather than seem to be." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500&display=swap" />
+  <link rel="stylesheet" href="shared.css" />
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    /* ─────────────────────────────────────────
+       HOME-ONLY styles (splash + holding page)
+       ───────────────────────────────────────── */
 
-    :root {
-      --navy: #1B4F8A;
-      --grey: #9A9A9A;
-      --light-grey: #CCCCCC;
-      --bg: #ffffff;
-    }
+    /* On home we hide the regular page shell until the splash lifts */
+    body { overflow: hidden; }
 
-    html, body {
-      height: 100%;
-      background: var(--bg);
-      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-      -webkit-font-smoothing: antialiased;
-      overflow: hidden;
-    }
-
-    /* ── HOLDING PAGE (sits behind) ── */
-    #holding {
-      position: fixed;
-      inset: 0;
-      background: var(--bg);
-      display: flex;
-      flex-direction: column;
-      overflow-y: auto;
-    }
-
-    .hold-nav {
-      display: flex;
-      align-items: baseline;
-      gap: 0.35em;
-      padding: 2.4rem 3rem;
-    }
-
-    .hold-body {
+    .home-body {
       flex: 1;
       display: flex;
       flex-direction: column;
       justify-content: center;
-      padding: 2rem 3rem 3rem;
-      max-width: 640px;
+      padding: 4rem 0 3rem;
     }
 
     .hold-tagline {
-      font-size: clamp(28px, 5vw, 48px);
-      font-weight: 300;
-      color: #1a1a1a;
-      letter-spacing: -0.02em;
-      line-height: 1.15;
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: clamp(32px, 5.5vw, 54px);
+      font-weight: 400;
+      color: var(--ink);
+      letter-spacing: -0.01em;
+      line-height: 1.12;
       margin-bottom: 2.5rem;
     }
     .hold-tagline em {
       color: var(--navy);
-      font-style: normal;
-    }
-
-    .hold-divider {
-      width: 32px;
-      height: 1px;
-      background: var(--light-grey);
-      margin-bottom: 2rem;
+      font-style: italic;
     }
 
     .hold-text {
       font-size: 15px;
       font-weight: 300;
-      color: #555;
+      color: var(--ink-muted);
       line-height: 1.8;
       letter-spacing: 0.01em;
       margin-bottom: 1.4rem;
+    }
+    .hold-text em {
+      color: var(--navy);
+      font-style: normal;
     }
 
     .hold-links {
@@ -85,42 +60,7 @@
       flex-wrap: wrap;
     }
 
-    .hold-link {
-      font-size: 12px;
-      font-weight: 400;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--navy);
-      text-decoration: none;
-      border-bottom: 1px solid var(--navy);
-      padding-bottom: 2px;
-      transition: opacity 0.2s ease;
-    }
-    .hold-link:hover { opacity: 0.6; }
-
-    .hold-footer {
-      padding: 2rem 3rem;
-      font-size: 11px;
-      color: var(--light-grey);
-      letter-spacing: 0.08em;
-    }
-
-    /* shared brand type */
-    .brand-eqv {
-      font-size: clamp(24px, 3.5vw, 34px);
-      font-weight: 300;
-      color: var(--grey);
-      letter-spacing: -0.01em;
-    }
-    .brand-group {
-      font-size: clamp(10px, 1.2vw, 13px);
-      font-weight: 500;
-      color: var(--navy);
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-    }
-
-    /* ── SPLASH (sits on top, slides up like a curtain) ── */
+    /* ── SPLASH ── */
     #splash {
       position: fixed;
       inset: 0;
@@ -129,14 +69,13 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      z-index: 100;
+      z-index: 300;
       transition: transform 1.2s cubic-bezier(0.76, 0, 0.24, 1);
     }
-    #splash.lift {
-      transform: translateY(-100%);
-    }
+    #splash.lift { transform: translateY(-100%); }
 
     .splash-line1 {
+      font-family: var(--font-body);
       font-size: clamp(16px, 2.5vw, 22px);
       font-weight: 300;
       color: var(--grey);
@@ -149,10 +88,12 @@
     .splash-line1.show { opacity: 1; transform: translateY(0); }
 
     .splash-be {
+      font-family: var(--font-display);
+      font-style: italic;
       font-size: clamp(72px, 12vw, 110px);
-      font-weight: 300;
+      font-weight: 400;
       color: var(--navy);
-      letter-spacing: -0.04em;
+      letter-spacing: -0.02em;
       line-height: 1;
       opacity: 0;
       transform: translateY(16px);
@@ -162,6 +103,7 @@
     .splash-be.show { opacity: 1; transform: translateY(0); }
 
     .splash-line3 {
+      font-family: var(--font-body);
       font-size: clamp(11px, 1.5vw, 14px);
       font-weight: 300;
       color: var(--grey);
@@ -189,53 +131,60 @@
       gap: 0.35em;
       opacity: 0;
       transform: scale(0.6);
-      transition: opacity 1.4s cubic-bezier(0.22, 1, 0.36, 1), transform 1.4s cubic-bezier(0.22, 1, 0.36, 1);
+      transition: opacity 1.4s cubic-bezier(0.22, 1, 0.36, 1),
+                  transform 1.4s cubic-bezier(0.22, 1, 0.36, 1);
     }
     .splash-brand.show { opacity: 1; transform: scale(1.15); }
   </style>
 </head>
 <body>
+  <!-- nav.js injects the <nav> here automatically -->
 
-  <!-- HOLDING PAGE (behind the splash) -->
-  <div id="holding">
-    <nav class="hold-nav">
-      <span class="brand-eqv">eqv</span>
-      <span class="brand-group">Group</span>
-    </nav>
-
-    <div class="hold-body">
+  <!-- HOLDING PAGE -->
+  <div class="page-content">
+    <div class="home-body container">
       <h1 class="hold-tagline">To <em>be</em>,<br>rather than<br>seem to be.</h1>
-      <div class="hold-divider"></div>
+      <div class="divider"></div>
       <p class="hold-text">
-        EQV Group aims to translate established and upcoming Australian and international research output into products which enable people, <em style="color:var(--navy); font-style:normal;">"to be, rather than seem to be"</em> — the English translation of the Latin motto, 'Esse Quam Videri'. This underpins each output of the company.
+        EQV Group is an Australian company underpinned by the Latin motto
+        <em>Esse Quam Videri</em>, meaning to be, rather than to seem to be.
+        We build products that help people access their true abilities and
+        understand the power of emerging technology, grounded in the latest
+        research from Australian and international academics.
       </p>
       <p class="hold-text">
-        Our first endeavour is an AI-assisted EdTech tool which aims to support teachers' ability to understand their learners' engagement and comprehension of topics taught in class, with the goal of boosting student confidence, engagement and perseverance in a safe, non-judgmental environment. Our differentiator is our tool's reliance on teacher agency and its academic underpinnings in co-regulation and self-regulated learning, student-teacher relationships, teacher workload, and the role and impact of educational technologies in the classroom.
+        Our first product is an AI-powered EdTech tool designed to help students
+        understand the <em>why</em> behind their answers, across every subject.
       </p>
       <div class="hold-links">
-        <a class="hold-link" href="https://www.linkedin.com/company/esse-quam-videri-group/" target="_blank" rel="noopener">LinkedIn</a>
-        <a class="hold-link" href="mailto:hello@eqvgroup.com.au">Get in touch</a>
+        <a class="cta-link" href="https://www.linkedin.com/company/esse-quam-videri-group/" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="cta-link" href="contact.html">Get in touch</a>
       </div>
     </div>
 
-    <footer class="hold-footer">
+    <footer class="site-footer container">
       © 2026 Esse Quam Videri Group Pty. Limited
     </footer>
   </div>
 
-  <!-- SPLASH (lifts away like a curtain) -->
+  <!-- SPLASH -->
   <div id="splash">
     <div class="splash-line1" id="l1">Products that make you</div>
-    <div class="splash-be" id="l2">be</div>
+    <div class="splash-be"    id="l2">be</div>
     <div class="splash-line3" id="l3">rather than seem to be.</div>
     <div class="splash-divider" id="sdiv"></div>
-    <div class="splash-brand" id="brand">
+    <div class="splash-brand"   id="brand">
       <span class="brand-eqv">eqv</span>
       <span class="brand-group">Group</span>
     </div>
   </div>
 
+  <script src="nav.js"></script>
   <script>
+    /* Hide nav until splash lifts */
+    const siteNav = document.querySelector('.site-nav');
+    if (siteNav) siteNav.style.opacity = '0';
+
     function runSplash() {
       setTimeout(() => document.getElementById('l1').classList.add('show'), 400);
       setTimeout(() => document.getElementById('l2').classList.add('show'), 1300);
@@ -243,13 +192,15 @@
       setTimeout(() => document.getElementById('sdiv').classList.add('show'), 3900);
       setTimeout(() => document.getElementById('brand').classList.add('show'), 4200);
 
-      // Curtain lifts after brand has settled for ~2s
       setTimeout(() => {
         document.getElementById('splash').classList.add('lift');
         document.body.style.overflow = 'auto';
+        if (siteNav) {
+          siteNav.style.transition = 'opacity 0.6s ease';
+          siteNav.style.opacity = '1';
+        }
       }, 6500);
 
-      // Remove from DOM after animation completes
       setTimeout(() => {
         document.getElementById('splash').style.display = 'none';
       }, 7800);

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact — EQV Group</title>
+  <meta name="description" content="Get in touch with EQV Group." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500&display=swap" />
+  <link rel="stylesheet" href="shared.css" />
+  <style>
+    /* ─────────────────────────────────────
+       CONTACT page styles
+       ───────────────────────────────────── */
+
+    .contact-section {
+      padding: 5rem 0 4rem;
+    }
+
+    .eyebrow {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--grey);
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-headline {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: clamp(36px, 6vw, 60px);
+      font-weight: 400;
+      color: var(--ink);
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-sub {
+      font-size: 16px;
+      font-weight: 300;
+      color: var(--ink-muted);
+      line-height: 1.8;
+      max-width: 520px;
+      margin-bottom: 3.5rem;
+    }
+
+    /* Contact options */
+    .contact-options {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      max-width: 480px;
+    }
+
+    .contact-option {
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+      padding: 1.8rem 2rem;
+      border: 1px solid var(--light-grey);
+      transition: border-color 0.2s;
+    }
+    .contact-option:hover { border-color: var(--navy); }
+
+    .contact-option-label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--grey);
+    }
+
+    .contact-option-value {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 22px;
+      color: var(--navy);
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+    .contact-option-value:hover { opacity: 0.7; }
+
+    .contact-option-note {
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--grey);
+      margin-top: 0.2rem;
+    }
+  </style>
+</head>
+<body>
+  <!-- nav.js injects the nav automatically -->
+
+  <div class="page-content">
+    <div class="container">
+
+      <section class="contact-section">
+        <p class="eyebrow">Contact</p>
+        <h1 class="contact-headline">Let's talk.</h1>
+        <p class="contact-sub">
+          Whether you're an educator, researcher, investor, or just curious about
+          what we're building — we'd love to hear from you.
+        </p>
+
+        <div class="contact-options">
+
+          <!-- Email -->
+          <div class="contact-option">
+            <span class="contact-option-label">Email</span>
+            <a class="contact-option-value" href="mailto:hello@eqvgroup.com.au">
+              hello@eqvgroup.com.au
+            </a>
+            <span class="contact-option-note">We aim to respond within two business days.</span>
+          </div>
+
+          <!-- LinkedIn -->
+          <div class="contact-option">
+            <span class="contact-option-label">LinkedIn</span>
+            <a class="contact-option-value"
+               href="https://www.linkedin.com/company/esse-quam-videri-group/"
+               target="_blank" rel="noopener">
+              EQV Group
+            </a>
+            <span class="contact-option-note">Follow us for updates on RELAY and our research partnerships.</span>
+          </div>
+
+          <!-- RELAY Early Access -->
+          <div class="contact-option">
+            <span class="contact-option-label">RELAY — Early Access</span>
+            <a class="contact-option-value" href="mailto:hello@eqvgroup.com.au?subject=RELAY Early Access">
+              Request access →
+            </a>
+            <span class="contact-option-note">Educators and institutions can request early access to RELAY.</span>
+          </div>
+
+        </div>
+      </section>
+
+    </div><!-- /.container -->
+
+    <footer class="site-footer container">
+      © 2026 Esse Quam Videri Group Pty. Limited
+    </footer>
+  </div>
+
+  <script src="nav.js"></script>
+</body>
+</html>

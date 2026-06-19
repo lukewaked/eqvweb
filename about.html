@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About — EQV Group</title>
+  <meta name="description" content="About EQV Group — Esse Quam Videri." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500&display=swap" />
+  <link rel="stylesheet" href="shared.css" />
+  <style>
+    /* ─────────────────────────────────────
+       ABOUT page styles
+       ───────────────────────────────────── */
+
+    .about-hero {
+      padding: 5rem 0 3rem;
+    }
+
+    .eyebrow {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--grey);
+      margin-bottom: 1.5rem;
+    }
+
+    .about-headline {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: clamp(36px, 6vw, 62px);
+      font-weight: 400;
+      color: var(--ink);
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+      margin-bottom: 2.5rem;
+    }
+    .about-headline span { color: var(--navy); }
+
+    .about-lead {
+      font-family: var(--font-body);
+      font-size: 17px;
+      font-weight: 300;
+      color: var(--ink-muted);
+      line-height: 1.85;
+      max-width: 620px;
+      margin-bottom: 3.5rem;
+    }
+
+    /* Values grid */
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 2rem;
+      padding: 3rem 0 4rem;
+      border-top: 1px solid #f0f0f0;
+    }
+
+    .value-card h3 {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 22px;
+      color: var(--navy);
+      margin-bottom: 0.6rem;
+    }
+
+    .value-card p {
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--ink-muted);
+      line-height: 1.7;
+    }
+
+    /* People sections */
+    .people-section {
+      padding: 3.5rem 0 4rem;
+      border-top: 1px solid #f0f0f0;
+    }
+
+    .section-title {
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--grey);
+      margin-bottom: 2.5rem;
+    }
+
+    /* Founder card */
+    .founder-card {
+      display: grid;
+      grid-template-columns: 96px 1fr;
+      gap: 2rem;
+      align-items: start;
+      max-width: 560px;
+    }
+
+    @media (max-width: 480px) {
+      .founder-card { grid-template-columns: 1fr; }
+    }
+
+    .founder-avatar {
+      width: 96px;
+      height: 96px;
+      border-radius: 50%;
+      background: #f0f2f6;
+      border: 1px solid var(--light-grey);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      overflow: hidden;
+    }
+
+    /* Placeholder initials — replace src on the img tag when you have a photo */
+    .founder-avatar-initials {
+      font-family: var(--font-body);
+      font-size: 22px;
+      font-weight: 300;
+      color: var(--grey);
+      letter-spacing: 0.05em;
+    }
+
+    .founder-name {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 24px;
+      color: var(--ink);
+      margin-bottom: 0.2rem;
+    }
+
+    .founder-role {
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--navy);
+      margin-bottom: 0.9rem;
+    }
+
+    .founder-bio {
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--ink-muted);
+      line-height: 1.75;
+    }
+
+    .founder-linkedin {
+      display: inline-block;
+      margin-top: 0.8rem;
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--navy);
+      text-decoration: none;
+      border-bottom: 1px solid var(--navy);
+      padding-bottom: 1px;
+      transition: opacity 0.2s;
+    }
+    .founder-linkedin:hover { opacity: 0.6; }
+
+    /* Board of advisors */
+    .advisors-coming-soon {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      padding: 2rem 2.5rem;
+      border: 1px dashed var(--light-grey);
+      max-width: 480px;
+    }
+
+    .advisors-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--light-grey);
+      flex-shrink: 0;
+    }
+
+    .advisors-text {
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--grey);
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+  <!-- nav.js injects the nav automatically -->
+
+  <div class="page-content">
+    <div class="container">
+
+      <!-- ── Hero ── -->
+      <section class="about-hero">
+        <p class="eyebrow">About</p>
+        <h1 class="about-headline">
+          Esse Quam<br>
+          <span>Videri</span>
+        </h1>
+        <p class="about-lead">
+          EQV Group is an Australian company built on the Latin principle
+          <em style="color:var(--navy); font-style:normal;">esse quam videri</em>,
+          meaning to be, rather than to seem to be. Everything we build is grounded in
+          substance: research-backed, honestly made, and designed to surface the
+          genuine capabilities of the people who use it.
+        </p>
+        <a class="cta-link" href="contact.html">Get in touch</a>
+      </section>
+
+      <!-- ── Values ── -->
+      <section>
+        <div class="values-grid">
+          <div class="value-card">
+            <h3>Substance</h3>
+            <p>We don't build for appearances. Every product we ship is grounded in evidence and designed to deliver real outcomes.</p>
+          </div>
+          <div class="value-card">
+            <h3>Clarity</h3>
+            <p>Technology should illuminate, not obscure. We translate complexity into tools that genuinely aid understanding.</p>
+          </div>
+          <div class="value-card">
+            <h3>Integrity</h3>
+            <p>We hold ourselves to the same standard we set for our products: honest, rigorous, and accountable.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Founder ── -->
+      <section class="people-section">
+        <p class="section-title">Founder</p>
+
+        <!--
+          TO ADD A PHOTO:
+          Replace the <div class="founder-avatar"> block with:
+          <img class="founder-avatar" src="images/founder.jpg" alt="[Name]" style="object-fit:cover;" />
+        -->
+        <div class="founder-card">
+          <div class="founder-avatar">
+            <span class="founder-avatar-initials">EQV</span>
+          </div>
+          <div>
+            <p class="founder-name">Founder Name</p>
+            <p class="founder-role">Founder &amp; CEO</p>
+            <p class="founder-bio">
+              A brief bio goes here. Replace this text with the founder's background,
+              what drove them to start EQV Group, and what they bring to the mission.
+            </p>
+            <a class="founder-linkedin"
+               href="https://www.linkedin.com/company/esse-quam-videri-group/"
+               target="_blank" rel="noopener">LinkedIn</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Board of Advisors ── -->
+      <section class="people-section">
+        <p class="section-title">Board of Advisors</p>
+        <div class="advisors-coming-soon">
+          <div class="advisors-dot"></div>
+          <p class="advisors-text">Our advisory board is being confirmed. More details coming soon.</p>
+        </div>
+      </section>
+
+    </div><!-- /.container -->
+
+    <footer class="site-footer container">
+      © 2026 Esse Quam Videri Group Pty. Limited
+    </footer>
+  </div>
+
+  <script src="nav.js"></script>
+</body>
+</html>

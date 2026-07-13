@@ -107,7 +107,14 @@
     .cycle-1 { font-family: 'Reenie Beanie', cursive; font-weight: 400; letter-spacing: 0; font-size: 1.15em; }
     .cycle-2 { font-family: 'Playwrite FR Trad', cursive; font-weight: 400; letter-spacing: -0.02em; font-size: 0.5em; }
     .cycle-3 { font-family: 'Shadows Into Light', cursive; font-weight: 400; letter-spacing: 0; font-size: 0.85em; }
-    .cycle-final { font-family: var(--font-body); font-weight: 300; letter-spacing: -0.05em; }
+    .cycle-final { font-family: var(--font-body); font-weight: 500; letter-spacing: -0.04em; }
+
+    /* Squiggle underline on the settled wordmark — ties RELAY back to the
+       same hand-drawn accent under "be" on the homepage. */
+    .cycle-final .squiggle-underline svg {
+      bottom: -0.22em;
+      height: 0.18em;
+    }
 
     .relay-hero-tagline {
       font-family: var(--font-display);
@@ -561,7 +568,7 @@
           <span class="cycle-word cycle-1" id="cw1">Relay</span>
           <span class="cycle-word cycle-2" id="cw2">Relay</span>
           <span class="cycle-word cycle-3" id="cw3">Relay</span>
-          <span class="cycle-word cycle-final" id="cwFinal">RELAY</span>
+          <span class="cycle-word cycle-final" id="cwFinal"><span class="squiggle-underline">RELAY<svg viewBox="0 0 140 14" preserveAspectRatio="none"><path d="M2 8 Q 35 2, 70 7 T 138 6" style="stroke:var(--relay-blue);" stroke-width="3" fill="none" stroke-linecap="round"/></svg></span></span>
         </h1>
         <p class="relay-hero-tagline">Understand the why behind every answer.</p>
         <p class="relay-hero-body">
@@ -787,8 +794,15 @@
   <script>
     /* ── Handwriting-cycle intro ──
        Fade through three handwritten treatments of "Relay", then settle
-       on the real Inter wordmark. Runs once, ~2s total. */
-    (function runWordmarkCycle() {
+       on the real Inter wordmark. Runs once, ~2s total.
+
+       The handwritten webfonts need to actually finish downloading before
+       we start swapping classes — otherwise each beat renders in the
+       browser's fallback cursive font for its entire on-screen window
+       (they never get a chance to repaint with the real font before the
+       next beat hides them), which looks like the same generic font
+       flashing instead of three distinct handwriting styles. */
+    function runWordmarkCycle() {
       const ids = ['cw1', 'cw2', 'cw3', 'cwFinal'];
       const els = ids.map(id => document.getElementById(id));
       const beat = 480;
@@ -799,7 +813,17 @@
           el.classList.add('show');
         }, i * beat);
       });
-    })();
+    }
+
+    const wordmarkFonts = [
+      '48px "Reenie Beanie"',
+      '48px "Playwrite FR Trad"',
+      '48px "Shadows Into Light"',
+    ];
+    const fontsReady = Promise.all(wordmarkFonts.map(f => document.fonts.load(f)));
+    const safetyTimeout = new Promise(resolve => setTimeout(resolve, 1200));
+
+    Promise.race([fontsReady, safetyTimeout]).then(runWordmarkCycle);
 
     /* ── Scroll-triggered step reveals ── */
     const steps = document.querySelectorAll('.step');

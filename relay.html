@@ -112,6 +112,10 @@
     }
     .cycle-1.show { animation: wordmarkEntrance 0.8s ease forwards; }
 
+    /* The final settle into the real wordmark also gets a soft fade,
+       rather than the hard cut used between the handwriting beats. */
+    .cycle-final { transition: opacity 0.9s ease; }
+
     .cycle-1 { font-family: 'Reenie Beanie', cursive; font-weight: 400; letter-spacing: 0; font-size: 1.15em; }
     .cycle-2 { font-family: 'Playwrite FR Trad', cursive; font-weight: 400; letter-spacing: -0.02em; font-size: 0.5em; }
     .cycle-3 { font-family: 'Shadows Into Light', cursive; font-weight: 400; letter-spacing: 0; font-size: 0.85em; }

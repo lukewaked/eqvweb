@@ -16,6 +16,12 @@
   --ink:        #1a1a1a;
   --ink-muted:  #555555;
 
+  /* Warm accent — introduced to soften the palette without losing the navy anchor */
+  --terracotta:       #C3542F;
+  --terracotta-light: #E3DFD5;
+  --cream:            #FBF9F5;
+  --card-border:      #EAE5D9;
+
   --nav-h: 72px;
 
   --font-display: 'DM Serif Display', Georgia, serif;
@@ -76,6 +82,32 @@ body {
   color: var(--navy);
   letter-spacing: 0.22em;
   text-transform: uppercase;
+}
+
+/* RELAY's distinct nav lockup — "RELAY" leads, small "by eqv Group" caption
+   sits underneath. Colours are set per-page (relay.html overrides for its
+   dark world); these are sensible light-theme defaults. */
+.nav-brand--relay {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.1em;
+}
+.brand-relay {
+  font-family: var(--font-body);
+  font-size: clamp(17px, 2.2vw, 21px);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  line-height: 1;
+}
+.brand-relay-by {
+  font-family: var(--font-body);
+  font-size: 9.5px;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  color: var(--grey);
+  line-height: 1;
 }
 
 .nav-links {
@@ -228,3 +260,143 @@ body {
   transition: opacity 0.2s ease;
 }
 .cta-link:hover { opacity: 0.6; }
+
+/* ── Pill buttons ──
+   Solid + outline variants. Used in place of the old underline-only
+   CTAs wherever a page wants a stronger, warmer call to action. */
+.pill-btn {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  padding: 0.7rem 1.4rem;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  transition: opacity 0.2s ease, background 0.2s ease, color 0.2s ease;
+}
+
+.pill-btn--navy {
+  background: var(--navy);
+  color: #fff;
+}
+.pill-btn--navy:hover { opacity: 0.85; }
+
+.pill-btn--terracotta {
+  background: var(--terracotta);
+  color: #fff;
+}
+.pill-btn--terracotta:hover { opacity: 0.85; }
+
+.pill-btn--outline {
+  background: transparent;
+  border-color: var(--terracotta);
+  color: var(--terracotta);
+}
+.pill-btn--outline:hover {
+  background: var(--terracotta);
+  color: #fff;
+}
+
+/* ── Hand-drawn underline accent ──
+   A small squiggle, not a straight rule — sits under a word to add a
+   touch of warmth without any illustration. */
+.squiggle-underline {
+  position: relative;
+  white-space: nowrap;
+}
+.squiggle-underline svg {
+  position: absolute;
+  left: 0;
+  bottom: -0.28em;
+  width: 100%;
+  height: 0.3em;
+  pointer-events: none;
+}
+
+/* ── Colour-blocked cards ──
+   Solid navy / terracotta / ink tiles, used for value props and
+   similar short, scannable groups of 3. */
+.color-card {
+  border-radius: 12px;
+  padding: 1.4rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: 110px;
+  color: #fff;
+}
+.color-card h3 {
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 500;
+  margin-bottom: 0.3rem;
+}
+.color-card p {
+  font-family: var(--font-body);
+  font-size: 12.5px;
+  font-weight: 300;
+  line-height: 1.6;
+  opacity: 0.8;
+}
+.color-card--navy       { background: var(--navy); }
+.color-card--terracotta { background: var(--terracotta); }
+.color-card--ink        { background: #2C2C2A; }
+
+/* ── Warm option card ──
+   Softer replacement for plain bordered boxes (Contact page etc). */
+.warm-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  background: var(--cream);
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  padding: 1.4rem 1.6rem;
+  text-decoration: none;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+.warm-card:hover {
+  border-color: var(--terracotta);
+  transform: translateY(-1px);
+}
+.warm-card-label {
+  font-family: var(--font-body);
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--grey);
+  margin-bottom: 0.3rem;
+}
+.warm-card-value {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 19px;
+  color: var(--navy);
+}
+.warm-card-value.terracotta { color: var(--terracotta); }
+.warm-card-note {
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 300;
+  color: var(--grey);
+  margin-top: 0.3rem;
+}
+.warm-card-arrow {
+  flex-shrink: 0;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--navy);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  transition: background 0.2s ease;
+}
+.warm-card-arrow.terracotta { background: var(--terracotta); }

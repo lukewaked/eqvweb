@@ -7,7 +7,7 @@
   <meta name="description" content="RELAY by EQV Group — AI-powered EdTech for K–12 schools. Apply to become a pilot school." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500&family=Reenie+Beanie&family=Playwrite+FR-Trad&family=Shadows+Into+Light&display=swap" />
   <link rel="stylesheet" href="shared.css" />
   <style>
     /* ═══════════════════════════════════════════════
@@ -23,7 +23,7 @@
       --relay-card-text: #1b2744;
       --relay-white:     #ffffff;
       --relay-grey:      rgba(255,255,255,0.55);
-      --relay-blue:      #3a6bc4;
+      --relay-blue:      #E8916B;
       --relay-accent:    #ffffff;
     }
 
@@ -39,6 +39,8 @@
     }
     .brand-eqv  { color: rgba(255,255,255,0.45) !important; }
     .brand-group { color: rgba(255,255,255,0.7) !important; }
+    .brand-relay { color: #fff !important; }
+    .brand-relay-by { color: rgba(255,255,255,0.4) !important; }
     .nav-link   { color: rgba(255,255,255,0.5) !important; }
     .nav-link:hover,
     .nav-link.active { color: #fff !important; }
@@ -73,17 +75,8 @@
       pointer-events: none;
     }
 
-    .relay-eyebrow {
-      font-family: var(--font-body);
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--relay-blue);
-      margin-bottom: 1.8rem;
-    }
-
     .relay-wordmark {
+      position: relative;
       font-family: var(--font-body);
       font-size: clamp(72px, 14vw, 130px);
       font-weight: 300;
@@ -91,7 +84,30 @@
       letter-spacing: -0.05em;
       line-height: 0.9;
       margin-bottom: 1.5rem;
+      height: 1em;
+      display: flex;
+      align-items: center;
     }
+
+    /* ── Handwriting-cycle intro ──
+       "RELAY" fades through a few handwritten treatments — a nod to
+       different students' handwriting — before settling into the real
+       Inter wordmark. Runs once on load, ~2s total. Words stack on top
+       of one another so the layout never shifts. */
+    .relay-wordmark .cycle-word {
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      opacity: 0;
+      white-space: nowrap;
+      transition: opacity 0.4s ease;
+    }
+    .relay-wordmark .cycle-word.show { opacity: 1; }
+    .cycle-1 { font-family: 'Reenie Beanie', cursive; font-weight: 400; letter-spacing: 0; font-size: 1.15em; }
+    .cycle-2 { font-family: 'Playwrite FR-Trad', cursive; font-weight: 400; letter-spacing: -0.02em; font-size: 0.5em; }
+    .cycle-3 { font-family: 'Shadows Into Light', cursive; font-weight: 400; letter-spacing: 0; font-size: 0.85em; }
+    .cycle-final { font-family: var(--font-body); font-weight: 300; letter-spacing: -0.05em; }
 
     .relay-hero-tagline {
       font-family: var(--font-display);
@@ -541,8 +557,12 @@
     <!-- ══ HERO ══ -->
     <section class="relay-hero">
       <div class="container">
-        <p class="relay-eyebrow">EQV Group · Product</p>
-        <h1 class="relay-wordmark">RELAY</h1>
+        <h1 class="relay-wordmark" id="relayWordmark">
+          <span class="cycle-word cycle-1" id="cw1">Relay</span>
+          <span class="cycle-word cycle-2" id="cw2">Relay</span>
+          <span class="cycle-word cycle-3" id="cw3">Relay</span>
+          <span class="cycle-word cycle-final" id="cwFinal">RELAY</span>
+        </h1>
         <p class="relay-hero-tagline">Understand the why behind every answer.</p>
         <p class="relay-hero-body">
           RELAY is an AI-powered EdTech tool for K–12 schools — built on
@@ -748,7 +768,7 @@
               <div class="form-thankyou">
                 <div class="thankyou-mark">✓</div>
                 <p class="thankyou-heading">Thank you.</p>
-                <p class="thankyou-body">We've received your application and will be in touch within 3 business days.<br><br>In the meantime, feel free to reach us at <a href="mailto:hello@eqvgroup.com.au" style="color:var(--relay-blue);">hello@eqvgroup.com.au</a></p>
+                <p class="thankyou-body">We've received your application and will be in touch within 3 business days.<br><br>In the meantime, feel free to reach us at <a href="mailto:luke.waked@eqvgroup.com.au" style="color:var(--relay-blue);">luke.waked@eqvgroup.com.au</a></p>
               </div>
             </div>
           </div>
@@ -765,6 +785,22 @@
 
   <script src="nav.js"></script>
   <script>
+    /* ── Handwriting-cycle intro ──
+       Fade through three handwritten treatments of "Relay", then settle
+       on the real Inter wordmark. Runs once, ~2s total. */
+    (function runWordmarkCycle() {
+      const ids = ['cw1', 'cw2', 'cw3', 'cwFinal'];
+      const els = ids.map(id => document.getElementById(id));
+      const beat = 480;
+
+      els.forEach((el, i) => {
+        setTimeout(() => {
+          els.forEach(other => other.classList.remove('show'));
+          el.classList.add('show');
+        }, i * beat);
+      });
+    })();
+
     /* ── Scroll-triggered step reveals ── */
     const steps = document.querySelectorAll('.step');
     const observer = new IntersectionObserver((entries) => {
@@ -795,7 +831,7 @@
         `Name: ${name}\nRole: ${role}\nSchool: ${school}\nEmail: ${email}\n\nMessage:\n${msg || '(none)'}`
       );
 
-      window.location.href = `mailto:hello@eqvgroup.com.au?subject=${subject}&body=${body}`;
+      window.location.href = `mailto:luke.waked@eqvgroup.com.au?subject=${subject}&body=${body}`;
 
       // Show thank you state after short delay
       setTimeout(() => {

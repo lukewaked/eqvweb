@@ -15,13 +15,25 @@ const NAV_LINKS = [
 (function injectNav() {
   const current = location.pathname.split('/').pop() || 'index.html';
 
-  const nav = document.createElement('nav');
-  nav.className = 'site-nav';
-  nav.innerHTML = `
+  /* RELAY gets its own distinct lockup — "RELAY" leads, with a small
+     "by eqv Group" caption underneath — while every other page keeps
+     the standard eqv/GROUP brand mark. */
+  const brandHTML = current === 'relay.html'
+    ? `
+    <a class="nav-brand nav-brand--relay" href="relay.html">
+      <span class="brand-relay">RELAY</span>
+      <span class="brand-relay-by">by eqv Group</span>
+    </a>`
+    : `
     <a class="nav-brand" href="index.html">
       <span class="brand-eqv">eqv</span>
       <span class="brand-group">Group</span>
-    </a>
+    </a>`;
+
+  const nav = document.createElement('nav');
+  nav.className = 'site-nav';
+  nav.innerHTML = `
+    ${brandHTML}
     <ul class="nav-links">
       ${NAV_LINKS.map(link => `
         <li>

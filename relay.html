@@ -83,17 +83,19 @@
       color: var(--relay-white);
       letter-spacing: -0.05em;
       line-height: 0.9;
-      margin-bottom: 1.5rem;
+      margin-bottom: 2.4rem;
       height: 1em;
       display: flex;
       align-items: center;
     }
 
     /* ── Handwriting-cycle intro ──
-       "RELAY" fades through a few handwritten treatments — a nod to
+       "RELAY" steps through a few handwritten treatments — a nod to
        different students' handwriting — before settling into the real
-       Inter wordmark. Runs once on load, ~2s total. Words stack on top
-       of one another so the layout never shifts. */
+       Inter wordmark. Runs once on load, ~3.6s total. Words stack on top
+       of one another so the layout never shifts. Swaps between beats are
+       hard cuts (no cross-fade) — only the very first word gets a soft
+       fade-and-rise entrance. */
     .relay-wordmark .cycle-word {
       position: absolute;
       left: 0;
@@ -101,9 +103,15 @@
       transform: translateY(-50%);
       opacity: 0;
       white-space: nowrap;
-      transition: opacity 0.4s ease;
     }
     .relay-wordmark .cycle-word.show { opacity: 1; }
+
+    @keyframes wordmarkEntrance {
+      from { opacity: 0; transform: translateY(-50%) translateY(14px); }
+      to   { opacity: 1; transform: translateY(-50%) translateY(0); }
+    }
+    .cycle-1.show { animation: wordmarkEntrance 0.8s ease forwards; }
+
     .cycle-1 { font-family: 'Reenie Beanie', cursive; font-weight: 400; letter-spacing: 0; font-size: 1.15em; }
     .cycle-2 { font-family: 'Playwrite FR Trad', cursive; font-weight: 400; letter-spacing: -0.02em; font-size: 0.5em; }
     .cycle-3 { font-family: 'Shadows Into Light', cursive; font-weight: 400; letter-spacing: 0; font-size: 0.85em; }
@@ -112,8 +120,18 @@
     /* Squiggle underline on the settled wordmark — ties RELAY back to the
        same hand-drawn accent under "be" on the homepage. */
     .cycle-final .squiggle-underline svg {
-      bottom: -0.22em;
-      height: 0.18em;
+      bottom: -0.16em;
+      height: 0.14em;
+    }
+    /* Squiggle draws itself on once the wordmark settles, rather than
+       just appearing — path is hidden via dash offset, then animated in. */
+    .cycle-final .squiggle-underline svg path {
+      stroke-dasharray: 200;
+      stroke-dashoffset: 200;
+      transition: stroke-dashoffset 0.9s ease;
+    }
+    .cycle-final .squiggle-underline svg path.draw {
+      stroke-dashoffset: 0;
     }
 
     .relay-hero-tagline {
@@ -568,7 +586,7 @@
           <span class="cycle-word cycle-1" id="cw1">Relay</span>
           <span class="cycle-word cycle-2" id="cw2">Relay</span>
           <span class="cycle-word cycle-3" id="cw3">Relay</span>
-          <span class="cycle-word cycle-final" id="cwFinal"><span class="squiggle-underline">RELAY<svg viewBox="0 0 140 14" preserveAspectRatio="none"><path d="M2 8 Q 35 2, 70 7 T 138 6" style="stroke:var(--relay-blue);" stroke-width="3" fill="none" stroke-linecap="round"/></svg></span></span>
+          <span class="cycle-word cycle-final" id="cwFinal"><span class="squiggle-underline">RELAY<svg viewBox="0 0 140 14" preserveAspectRatio="none"><path id="wordmarkSquiggle" d="M2 8 Q 35 2, 70 7 T 138 6" style="stroke:var(--relay-blue);" stroke-width="3" fill="none" stroke-linecap="round"/></svg></span></span>
         </h1>
         <p class="relay-hero-tagline">Understand the why behind every answer.</p>
         <p class="relay-hero-body">
@@ -793,8 +811,10 @@
   <script src="nav.js"></script>
   <script>
     /* ── Handwriting-cycle intro ──
-       Fade through three handwritten treatments of "Relay", then settle
-       on the real Inter wordmark. Runs once, ~2s total.
+       Step through three handwritten treatments of "Relay", then settle
+       on the real Inter wordmark with its squiggle drawing on underneath.
+       Runs once, ~3.6s total. Swaps are hard cuts — only the first word
+       gets a soft entrance (see the wordmarkEntrance keyframe in <style>).
 
        The handwritten webfonts need to actually finish downloading before
        we start swapping classes — otherwise each beat renders in the
@@ -805,7 +825,7 @@
     function runWordmarkCycle() {
       const ids = ['cw1', 'cw2', 'cw3', 'cwFinal'];
       const els = ids.map(id => document.getElementById(id));
-      const beat = 480;
+      const beat = 900;
 
       els.forEach((el, i) => {
         setTimeout(() => {
@@ -813,6 +833,11 @@
           el.classList.add('show');
         }, i * beat);
       });
+
+      const squiggle = document.getElementById('wordmarkSquiggle');
+      if (squiggle) {
+        setTimeout(() => squiggle.classList.add('draw'), (ids.length - 1) * beat + 300);
+      }
     }
 
     const wordmarkFonts = [

@@ -176,6 +176,48 @@
     }
     .founder-bio a:hover { opacity: 0.6; }
 
+    .founder-bio-list {
+      list-style: none;
+      margin: 0.8rem 0 0.9rem;
+      padding: 0;
+    }
+    .founder-bio-list li {
+      position: relative;
+      padding-left: 1.1rem;
+      margin-bottom: 0.5rem;
+    }
+    .founder-bio-list li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--terracotta);
+    }
+
+    .founder-more {
+      margin-top: 0.6rem;
+    }
+    .founder-more summary {
+      display: inline-block;
+      list-style: none;
+      cursor: pointer;
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--navy);
+      border-bottom: 1px solid var(--navy);
+      padding-bottom: 1px;
+      transition: opacity 0.2s;
+    }
+    .founder-more summary::-webkit-details-marker { display: none; }
+    .founder-more summary:hover { opacity: 0.6; }
+    .founder-more[open] summary { margin-bottom: 0.9rem; }
+    .founder-more summary .more-label::after { content: 'Read more'; }
+    .founder-more[open] summary .more-label::after { content: 'Show less'; }
+    .founder-more-body p { margin-bottom: 0.9rem; }
+    .founder-more-body p:last-child { margin-bottom: 0; }
+
     /* Board of advisors */
     .advisors-coming-soon {
       display: flex;
@@ -261,14 +303,41 @@
             <p class="founder-name">Luke Waked</p>
             <p class="founder-role">Founder</p>
             <p class="founder-bio">
-              Research Assistant in Macquarie University's School of Education,
-              researching how AI can be responsibly integrated into education.
-              Co-author of the Teachers' Learning Hub course
-              <a href="https://www.coursera.org/learn/mqfoa-generative-ai-literacy-and-prompting-skills-for-educators" target="_blank" rel="noopener">Generative AI for Educators</a>,
-              among other academic work in AI literacy. Founded EQV Group from that research.
+              Luke Waked is the founder of EQV Group. Alongside growing EQV, he
+              works as a Research Assistant in the Faculty of Arts and School of
+              Education at Macquarie University, researching how disruptive
+              technology — particularly AI — can be integrated effectively into
+              education.
             </p>
+
+            <details class="founder-more">
+              <summary><span class="more-label"></span></summary>
+              <div class="founder-more-body">
+                <p class="founder-bio">
+                  He has co-authored courses for the Macquarie University
+                  Teachers' Learning Hub, including
+                  <a href="https://www.coursera.org/learn/mqfoa-generative-ai-literacy-and-prompting-skills-for-educators" target="_blank" rel="noopener">Generative AI for Educators: AI Literacy &amp; Prompting Skills</a>,
+                  and has contributed to peer-reviewed articles.
+                </p>
+                <p class="founder-bio">
+                  His collaboration with academics and his research in AI, together
+                  with time spent in the classroom tutoring secondary school
+                  students, sparked a curiosity in the potential role AI-powered
+                  tools can play in:
+                </p>
+                <ul class="founder-bio-list founder-bio">
+                  <li>Improving student performance and helping them take more control of their learning.</li>
+                  <li>Supporting teachers to monitor progress and identify learning gaps in real time.</li>
+                </ul>
+                <p class="founder-bio">
+                  He holds a Bachelor of Arts in International Relations and
+                  Politics from Macquarie University.
+                </p>
+              </div>
+            </details>
+
             <a class="founder-linkedin"
-               href="https://www.linkedin.com/company/esse-quam-videri-group/"
+               href="https://www.linkedin.com/in/lukewaked/"
                target="_blank" rel="noopener">LinkedIn</a>
           </div>
         </div>

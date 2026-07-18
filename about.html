@@ -125,6 +125,19 @@
       letter-spacing: 0.05em;
     }
 
+    .founder-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Advisors — same visual treatment as the founder card, repeated per person */
+    .advisors-list {
+      display: flex;
+      flex-direction: column;
+      gap: 2.5rem;
+    }
+
     .founder-name {
       font-family: var(--font-display);
       font-style: italic;
@@ -346,9 +359,54 @@
       <!-- ── Board of Advisors ── -->
       <section class="people-section">
         <p class="section-title">Board of Advisors</p>
-        <div class="advisors-coming-soon">
-          <div class="advisors-dot"></div>
-          <p class="advisors-text">Our advisory board is being confirmed. More details coming soon.</p>
+        <div class="advisors-list">
+
+          <!-- Jackie Daher -->
+          <div class="founder-card">
+            <div class="founder-avatar">
+              <img src="images/advisors/jackie-daher.png" alt="Jackie Daher" />
+            </div>
+            <div>
+              <p class="founder-name">Jackie Daher</p>
+              <p class="founder-role">Advisor</p>
+              <p class="founder-bio">
+                Jackie Daher is the founder of SoProductive and a commercial
+                strategist with more than 20 years' experience helping
+                organisations grow, innovate and navigate change.
+              </p>
+
+              <details class="founder-more">
+                <summary><span class="more-label"></span></summary>
+                <div class="founder-more-body">
+                  <p class="founder-bio">
+                    After 18 years with American Express, where she led Client
+                    Acquisition and Partnerships for Global Merchant Services
+                    Australia, Jackie now works with businesses to unlock
+                    growth through practical AI adoption, stronger sales
+                    strategies, process improvement and customer-focused
+                    innovation.
+                  </p>
+                  <p class="founder-bio">
+                    She holds a Bachelor of Economics and Business Finance from
+                    Macquarie University and has completed the Leadership
+                    Excellence Program through Harvard Business School.
+                  </p>
+                  <p class="founder-bio">
+                    Jackie is an experienced mentor who enjoys helping
+                    founders, emerging leaders and teams build confidence,
+                    think strategically and achieve their potential — known
+                    for her collaborative style, commercial insight and
+                    ability to connect strategy with execution.
+                  </p>
+                </div>
+              </details>
+
+              <a class="founder-linkedin"
+                 href="https://www.linkedin.com/in/jackie-daher-29142616/"
+                 target="_blank" rel="noopener">LinkedIn</a>
+            </div>
+          </div>
+
         </div>
       </section>
 

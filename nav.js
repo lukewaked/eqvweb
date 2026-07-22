@@ -8,13 +8,9 @@
 const NAV_LINKS = [
   { label: 'Home',       href: 'index.html'   },
   { label: 'About',      href: 'about.html'   },
+  { label: 'RELAY',      href: 'relay.html'   },
   { label: 'Contact Us', href: 'contact.html' },
 ];
-/* RELAY is temporarily pulled from the public nav while patent filing is
-   in progress — the file itself lives in _relay-hold/relay.html so it can
-   be moved straight back to the root and re-added above when it's safe to
-   disclose again. The dark-lockup logic just below is left in place so
-   restoring it is a two-step job: move the file back, add the line above. */
 
 (function injectNav() {
   const current = location.pathname.split('/').pop() || 'index.html';

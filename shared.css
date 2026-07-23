@@ -324,7 +324,7 @@ body {
   padding: 1.4rem 1.5rem;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: flex-start;
   min-height: 110px;
   color: #fff;
 }

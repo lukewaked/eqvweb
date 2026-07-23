@@ -9,6 +9,7 @@ const NAV_LINKS = [
   { label: 'Home',       href: 'index.html'   },
   { label: 'About',      href: 'about.html'   },
   { label: 'RELAY',      href: 'relay.html'   },
+  { label: 'RelayJR',    href: 'relayjr.html' },
   { label: 'Contact Us', href: 'contact.html' },
 ];
 

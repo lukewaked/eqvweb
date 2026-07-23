@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RelayJR — EQV Group</title>
+  <meta name="description" content="RelayJR by EQV Group — coming soon." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500&family=Baloo+2:wght@700&display=swap" />
+  <link rel="stylesheet" href="shared.css" />
+  <style>
+    /* ─────────────────────────────────────
+       RELAYJR — coming soon holding page
+       ───────────────────────────────────── */
+
+    .jr-body {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 6rem 0;
+      text-align: center;
+    }
+
+    .jr-logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      height: clamp(70px, 14vw, 100px);
+    }
+
+    .jr-wordmark {
+      font-family: 'Baloo 2', cursive;
+      font-weight: 700;
+      font-size: clamp(40px, 8vw, 52px);
+      color: var(--navy);
+    }
+
+    .jr-block {
+      display: inline-block;
+      width: clamp(36px, 7vw, 48px);
+      height: clamp(36px, 7vw, 48px);
+      line-height: clamp(36px, 7vw, 48px);
+      text-align: center;
+      border-radius: 10px;
+      font-family: 'Baloo 2', cursive;
+      font-weight: 700;
+      font-size: clamp(20px, 4vw, 26px);
+      color: #fff;
+      transform-origin: bottom center;
+      opacity: 0;
+    }
+    .jr-block--j { background: var(--terracotta); box-shadow: 0 4px 0 #96401f; }
+    .jr-block--r { background: var(--navy); box-shadow: 0 4px 0 #123a66; }
+
+    @keyframes jrDropSquash {
+      0%   { transform: translateY(-60px) scale(1,1); opacity: 0; }
+      55%  { transform: translateY(0) scale(1,1); opacity: 1; }
+      65%  { transform: translateY(0) scale(1.22,0.78); }
+      78%  { transform: translateY(-7px) scale(0.94,1.08); }
+      90%  { transform: translateY(0) scale(1.04,0.97); }
+      100% { transform: translateY(0) scale(1,1); }
+    }
+    @keyframes jrIdleBob {
+      0%, 100% { transform: translateY(0); }
+      50%      { transform: translateY(-6px); }
+    }
+    .jr-block.show-drop { animation: jrDropSquash 750ms ease-out forwards; }
+    .jr-block.show-bob  { animation: jrIdleBob 1.7s ease-in-out infinite; }
+
+    .jr-coming-soon {
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--grey);
+      margin-top: 1.8rem;
+    }
+  </style>
+</head>
+<body>
+  <!-- nav.js injects the nav automatically -->
+
+  <div class="page-content">
+    <div class="jr-body container">
+      <div class="jr-logo">
+        <span class="jr-wordmark">Relay</span>
+        <span class="jr-block jr-block--j" id="jrBlockJ">J</span>
+        <span class="jr-block jr-block--r" id="jrBlockR">R</span>
+      </div>
+      <p class="jr-coming-soon">Coming soon</p>
+    </div>
+
+    <footer class="site-footer container">
+      © 2026 Esse Quam Videri Group Pty. Limited
+    </footer>
+  </div>
+
+  <script src="nav.js"></script>
+  <script>
+    function playBlock(el, delay) {
+      setTimeout(() => {
+        el.classList.add('show-drop');
+        setTimeout(() => {
+          el.classList.remove('show-drop');
+          el.classList.add('show-bob');
+        }, 750);
+      }, delay);
+    }
+    playBlock(document.getElementById('jrBlockJ'), 0);
+    playBlock(document.getElementById('jrBlockR'), 120);
+  </script>
+</body>
+</html>

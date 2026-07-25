@@ -243,6 +243,25 @@
       font-style: italic;
       margin-top: 0.3rem;
     }
+    .stat-source a {
+      color: inherit;
+      text-decoration: underline;
+      text-decoration-color: rgba(255,255,255,0.25);
+      transition: color 0.2s;
+    }
+    .stat-source a:hover {
+      color: rgba(255,255,255,0.65);
+      text-decoration-color: rgba(255,255,255,0.5);
+    }
+    .diff-body a {
+      color: inherit;
+      text-decoration: underline;
+      text-decoration-color: rgba(255,255,255,0.3);
+      transition: color 0.2s;
+    }
+    .diff-body a:hover {
+      color: #fff;
+    }
 
     @media (max-width: 640px) {
       .stats-inner { grid-template-columns: 1fr; gap: 2rem; }
@@ -349,6 +368,47 @@
       margin-top: 0.8rem;
     }
 
+    .step-more {
+      margin-top: 0.9rem;
+    }
+    .step-more summary {
+      display: inline-block;
+      list-style: none;
+      cursor: pointer;
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--relay-blue);
+      border-bottom: 1px solid var(--relay-blue);
+      padding-bottom: 1px;
+      transition: opacity 0.2s;
+    }
+    .step-more summary::-webkit-details-marker { display: none; }
+    .step-more summary:hover { opacity: 0.6; }
+    .step-more[open] summary { margin-bottom: 0.9rem; }
+    .step-more summary .more-label::after { content: 'See the three phases'; }
+    .step-more[open] summary .more-label::after { content: 'Hide'; }
+    .step-more-body {
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+    }
+    .step-more-phase-title {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 15px;
+      color: var(--relay-white);
+      margin-bottom: 0.2rem;
+    }
+    .step-more-phase-body {
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--relay-grey);
+      line-height: 1.65;
+    }
+
     @media (max-width: 500px) {
       .step { grid-template-columns: 52px 1fr; gap: 0 1.2rem; }
     }
@@ -444,11 +504,14 @@
       font-weight: 400;
     }
 
-    /* Application form */
-    .apply-form {
+    /* Pilot CTA */
+    .apply-cta {
       background: var(--relay-surface);
       padding: 2.5rem;
       border: 1px solid rgba(255,255,255,0.1);
+    }
+    .apply-cta .btn-primary {
+      margin-top: 0.5rem;
     }
 
     .form-title {
@@ -467,115 +530,6 @@
       line-height: 1.6;
     }
 
-    .form-group {
-      margin-bottom: 1.2rem;
-    }
-
-    .form-label {
-      display: block;
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.45);
-      margin-bottom: 0.4rem;
-    }
-
-    .form-input,
-    .form-select,
-    .form-textarea {
-      width: 100%;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.12);
-      color: var(--relay-white);
-      font-family: var(--font-body);
-      font-size: 14px;
-      font-weight: 300;
-      padding: 0.7rem 0.9rem;
-      outline: none;
-      transition: border-color 0.2s, background 0.2s;
-      appearance: none;
-      -webkit-appearance: none;
-      border-radius: 0;
-    }
-    .form-input::placeholder,
-    .form-textarea::placeholder { color: rgba(255,255,255,0.2); }
-    .form-input:focus,
-    .form-select:focus,
-    .form-textarea:focus {
-      border-color: var(--relay-blue);
-      background: rgba(58,107,196,0.08);
-    }
-
-    .form-select {
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='rgba(255,255,255,0.3)'/%3E%3C/svg%3E");
-      background-repeat: no-repeat;
-      background-position: right 0.9rem center;
-      padding-right: 2.2rem;
-      cursor: pointer;
-    }
-    .form-select option { background: #1b2744; color: #fff; }
-
-    .form-textarea { resize: vertical; min-height: 90px; }
-
-    .form-submit {
-      width: 100%;
-      background: var(--relay-white);
-      color: var(--relay-surface);
-      font-family: var(--font-body);
-      font-size: 13px;
-      font-weight: 500;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      border: none;
-      padding: 0.9rem;
-      cursor: pointer;
-      transition: background 0.2s, color 0.2s;
-      margin-top: 0.5rem;
-    }
-    .form-submit:hover {
-      background: var(--relay-blue);
-      color: #fff;
-    }
-
-    .form-note {
-      font-size: 11px;
-      color: rgba(255,255,255,0.2);
-      margin-top: 1rem;
-      line-height: 1.6;
-      text-align: center;
-    }
-
-    /* Thank you state */
-    .form-thankyou {
-      display: none;
-      text-align: center;
-      padding: 2rem 0;
-    }
-    .form-thankyou.show { display: block; }
-    .apply-form.submitted .form-fields { display: none; }
-    .apply-form.submitted .form-thankyou { display: block; }
-
-    .thankyou-mark {
-      font-size: 32px;
-      margin-bottom: 1rem;
-      color: var(--relay-blue);
-    }
-
-    .thankyou-heading {
-      font-family: var(--font-display);
-      font-style: italic;
-      font-size: 24px;
-      color: var(--relay-white);
-      margin-bottom: 0.6rem;
-    }
-
-    .thankyou-body {
-      font-size: 14px;
-      font-weight: 300;
-      color: var(--relay-grey);
-      line-height: 1.7;
-    }
   </style>
 </head>
 <body>
@@ -592,7 +546,7 @@
           <span class="cycle-word cycle-3" id="cw3">Relay</span>
           <span class="cycle-word cycle-final" id="cwFinal"><span class="squiggle-underline">RELAY<svg viewBox="0 0 140 14" preserveAspectRatio="none"><path id="wordmarkSquiggle" d="M2 8 Q 35 2, 70 7 T 138 6" style="stroke:var(--relay-blue);" stroke-width="3" fill="none" stroke-linecap="round"/></svg></span></span>
         </h1>
-        <p class="relay-hero-tagline">Understand the why behind every answer.</p>
+        <p class="relay-hero-tagline">Every student's confusion, heard. Every teacher, in the loop.</p>
         <p class="relay-hero-body">
           RELAY is an AI-powered EdTech tool for K–12 schools — built on
           learning science, not assumptions. It gives students the guardrails
@@ -613,17 +567,17 @@
           <div class="stat-item">
             <div class="stat-number">+127%</div>
             <div class="stat-label">better outcomes with guardrailed AI vs no AI</div>
-            <div class="stat-source">Bastani et al., PNAS 2025</div>
+            <div class="stat-source"><a href="https://doi.org/10.1073/pnas.2422633122" target="_blank" rel="noopener">Bastani et al., PNAS 2025</a></div>
           </div>
           <div class="stat-item">
             <div class="stat-number">−17%</div>
             <div class="stat-label">exam scores with unrestricted AI access</div>
-            <div class="stat-source">Bastani et al., PNAS 2025</div>
+            <div class="stat-source"><a href="https://doi.org/10.1073/pnas.2422633122" target="_blank" rel="noopener">Bastani et al., PNAS 2025</a></div>
           </div>
           <div class="stat-item">
-            <div class="stat-number">71%</div>
-            <div class="stat-label">of students used GenAI for school in 2024</div>
-            <div class="stat-source">Bueie et al., 2026</div>
+            <div class="stat-number">28.2%</div>
+            <div class="stat-label">of students have a "complicated" relationship with their teacher — high closeness, high conflict</div>
+            <div class="stat-source"><a href="https://doi.org/10.1002/jad.12093" target="_blank" rel="noopener">Burns et al., 2022</a></div>
           </div>
         </div>
       </div>
@@ -656,6 +610,23 @@
             <div class="step-content">
               <h3 class="step-title">Collaboratively Design</h3>
               <p class="step-body">We co-design a bespoke engagement journey with your team, for both teachers and students. The journey moves through three phases: Foundation, Fluency, and Future, each building capability before the next begins.</p>
+              <details class="step-more">
+                <summary><span class="more-label"></span></summary>
+                <div class="step-more-body">
+                  <div>
+                    <p class="step-more-phase-title">Foundation</p>
+                    <p class="step-more-phase-body">Building shared understanding of the tool, the ethics behind it, and how staff and students will use it together.</p>
+                  </div>
+                  <div>
+                    <p class="step-more-phase-title">Fluency</p>
+                    <p class="step-more-phase-body">Moving from understanding to confident, everyday use in real classroom conditions.</p>
+                  </div>
+                  <div>
+                    <p class="step-more-phase-title">Future</p>
+                    <p class="step-more-phase-body">Embedding sustainable practice and preparing the school to adapt as needs and tools evolve.</p>
+                  </div>
+                </div>
+              </details>
               <p class="step-caption">Co-design workshops · Foundation → Fluency → Future</p>
             </div>
           </div>
@@ -700,12 +671,12 @@
           <div class="diff-card">
             <div class="diff-num">01</div>
             <div class="diff-title">No Grade · No Judgment</div>
-            <p class="diff-body">Purely formative. Students explain honestly, not to perform for a mark. Removes the facade of understanding.</p>
+            <p class="diff-body">Purely formative. Students can admit what they don't understand without fear of a mark — that honesty is what makes their confusion visible, and worth listening to.</p>
           </div>
           <div class="diff-card">
             <div class="diff-num">02</div>
             <div class="diff-title">Student-Facing Pedagogy</div>
-            <p class="diff-body">Built on co-regulation and self-regulated learning, not productivity shortcuts. Designed for how students actually learn.</p>
+            <p class="diff-body">Built on co-regulation and self-regulated learning, not productivity shortcuts — for students, and the teachers guiding them. Designed for how people actually learn together.</p>
           </div>
           <div class="diff-card">
             <div class="diff-num">03</div>
@@ -720,7 +691,7 @@
           <div class="diff-card">
             <div class="diff-num">05</div>
             <div class="diff-title">AI Implementation Strategy</div>
-            <p class="diff-body">The plan behind the tool. Guardrailed AI outperforms unrestricted AI by 127% (Bastani et al., 2025). The variable is always design.</p>
+            <p class="diff-body">The plan behind the tool. Guardrailed AI outperforms unrestricted AI by 127% (<a href="https://doi.org/10.1073/pnas.2422633122" target="_blank" rel="noopener">Bastani et al., 2025</a>). The variable is always design.</p>
           </div>
         </div>
       </div>
@@ -752,53 +723,10 @@
           </div>
 
           <div class="pilot-right">
-            <div class="apply-form" id="applyForm">
-              <div class="form-fields">
-                <p class="form-title">Register your interest</p>
-                <p class="form-sub">We'll follow up within 3 business days to discuss fit and next steps.</p>
-
-                <div class="form-group">
-                  <label class="form-label" for="f-name">Your name</label>
-                  <input class="form-input" id="f-name" type="text" placeholder="Jane Smith" />
-                </div>
-
-                <div class="form-group">
-                  <label class="form-label" for="f-role">Your role</label>
-                  <select class="form-select" id="f-role">
-                    <option value="" disabled selected>Select role</option>
-                    <option>Principal</option>
-                    <option>Deputy Principal</option>
-                    <option>Head of Learning / Curriculum</option>
-                    <option>Head of Department</option>
-                    <option>Teacher</option>
-                    <option>Other</option>
-                  </select>
-                </div>
-
-                <div class="form-group">
-                  <label class="form-label" for="f-school">School name</label>
-                  <input class="form-input" id="f-school" type="text" placeholder="St. Somewhere College" />
-                </div>
-
-                <div class="form-group">
-                  <label class="form-label" for="f-email">Email address</label>
-                  <input class="form-input" id="f-email" type="email" placeholder="jane@school.edu.au" />
-                </div>
-
-                <div class="form-group">
-                  <label class="form-label" for="f-msg">What's prompting your interest? <span style="opacity:0.4">(optional)</span></label>
-                  <textarea class="form-textarea" id="f-msg" placeholder="A sentence or two is fine."></textarea>
-                </div>
-
-                <button class="form-submit" onclick="submitForm()">Submit application</button>
-                <p class="form-note">Your information is used only to follow up on this application and will not be shared.</p>
-              </div>
-
-              <div class="form-thankyou">
-                <div class="thankyou-mark">✓</div>
-                <p class="thankyou-heading">Thank you.</p>
-                <p class="thankyou-body">We've received your application and will be in touch within 3 business days.<br><br>In the meantime, feel free to reach us at <a href="mailto:luke.waked@eqvgroup.com.au" style="color:var(--relay-blue);">luke.waked@eqvgroup.com.au</a></p>
-              </div>
+            <div class="apply-cta">
+              <p class="form-title">Interested in becoming a pilot school?</p>
+              <p class="form-sub">Contact us for more information — we'll follow up within 3 business days to discuss fit and next steps.</p>
+              <a class="btn-primary" href="contact.html">Contact us</a>
             </div>
           </div>
 
@@ -865,32 +793,6 @@
       });
     }, { threshold: 0.15 });
     steps.forEach(s => observer.observe(s));
-
-    /* ── Form submit (mailto fallback — replace with Netlify Forms or Formspree in production) ── */
-    function submitForm() {
-      const name   = document.getElementById('f-name').value.trim();
-      const role   = document.getElementById('f-role').value;
-      const school = document.getElementById('f-school').value.trim();
-      const email  = document.getElementById('f-email').value.trim();
-
-      if (!name || !school || !email || !role) {
-        alert('Please fill in your name, role, school, and email.');
-        return;
-      }
-
-      const msg = document.getElementById('f-msg').value.trim();
-      const subject = encodeURIComponent(`RELAY Pilot Application — ${school}`);
-      const body = encodeURIComponent(
-        `Name: ${name}\nRole: ${role}\nSchool: ${school}\nEmail: ${email}\n\nMessage:\n${msg || '(none)'}`
-      );
-
-      window.location.href = `mailto:luke.waked@eqvgroup.com.au?subject=${subject}&body=${body}`;
-
-      // Show thank you state after short delay
-      setTimeout(() => {
-        document.getElementById('applyForm').classList.add('submitted');
-      }, 800);
-    }
   </script>
 </body>
 </html>

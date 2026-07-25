@@ -321,29 +321,36 @@ body {
    similar short, scannable groups of 3. */
 .color-card {
   border-radius: 12px;
-  padding: 1.4rem 1.5rem;
+  padding: 1.6rem 1.8rem;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   min-height: 110px;
-  color: #fff;
+  background: var(--cream);
+  border: 1px solid var(--card-border);
+  color: var(--ink);
+  transition: border-color 0.2s ease;
+}
+.color-card:hover {
+  border-color: var(--terracotta-light);
 }
 .color-card h3 {
-  font-family: var(--font-body);
-  font-size: 15px;
-  font-weight: 500;
-  margin-bottom: 0.3rem;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 19px;
+  margin-bottom: 0.5rem;
 }
 .color-card p {
   font-family: var(--font-body);
-  font-size: 12.5px;
+  font-size: 13px;
   font-weight: 300;
-  line-height: 1.6;
-  opacity: 0.8;
+  line-height: 1.7;
+  color: var(--ink-muted);
 }
-.color-card--navy       { background: var(--navy); }
-.color-card--terracotta { background: var(--terracotta); }
-.color-card--ink        { background: #2C2C2A; }
+.color-card--navy       h3 { color: var(--navy); }
+.color-card--terracotta h3 { color: var(--terracotta); }
+.color-card--ink        h3 { color: #2C2C2A; }
 
 /* ── Warm option card ──
    Softer replacement for plain bordered boxes (Contact page etc). */

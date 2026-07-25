@@ -89,6 +89,199 @@
       color: var(--grey);
       margin-top: 0.2rem;
     }
+
+    /* Enquiry form */
+    .contact-divider {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      max-width: 480px;
+      margin: 3rem 0;
+      color: var(--grey);
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .contact-divider::before,
+    .contact-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--light-grey);
+    }
+
+    .enquiry-form {
+      max-width: 560px;
+      background: var(--cream);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 2rem 2.2rem;
+    }
+
+    .enquiry-title {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 22px;
+      color: var(--ink);
+      margin-bottom: 0.4rem;
+    }
+
+    .enquiry-sub {
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--ink-muted);
+      margin-bottom: 1.8rem;
+      line-height: 1.6;
+    }
+
+    .enquiry-group {
+      margin-bottom: 1.2rem;
+    }
+    .enquiry-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    @media (max-width: 480px) {
+      .enquiry-row { grid-template-columns: 1fr; }
+    }
+
+    .enquiry-label {
+      display: block;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--grey);
+      margin-bottom: 0.4rem;
+    }
+
+    .enquiry-input,
+    .enquiry-select,
+    .enquiry-textarea {
+      width: 100%;
+      background: #fff;
+      border: 1px solid var(--card-border);
+      color: var(--ink);
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 300;
+      padding: 0.65rem 0.8rem;
+      outline: none;
+      transition: border-color 0.2s;
+      appearance: none;
+      -webkit-appearance: none;
+      border-radius: 6px;
+    }
+    .enquiry-input::placeholder,
+    .enquiry-textarea::placeholder { color: var(--grey); }
+    .enquiry-input:focus,
+    .enquiry-select:focus,
+    .enquiry-textarea:focus {
+      border-color: var(--navy);
+    }
+    .enquiry-select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23888'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 0.8rem center;
+      padding-right: 2rem;
+      cursor: pointer;
+    }
+    .enquiry-textarea { resize: vertical; min-height: 90px; }
+
+    .enquiry-checks {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+    .enquiry-check {
+      display: inline-flex;
+    }
+    .enquiry-check input {
+      position: absolute;
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+    .enquiry-check span {
+      display: inline-block;
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--ink-muted);
+      background: #fff;
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 0.45rem 1rem;
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s, color 0.2s;
+    }
+    .enquiry-check input:checked + span {
+      border-color: var(--navy);
+      background: var(--navy);
+      color: #fff;
+    }
+
+    .enquiry-submit {
+      width: 100%;
+      background: var(--navy);
+      color: #fff;
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border: none;
+      border-radius: 6px;
+      padding: 0.85rem;
+      cursor: pointer;
+      transition: background 0.2s;
+      margin-top: 0.4rem;
+    }
+    .enquiry-submit:hover { background: var(--terracotta); }
+    .enquiry-submit:disabled { opacity: 0.6; cursor: not-allowed; }
+
+    .enquiry-note {
+      font-size: 11px;
+      color: var(--grey);
+      margin-top: 0.9rem;
+      text-align: center;
+    }
+
+    .enquiry-error {
+      font-size: 12.5px;
+      color: var(--terracotta);
+      margin-top: 0.8rem;
+      display: none;
+    }
+    .enquiry-error.show { display: block; }
+
+    .enquiry-thanks {
+      display: none;
+      text-align: center;
+      padding: 1rem 0;
+    }
+    .enquiry-thanks.show { display: block; }
+    .enquiry-form.submitted .enquiry-fields { display: none; }
+    .enquiry-form.submitted .enquiry-thanks { display: block; }
+
+    .thanks-mark {
+      font-size: 28px;
+      color: var(--navy);
+      margin-bottom: 0.8rem;
+    }
+    .thanks-heading {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 20px;
+      color: var(--ink);
+      margin-bottom: 0.5rem;
+    }
+    .thanks-body {
+      font-size: 13.5px;
+      font-weight: 300;
+      color: var(--ink-muted);
+      line-height: 1.6;
+    }
   </style>
 </head>
 <body>
@@ -112,7 +305,6 @@
             <div>
               <div class="warm-card-label">Email</div>
               <div class="warm-card-value">luke.waked@eqvgroup.com.au</div>
-              <div class="warm-card-note">We aim to respond within two business days.</div>
             </div>
             <span class="warm-card-arrow">→</span>
           </a>
@@ -130,6 +322,74 @@
           </a>
 
         </div>
+
+        <div class="contact-divider">or send us a message</div>
+
+        <form class="enquiry-form" id="enquiryForm" action="https://formspree.io/f/xlgqowpl" method="POST">
+          <div class="enquiry-fields">
+            <p class="enquiry-title">Tell us about your school</p>
+            <p class="enquiry-sub">We'll follow up within a couple of business days.</p>
+
+            <div class="enquiry-row">
+              <div class="enquiry-group">
+                <label class="enquiry-label" for="e-name">Your name</label>
+                <input class="enquiry-input" id="e-name" name="name" type="text" placeholder="Jane Smith" required />
+              </div>
+              <div class="enquiry-group">
+                <label class="enquiry-label" for="e-email">Email address</label>
+                <input class="enquiry-input" id="e-email" name="email" type="email" placeholder="jane@school.edu.au" required />
+              </div>
+            </div>
+
+            <div class="enquiry-row">
+              <div class="enquiry-group">
+                <label class="enquiry-label" for="e-school">School</label>
+                <input class="enquiry-input" id="e-school" name="school" type="text" placeholder="St. Somewhere College" />
+              </div>
+              <div class="enquiry-group">
+                <label class="enquiry-label" for="e-state">State</label>
+                <select class="enquiry-select" id="e-state" name="state">
+                  <option value="" disabled selected>Select state</option>
+                  <option>NSW</option>
+                  <option>VIC</option>
+                  <option>QLD</option>
+                  <option>WA</option>
+                  <option>SA</option>
+                  <option>TAS</option>
+                  <option>ACT</option>
+                  <option>NT</option>
+                  <option>Other / International</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="enquiry-group">
+              <label class="enquiry-label">Interested in</label>
+              <div class="enquiry-checks">
+                <label class="enquiry-check"><input type="checkbox" name="interestedIn" value="Relay" /><span>Relay</span></label>
+                <label class="enquiry-check"><input type="checkbox" name="interestedIn" value="Relay Jr" /><span>Relay Jr</span></label>
+                <label class="enquiry-check"><input type="checkbox" name="interestedIn" value="Consultation" /><span>Consultation</span></label>
+                <label class="enquiry-check"><input type="checkbox" name="interestedIn" value="Other" /><span>Other</span></label>
+              </div>
+            </div>
+
+            <div class="enquiry-group">
+              <label class="enquiry-label" for="e-msg">Message <span style="opacity:0.5">(optional)</span></label>
+              <textarea class="enquiry-textarea" id="e-msg" name="message" placeholder="A sentence or two is fine."></textarea>
+            </div>
+
+            <button class="enquiry-submit" type="submit" id="enquirySubmit">Send message</button>
+            <p class="enquiry-error" id="enquiryError">Something went wrong sending your message — please try again, or email us directly.</p>
+            <p class="enquiry-note">Your information is used only to follow up on this enquiry and will not be shared.</p>
+          </div>
+
+          <div class="enquiry-thanks">
+            <div class="thanks-mark">&#10003;</div>
+            <p class="thanks-heading">Thank you.</p>
+            <p class="thanks-body">We've received your message and will be in touch shortly.</p>
+          </div>
+        </form>
+
       </section>
 
     </div><!-- /.container -->
@@ -140,5 +400,36 @@
   </div>
 
   <script src="nav.js"></script>
+  <script>
+    const enquiryForm = document.getElementById('enquiryForm');
+    if (enquiryForm) {
+      enquiryForm.addEventListener('submit', async function (e) {
+        e.preventDefault();
+        const submitBtn = document.getElementById('enquirySubmit');
+        const errorMsg = document.getElementById('enquiryError');
+        errorMsg.classList.remove('show');
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Sending…';
+
+        try {
+          const response = await fetch(enquiryForm.action, {
+            method: 'POST',
+            body: new FormData(enquiryForm),
+            headers: { 'Accept': 'application/json' }
+          });
+
+          if (response.ok) {
+            enquiryForm.classList.add('submitted');
+          } else {
+            throw new Error('Form submission failed');
+          }
+        } catch (err) {
+          errorMsg.classList.add('show');
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Send message';
+        }
+      });
+    }
+  </script>
 </body>
 </html>

@@ -5,6 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>RELAY — EQV Group</title>
   <meta name="description" content="RELAY by EQV Group — AI-powered EdTech for K–12 schools. Apply to become a pilot school." />
+  <link rel="icon" href="favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="favicon-192x192.png" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500&family=Reenie+Beanie&family=Playwrite+FR+Trad&family=Shadows+Into+Light&display=swap" />
@@ -46,6 +51,20 @@
     .nav-link.active { color: #fff !important; }
     .nav-link::after { background: #fff !important; }
     .nav-hamburger span { background: #fff !important; }
+
+    /* Mobile nav dropdown — shared.css defaults the open dropdown to a
+       white background, which combined with the near-white nav-link
+       colour above makes the mobile menu unreadable on this page. Tint
+       the dropdown to match the RELAY world instead. */
+    @media (max-width: 640px) {
+      .nav-links {
+        background: var(--relay-surface) !important;
+        border-bottom-color: rgba(255,255,255,0.1) !important;
+      }
+      .nav-link {
+        border-bottom-color: rgba(255,255,255,0.12) !important;
+      }
+    }
     .site-footer {
       background: var(--relay-surface);
       color: rgba(255,255,255,0.3);

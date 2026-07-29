@@ -136,7 +136,7 @@
     }
     .motto-latin {
       font-family: var(--font-display);
-      font-style: italic;
+      font-style: italic;   /* a Latin phrase, not a title */
       font-size: var(--step-2);
       color: var(--navy);
       margin-bottom: 0.7rem;
@@ -239,46 +239,72 @@ The RELAY Suite.
       <div class="container">
         <section class="suite-list" aria-label="The RELAY Suite">
 
-          <a class="suite-card suite-card--flagship" href="relay.html" data-reveal>
+          <article class="suite-card suite-card--flagship" data-reveal style="--accent: var(--c-relay); --i:0">
             <div>
               <div class="suite-card-meta">
                 <span class="suite-tag suite-tag--flagship">Flagship product</span>
                 <span class="suite-tag">In pilot</span>
               </div>
-              <h2>RELAY</h2>
-              <p>
-                Students explain their thinking in a space with no grade and no
-                judgment. Where confusion appears in their own words, the teacher
-                sees it in real time, while there is still a lesson left to change.
-              </p>
-            </div>
-            <span class="suite-arrow" aria-hidden="true">&rarr;</span>
-          </a>
+              <h2><a href="relay.html">RELAY</a></h2>
+              <p>Students explain their thinking in a space with no grade and no judgment. Where confusion appears in their own words, the teacher sees it in real time, while there is still a lesson left to change.</p>
 
-          <a class="suite-card" href="fieldnote.html" data-reveal>
-            <div>
-              <div class="suite-card-meta"><span class="suite-tag">In pilot</span></div>
-              <h2>Fieldnote</h2>
-              <p>
-                For the work that happens outside of the classroom. Lesson
-                planning, pastoral care, and preparing for every conversation
-                that follows. For teachers, K&ndash;12.
-              </p>
+              <div class="suite-card-foot">
+                <ul class="solve-chips">
+                  <li><a href="relay.html#tab-ask">Students who will not ask</a></li>
+                  <li><a href="relay.html#tab-home">Stuck at home</a></li>
+                  <li><a href="relay.html#tab-live">Confusion found too late</a></li>
+                </ul>
+                <a class="learn-more" href="relay.html#how">See how it works <span aria-hidden="true">&rarr;</span></a>
+              </div>
             </div>
-            <span class="suite-arrow" aria-hidden="true">&rarr;</span>
-          </a>
+            <a class="suite-arrow-link" href="relay.html" aria-label="RELAY">
+              <span class="suite-arrow" aria-hidden="true">&rarr;</span>
+            </a>
+          </article>
 
-          <a class="suite-card" href="relayjr.html" data-reveal>
+          <article class="suite-card " data-reveal style="--accent: var(--c-fieldnote); --i:1">
             <div>
-              <div class="suite-card-meta"><span class="suite-tag suite-tag--soon">In development</span></div>
-              <h2>RELAY Jr</h2>
-              <p>
-                Early learning. The learning story goes home to the parent and
-                child, and the child leads it back into the room.
-              </p>
+              <div class="suite-card-meta">
+                <span class="suite-tag">In pilot</span>
+              </div>
+              <h2><a href="fieldnote.html">Fieldnote</a></h2>
+              <p>For the work that happens outside of the classroom. Lesson planning, pastoral care, and preparing for every conversation that follows. For teachers, K-12.</p>
+
+              <div class="suite-card-foot">
+                <ul class="solve-chips">
+                  <li>Hours lost to planning</li>
+                  <li>Parent conversations</li>
+                  <li>Pastoral notes scattered</li>
+                </ul>
+                <a class="learn-more" href="fieldnote.html">Learn more <span aria-hidden="true">&rarr;</span></a>
+              </div>
             </div>
-            <span class="suite-arrow" aria-hidden="true">&rarr;</span>
-          </a>
+            <a class="suite-arrow-link" href="fieldnote.html" aria-label="Fieldnote">
+              <span class="suite-arrow" aria-hidden="true">&rarr;</span>
+            </a>
+          </article>
+
+          <article class="suite-card " data-reveal style="--accent: var(--c-relayjr); --i:2">
+            <div>
+              <div class="suite-card-meta">
+                <span class="suite-tag suite-tag--soon">In development</span>
+              </div>
+              <h2><a href="relayjr.html">RELAY Jr</a></h2>
+              <p>Early learning. The learning story goes home to the parent and child, and the child leads it back into the room.</p>
+
+              <div class="suite-card-foot">
+                <ul class="solve-chips">
+                  <li>Learning stops at the gate</li>
+                  <li>Parents left guessing</li>
+                  <li>EYLF evidence</li>
+                </ul>
+                <a class="learn-more" href="relayjr.html">Learn more <span aria-hidden="true">&rarr;</span></a>
+              </div>
+            </div>
+            <a class="suite-arrow-link" href="relayjr.html" aria-label="RELAY Jr">
+              <span class="suite-arrow" aria-hidden="true">&rarr;</span>
+            </a>
+          </article>
 
         </section>
 

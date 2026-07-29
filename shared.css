@@ -1201,3 +1201,14 @@ html.js [data-reveal].is-visible {
 .suite-card:hover { border-color: var(--accent, var(--terracotta)); }
 .suite-card:hover .suite-arrow { background: var(--accent, var(--terracotta)); }
 .suite-arrow-link { display: inline-flex; text-decoration: none; }
+
+/* Adult Education sits outside the suite but still carries its own colour,
+   so the four-colour motif holds across the whole homepage. */
+.beyond { border-left: 3px solid var(--accent); padding-left: 1.6rem; }
+.beyond-eyebrow { color: var(--accent); }
+.pill-btn--accent { background: var(--accent, var(--navy)); color: #fff; }
+.pill-btn--accent:hover { opacity: 0.88; }
+
+@media (max-width: 620px) {
+  .beyond { padding-left: 1.1rem; }
+}

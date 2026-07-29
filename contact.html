@@ -3,8 +3,23 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contact — EQV Group</title>
-  <meta name="description" content="Get in touch with EQV Group." />
+<!-- meta:start -->
+  <title>Contact | EQV Group</title>
+  <meta name="description" content="Talk to us about a pilot, a partnership, or the research behind what we build." />
+  <link rel="canonical" href="https://eqvgroup.com.au/contact.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="EQV Group" />
+  <meta property="og:title" content="Contact | EQV Group" />
+  <meta property="og:description" content="Talk to us about a pilot, a partnership, or the research behind what we build." />
+  <meta property="og:url" content="https://eqvgroup.com.au/contact.html" />
+  <meta property="og:image" content="https://eqvgroup.com.au/images/social-card.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Contact | EQV Group" />
+  <meta name="twitter:description" content="Talk to us about a pilot, a partnership, or the research behind what we build." />
+  <meta name="twitter:image" content="https://eqvgroup.com.au/images/social-card.png" />
+  <!-- meta:end -->
   <link rel="icon" href="favicon.ico" sizes="any" />
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
@@ -142,6 +157,22 @@
     .enquiry-group {
       margin-bottom: 1.2rem;
     }
+
+    /* The topic choice leads the form and shapes everything after it,
+       so it sits apart from the rest of the fields. */
+    .enquiry-reason {
+      padding-bottom: 1.4rem;
+      margin-bottom: 1.6rem;
+      border-bottom: 1px solid var(--card-border);
+    }
+    .enquiry-reason .enquiry-label {
+      font-size: 12px;
+      color: var(--ink);
+    }
+    .enquiry-reason .enquiry-select {
+      font-size: 15px;
+      padding: 0.8rem 0.9rem;
+    }
     .enquiry-row {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -193,38 +224,6 @@
       cursor: pointer;
     }
     .enquiry-textarea { resize: vertical; min-height: 90px; }
-
-    .enquiry-checks {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.6rem;
-    }
-    .enquiry-check {
-      display: inline-flex;
-    }
-    .enquiry-check input {
-      position: absolute;
-      opacity: 0;
-      width: 0;
-      height: 0;
-    }
-    .enquiry-check span {
-      display: inline-block;
-      font-size: 13px;
-      font-weight: 400;
-      color: var(--ink-muted);
-      background: #fff;
-      border: 1px solid var(--card-border);
-      border-radius: 20px;
-      padding: 0.45rem 1rem;
-      cursor: pointer;
-      transition: border-color 0.2s, background 0.2s, color 0.2s;
-    }
-    .enquiry-check input:checked + span {
-      border-color: var(--navy);
-      background: var(--navy);
-      color: #fff;
-    }
 
     .enquiry-submit {
       width: 100%;
@@ -290,21 +289,87 @@
   </style>
 </head>
 <body>
-  <!-- nav.js injects the nav automatically -->
+  <!-- nav:start -->
+<a class="skip-link" href="#main">Skip to content</a>
+<nav class="site-nav" aria-label="Primary">
+  <a class="nav-brand" href="index.html">
+    <span class="brand-eqv">eqv</span>
+    <span class="brand-group">Group</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html" class="nav-link" data-nav="index.html">Home</a></li>
+    <li class="nav-item" data-nav-group>
+      <div class="nav-group">
+        <a href="relay-suite.html" class="nav-link" data-nav="relay-suite.html">RELAY Suite</a>
+        <button class="nav-caret" type="button" aria-expanded="false" aria-controls="suite-menu" aria-label="Show RELAY Suite products">
+          <svg viewBox="0 0 10 6" fill="none" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+      <ul class="nav-submenu" id="suite-menu">
+        <li><a href="relay.html" data-nav="relay.html">
+          <span class="nav-sub-name">RELAY</span>
+          <span class="nav-sub-desc">Students and teachers, K&ndash;12</span>
+        </a></li>
+        <li><a href="fieldnote.html" data-nav="fieldnote.html">
+          <span class="nav-sub-name">Fieldnote</span>
+          <span class="nav-sub-desc">For teachers, K&ndash;12</span>
+        </a></li>
+        <li><a href="relayjr.html" data-nav="relayjr.html">
+          <span class="nav-sub-name">RELAY Jr</span>
+          <span class="nav-sub-desc">Early learning</span>
+        </a></li>
+      </ul>
+    </li>
+    <li><a href="adult-education.html" class="nav-link" data-nav="adult-education.html">Adult Education</a></li>
+    <li><a href="about.html" class="nav-link" data-nav="about.html">About</a></li>
+    <li><a href="contact.html" class="nav-link" data-nav="contact.html">Contact Us</a></li>
+  </ul>
+  <button class="nav-hamburger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="primary-menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+  <!-- nav:end -->
 
   <div class="page-content">
+    <main id="main">
     <div class="container">
 
       <section class="contact-section">
-        <p class="eyebrow">Contact</p>
-        <h1 class="contact-headline">Let's talk.</h1>
-        <p class="contact-sub">
-          Whether you're an educator, researcher, investor, or just curious about
-          what we're building, we'd love to hear from you.
+        <p class="eyebrow" data-reveal>Contact</p>
+        <h1 class="contact-headline" data-reveal style="--i:1">Let&rsquo;s talk.</h1>
+        <p class="contact-sub" data-reveal style="--i:2">
+          Whether you want to talk about a pilot, ask a question about how RELAY
+          handles data, or explore something else entirely, we&rsquo;d like to
+          hear from you.
         </p>
+
+        <p class="eyebrow" style="margin-bottom:1rem;">Send us a message</p>
 
         <form class="enquiry-form" id="enquiryForm" action="https://formspree.io/f/xlgqowpl" method="POST">
           <div class="enquiry-fields">
+            <div class="enquiry-group enquiry-reason">
+              <label class="enquiry-label" for="e-reason">How can we help?</label>
+              <select class="enquiry-select" id="e-reason" name="reason" required>
+                <option value="" disabled selected>Choose a topic</option>
+                <optgroup label="Products">
+                  <option>RELAY</option>
+                  <option>Fieldnote</option>
+                  <option>RELAY Jr</option>
+                  <option>Adult education</option>
+                </optgroup>
+                <optgroup label="Working together">
+                  <option>Joining the pilot programme</option>
+                  <option>PD, workshops or consulting</option>
+                  <option>Research or partnership</option>
+                </optgroup>
+                <optgroup label="Other">
+                  <option>Data, privacy or security question</option>
+                  <option>Media or speaking</option>
+                  <option>Something else</option>
+                </optgroup>
+              </select>
+            </div>
+
             <div class="enquiry-row">
               <div class="enquiry-group">
                 <label class="enquiry-label" for="e-name">Your name</label>
@@ -318,13 +383,42 @@
 
             <div class="enquiry-row">
               <div class="enquiry-group">
-                <label class="enquiry-label" for="e-school">School</label>
+                <label class="enquiry-label" for="e-role">Your role</label>
+                <select class="enquiry-select" id="e-role" name="role">
+                  <option value="" disabled selected>Choose your role</option>
+                  <option>Principal / Head of School</option>
+                  <option>Deputy / Head of Junior or Senior School</option>
+                  <option>Head of Teaching &amp; Learning</option>
+                  <option>ICT / Digital Learning</option>
+                  <option>Teacher</option>
+                  <option>Business Manager / Procurement</option>
+                  <option>Researcher</option>
+                  <option>Investor / Advisor</option>
+                  <option>Other</option>
+                </select>
+              </div>
+              <div class="enquiry-group">
+                <label class="enquiry-label" for="e-school">School or organisation</label>
                 <input class="enquiry-input" id="e-school" name="school" type="text" placeholder="St. Somewhere College" />
+              </div>
+            </div>
+
+            <div class="enquiry-row">
+              <div class="enquiry-group">
+                <label class="enquiry-label" for="e-size">Approximate size</label>
+                <select class="enquiry-select" id="e-size" name="students">
+                  <option value="" disabled selected>Choose a size</option>
+                  <option>Under 500 students</option>
+                  <option>500 &ndash; 999 students</option>
+                  <option>1,000 &ndash; 1,499 students</option>
+                  <option>1,500+ students</option>
+                  <option>Not a school</option>
+                </select>
               </div>
               <div class="enquiry-group">
                 <label class="enquiry-label" for="e-state">State</label>
                 <select class="enquiry-select" id="e-state" name="state">
-                  <option value="" disabled selected>Select state</option>
+                  <option value="" disabled selected>Choose a state</option>
                   <option>NSW</option>
                   <option>VIC</option>
                   <option>QLD</option>
@@ -339,18 +433,8 @@
             </div>
 
             <div class="enquiry-group">
-              <label class="enquiry-label">Interested in</label>
-              <div class="enquiry-checks">
-                <label class="enquiry-check"><input type="checkbox" name="interestedIn" value="Relay" /><span>Relay</span></label>
-                <label class="enquiry-check"><input type="checkbox" name="interestedIn" value="Relay Jr" /><span>Relay Jr</span></label>
-                <label class="enquiry-check"><input type="checkbox" name="interestedIn" value="Consultation" /><span>Consultation</span></label>
-                <label class="enquiry-check"><input type="checkbox" name="interestedIn" value="Other" /><span>Other</span></label>
-              </div>
-            </div>
-
-            <div class="enquiry-group">
-              <label class="enquiry-label" for="e-msg">Message <span style="opacity:0.5">(optional)</span></label>
-              <textarea class="enquiry-textarea" id="e-msg" name="message" placeholder="A sentence or two is fine."></textarea>
+              <label class="enquiry-label" for="e-msg">Your message</label>
+              <textarea class="enquiry-textarea" id="e-msg" name="message" rows="4" placeholder="Tell us a little about your school and what you&rsquo;re looking for. A few sentences is plenty."></textarea>
             </div>
 
             <button class="enquiry-submit" type="submit" id="enquirySubmit">Send message</button>
@@ -365,27 +449,34 @@
           </div>
         </form>
 
-        <div class="contact-divider">or find us on LinkedIn</div>
+        <div class="contact-divider">elsewhere</div>
 
-        <div class="contact-options">
-          <a class="warm-card"
-             href="https://www.linkedin.com/company/esse-quam-videri-group/"
-             target="_blank" rel="noopener">
-            <div>
-              <div class="warm-card-label">LinkedIn</div>
-              <div class="warm-card-value">EQV Group</div>
-              <div class="warm-card-note">Follow us for company updates and research partnerships.</div>
-            </div>
-            <span class="warm-card-arrow">→</span>
+        <div class="social-row">
+          <a class="social-link" href="https://www.linkedin.com/company/esse-quam-videri-group/"
+             target="_blank" rel="noopener" aria-label="EQV Group on LinkedIn">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05a3.74 3.74 0 0 1 3.37-1.85c3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg>
+          </a>
+          <a class="social-link" href="https://www.linkedin.com/in/lukewaked/"
+             target="_blank" rel="noopener" aria-label="Luke Waked on LinkedIn">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10zm0 2c-4.42 0-8 2.24-8 5v3h16v-3c0-2.76-3.58-5-8-5z"/></svg>
           </a>
         </div>
 
       </section>
 
     </div><!-- /.container -->
+    </main>
 
-    <footer class="site-footer container">
-      © 2026 Esse Quam Videri Group Pty. Limited
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <span>&copy; 2026 Esse Quam Videri Group Pty. Limited</span>
+        <span class="footer-links">
+          <a href="privacy.html">Privacy</a>
+          <a href="terms.html">Terms of Use</a>
+          <a class="footer-social" href="https://www.linkedin.com/company/esse-quam-videri-group/" target="_blank" rel="noopener" aria-label="EQV Group on LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05a3.74 3.74 0 0 1 3.37-1.85c3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg></a>
+        </span>
+      </div>
     </footer>
   </div>
 

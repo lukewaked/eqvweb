@@ -3,8 +3,23 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>EQV Group</title>
-  <meta name="description" content="EQV Group — Products that make you be, rather than seem to be." />
+  <!-- meta:start -->
+  <title>EQV Group | AI built for how people actually learn</title>
+  <meta name="description" content="EQV Group builds research-backed AI tools for Australian schools. The future of education is more human." />
+  <link rel="canonical" href="https://eqvgroup.com.au/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="EQV Group" />
+  <meta property="og:title" content="EQV Group | AI built for how people actually learn" />
+  <meta property="og:description" content="EQV Group builds research-backed AI tools for Australian schools. The future of education is more human." />
+  <meta property="og:url" content="https://eqvgroup.com.au/" />
+  <meta property="og:image" content="https://eqvgroup.com.au/images/social-card.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="EQV Group | AI built for how people actually learn" />
+  <meta name="twitter:description" content="EQV Group builds research-backed AI tools for Australian schools. The future of education is more human." />
+  <meta name="twitter:image" content="https://eqvgroup.com.au/images/social-card.png" />
+  <!-- meta:end -->
   <link rel="icon" href="favicon.ico" sizes="any" />
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
@@ -12,196 +27,315 @@
   <link rel="apple-touch-icon" href="apple-touch-icon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500&display=swap" />
   <link rel="stylesheet" href="shared.css" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "EQV Group",
+    "legalName": "Esse Quam Videri Group Pty Limited",
+    "url": "https://eqvgroup.com.au/",
+    "logo": "https://eqvgroup.com.au/favicon-512x512.png",
+    "description": "EQV Group builds research-backed, AI-supported learning tools for Australian schools.",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "8 Hadenfeld Avenue",
+      "addressLocality": "Macquarie Park",
+      "addressRegion": "NSW",
+      "postalCode": "2113",
+      "addressCountry": "AU"
+    },
+    "sameAs": ["https://www.linkedin.com/company/esse-quam-videri-group/"]
+  }
+  </script>
+
   <style>
-    /* ─────────────────────────────────────────
-       HOME-ONLY styles (splash + holding page)
-       ───────────────────────────────────────── */
+    /* ─────────────────────────────────────
+       HOME
+       ───────────────────────────────────── */
 
-    /* On home we hide the regular page shell until the splash lifts */
-    body { overflow: hidden; }
-
-    .home-body {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 4rem 0 3rem;
-    }
-
-    .hold-tagline {
-      font-family: var(--font-display);
-      font-style: italic;
-      font-size: clamp(32px, 5.5vw, 54px);
-      font-weight: 400;
-      color: var(--ink);
-      letter-spacing: -0.01em;
-      line-height: 1.12;
-      margin-bottom: 2.5rem;
-    }
-    .hold-tagline em {
-      color: var(--navy);
-      font-style: italic;
-      position: relative;
-      white-space: nowrap;
-    }
-    .hold-tagline em svg {
-      position: absolute;
-      left: 0;
-      bottom: -0.1em;
-      width: 100%;
-      height: 0.22em;
-      pointer-events: none;
-    }
-
-    .hold-text {
-      font-size: 15px;
-      font-weight: 300;
-      color: var(--ink-muted);
-      line-height: 1.8;
-      letter-spacing: 0.01em;
-      margin-bottom: 1.4rem;
-    }
-    .hold-text em {
-      color: var(--navy);
-      font-style: normal;
-    }
-    .hold-text a {
-      color: var(--navy);
-      text-decoration: none;
-      border-bottom: 1px solid var(--navy);
-      padding-bottom: 1px;
-      transition: opacity 0.2s;
-    }
-    .hold-text a:hover { opacity: 0.6; }
-
-    .hold-links {
-      display: flex;
-      gap: 1.8rem;
-      margin-top: 2.8rem;
-      flex-wrap: wrap;
-    }
-
-    /* ── SPLASH ── */
-    #splash {
-      position: fixed;
-      inset: 0;
-      background: var(--bg);
+    .home-hero {
+      min-height: calc(100vh - var(--nav-h));
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      z-index: 300;
-      transition: transform 1.2s cubic-bezier(0.76, 0, 0.24, 1);
+      text-align: center;
+      padding: 4rem 0 5rem;
     }
-    #splash.lift { transform: translateY(-100%); }
 
-    .splash-line1 {
-      font-family: var(--font-body);
-      font-size: clamp(16px, 2.5vw, 22px);
-      font-weight: 300;
+    .home-hero .lede {
+      margin: 1.8rem auto 0;
+      max-width: 52ch;
+    }
+
+    .home-cta-row {
+      display: flex;
+      gap: 0.9rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 2.6rem;
+    }
+
+    /* Scroll cue: a quiet nudge that there is more below the fold.
+       Fades out once the visitor has started scrolling. */
+    .scroll-cue {
+      position: absolute;
+      bottom: 1rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.6rem;
       color: var(--grey);
-      letter-spacing: 0.01em;
-      opacity: 0;
-      transform: translateY(10px);
-      transition: opacity 0.5s ease, transform 0.5s ease;
-      margin-bottom: 0.2em;
+      font-size: var(--step--1);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: opacity var(--dur-base) var(--ease);
     }
-    .splash-line1.show { opacity: 1; transform: translateY(0); }
+    .scroll-cue.hide { opacity: 0; pointer-events: none; }
+    .scroll-cue span:last-child {
+      width: 1px;
+      height: 26px;
+      background: linear-gradient(var(--grey-soft), transparent);
+      animation: cueDrift 2.4s ease-in-out infinite;
+    }
+    @keyframes cueDrift {
+      0%, 100% { transform: translateY(0);   opacity: 0.9; }
+      50%      { transform: translateY(6px); opacity: 0.35; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .scroll-cue span:last-child { animation: none; }
+    }
+    @media (max-height: 700px) { .scroll-cue { display: none; } }
 
-    .splash-be {
+    /* Adult Education sits outside the RELAY Suite, so it gets its own
+       block rather than a fourth card in the suite list. */
+    .beyond {
+      border-top: 1px solid var(--rule);
+      padding: 3.5rem 0 5rem;
+    }
+    .beyond-inner {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 2rem;
+    }
+    @media (max-width: 620px) {
+      .beyond-inner { grid-template-columns: 1fr; }
+    }
+
+    /* The motto, demoted from headline to closing note. */
+    .motto {
+      border-top: 1px solid var(--rule);
+      padding: 3rem 0 4rem;
+      text-align: center;
+    }
+    .motto-latin {
       font-family: var(--font-display);
       font-style: italic;
-      font-size: clamp(72px, 12vw, 110px);
-      font-weight: 400;
+      font-size: var(--step-2);
       color: var(--navy);
-      letter-spacing: -0.02em;
-      line-height: 1;
-      opacity: 0;
-      transform: translateY(16px);
-      transition: opacity 0.55s ease, transform 0.55s ease;
-      margin-bottom: 2rem;
+      margin-bottom: 0.7rem;
     }
-    .splash-be.show { opacity: 1; transform: translateY(0); }
-
-    .splash-brand {
-      display: flex;
-      align-items: baseline;
-      gap: 0.35em;
-      opacity: 0;
-      transform: scale(0.6);
-      transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
-                  transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-    }
-    .splash-brand.show { opacity: 1; transform: scale(1.15); }
   </style>
 </head>
 <body>
-  <!-- nav.js injects the <nav> here automatically -->
-
-  <!-- HOLDING PAGE -->
-  <div class="page-content">
-    <div class="home-body container">
-      <h1 class="hold-tagline">To <em>be<svg viewBox="0 0 60 12" preserveAspectRatio="none"><path d="M2 8 Q 16 2, 30 7 T 58 6" style="stroke:var(--terracotta);" stroke-width="2.5" fill="none" stroke-linecap="round"/></svg></em>,<br>rather than<br>seem to be.</h1>
-      <div class="divider"></div>
-      <p class="hold-text">
-        EQV Group is an Australian company underpinned by the Latin motto
-        <em>Esse Quam Videri</em>, meaning to be, rather than to seem to be.
-        We build solutions that help people access their true abilities and
-        understand the power of emerging technology, grounded in the latest
-        research from Australian and international academics.
-      </p>
-      <p class="hold-text">
-        See what we're building: <a href="relay.html">RELAY</a> and <a href="relayjr.html">RelayJR</a>.
-      </p>
-      <div class="hold-links">
-        <a class="pill-btn pill-btn--outline" href="https://www.linkedin.com/company/esse-quam-videri-group/" target="_blank" rel="noopener">LinkedIn</a>
-        <a class="pill-btn pill-btn--navy" href="contact.html">Get in touch</a>
+  <!-- nav:start -->
+<a class="skip-link" href="#main">Skip to content</a>
+<nav class="site-nav" aria-label="Primary">
+  <a class="nav-brand" href="index.html">
+    <span class="brand-eqv">eqv</span>
+    <span class="brand-group">Group</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html" class="nav-link" data-nav="index.html">Home</a></li>
+    <li class="nav-item" data-nav-group>
+      <div class="nav-group">
+        <a href="relay-suite.html" class="nav-link" data-nav="relay-suite.html">RELAY Suite</a>
+        <button class="nav-caret" type="button" aria-expanded="false" aria-controls="suite-menu" aria-label="Show RELAY Suite products">
+          <svg viewBox="0 0 10 6" fill="none" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
       </div>
-    </div>
+      <ul class="nav-submenu" id="suite-menu">
+        <li><a href="relay.html" data-nav="relay.html">
+          <span class="nav-sub-name">RELAY</span>
+          <span class="nav-sub-desc">Students and teachers, K&ndash;12</span>
+        </a></li>
+        <li><a href="fieldnote.html" data-nav="fieldnote.html">
+          <span class="nav-sub-name">Fieldnote</span>
+          <span class="nav-sub-desc">For teachers, K&ndash;12</span>
+        </a></li>
+        <li><a href="relayjr.html" data-nav="relayjr.html">
+          <span class="nav-sub-name">RELAY Jr</span>
+          <span class="nav-sub-desc">Early learning</span>
+        </a></li>
+      </ul>
+    </li>
+    <li><a href="adult-education.html" class="nav-link" data-nav="adult-education.html">Adult Education</a></li>
+    <li><a href="about.html" class="nav-link" data-nav="about.html">About</a></li>
+    <li><a href="contact.html" class="nav-link" data-nav="contact.html">Contact Us</a></li>
+  </ul>
+  <button class="nav-hamburger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="primary-menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+  <!-- nav:end -->
 
-    <footer class="site-footer container">
-      © 2026 Esse Quam Videri Group Pty. Limited. All rights reserved.
+  <div class="page-content">
+    <main id="main">
+
+      <!-- ══ HERO ══ -->
+      <section class="home-hero stage">
+        <div class="stage-decor" aria-hidden="true">
+          <span class="hero-ring hero-ring--r"></span>
+          <span class="hero-ring hero-ring--l"></span>
+          <span class="hero-dot hero-dot--a"></span>
+          <span class="hero-dot hero-dot--b"></span>
+          <span class="hero-dot hero-dot--c"></span>
+        </div>
+
+        <div class="container layer-up">
+          <p class="eyebrow" data-reveal>EQV Group</p>
+          <h1 class="impact impact--centred" data-reveal style="--i:1">
+            The future of education is <em>more human</em>.
+          </h1>
+          <p class="lede" data-reveal style="--i:2">
+            We build AI-supported tools for Australian classrooms, grounded in
+            learning science. Technology should strengthen the relationships a
+            school already depends on, not thin them out.
+          </p>
+          <div class="home-cta-row" data-reveal style="--i:3">
+            <a class="pill-btn pill-btn--navy" href="relay-suite.html">See what we build</a>
+            <a class="pill-btn pill-btn--outline" href="contact.html">Get in touch</a>
+          </div>
+        </div>
+
+        <a class="scroll-cue" href="#suite" id="scrollCue">
+          <span>Our offerings</span>
+          <span aria-hidden="true"></span>
+        </a>
+      </section>
+
+      <!-- ══ INTRODUCING THE SUITE ══ -->
+      <section class="band" id="suite">
+        <div class="container">
+          <p class="eyebrow" data-reveal style="margin-bottom:0.9rem;">Introducing</p>
+          <h2 class="band-title" data-reveal style="--i:1">
+The RELAY Suite.
+          </h2>
+          <p class="band-sub" data-reveal style="--i:2">
+            Three products, one idea. Technology should make the relationships
+            inside a school stronger: between a student and their teacher, a
+            teacher and a parent, a centre and a home. Not thinner.
+          </p>
+        </div>
+      </section>
+
+      <!-- ══ PRODUCTS ══ -->
+      <div class="container">
+        <section class="suite-list" aria-label="The RELAY Suite">
+
+          <a class="suite-card suite-card--flagship" href="relay.html" data-reveal>
+            <div>
+              <div class="suite-card-meta">
+                <span class="suite-tag suite-tag--flagship">Flagship product</span>
+                <span class="suite-tag">In pilot</span>
+              </div>
+              <h2>RELAY</h2>
+              <p>
+                Students explain their thinking in a space with no grade and no
+                judgment. Where confusion appears in their own words, the teacher
+                sees it in real time, while there is still a lesson left to change.
+              </p>
+            </div>
+            <span class="suite-arrow" aria-hidden="true">&rarr;</span>
+          </a>
+
+          <a class="suite-card" href="fieldnote.html" data-reveal>
+            <div>
+              <div class="suite-card-meta"><span class="suite-tag">In pilot</span></div>
+              <h2>Fieldnote</h2>
+              <p>
+                For the work that happens outside of the classroom. Lesson
+                planning, pastoral care, and preparing for every conversation
+                that follows. For teachers, K&ndash;12.
+              </p>
+            </div>
+            <span class="suite-arrow" aria-hidden="true">&rarr;</span>
+          </a>
+
+          <a class="suite-card" href="relayjr.html" data-reveal>
+            <div>
+              <div class="suite-card-meta"><span class="suite-tag suite-tag--soon">In development</span></div>
+              <h2>RELAY Jr</h2>
+              <p>
+                Early learning. The learning story goes home to the parent and
+                child, and the child leads it back into the room.
+              </p>
+            </div>
+            <span class="suite-arrow" aria-hidden="true">&rarr;</span>
+          </a>
+
+        </section>
+
+        <!-- ══ BEYOND SCHOOL ══ -->
+        <section class="beyond" data-reveal>
+          <div class="beyond-inner">
+            <div>
+              <p class="eyebrow" style="margin-bottom:0.8rem;">Beyond school</p>
+              <h2 class="h-section" style="font-size:var(--step-2);">Adult Education</h2>
+              <p class="body-text" style="margin-top:0.6rem;">
+                Professional development, workshops, and RELAY adapted for adult
+                learning contexts, from defence to corporate training.
+              </p>
+            </div>
+            <a class="pill-btn pill-btn--navy" href="adult-education.html">Learn more</a>
+          </div>
+        </section>
+
+        <!-- ══ MOTTO ══ -->
+        <section class="motto" data-reveal>
+          <p class="motto-latin">Esse Quam Videri</p>
+          <p class="body-text" style="margin:0 auto; max-width:46ch;">
+            To be, rather than to seem to be. Everything we build is grounded in
+            substance: research-backed, honestly made, and built to work rather
+            than to impress.
+          </p>
+          <p style="margin-top:1.4rem;">
+            <a class="cta-link" href="about.html">About EQV Group</a>
+          </p>
+        </section>
+      </div>
+
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <span>&copy; 2026 Esse Quam Videri Group Pty. Limited</span>
+        <span class="footer-links">
+          <a href="privacy.html">Privacy</a>
+          <a href="terms.html">Terms of Use</a>
+          <a class="footer-social" href="https://www.linkedin.com/company/esse-quam-videri-group/" target="_blank" rel="noopener" aria-label="EQV Group on LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05a3.74 3.74 0 0 1 3.37-1.85c3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg></a>
+        </span>
+      </div>
     </footer>
-  </div>
-
-  <!-- SPLASH — trimmed to three quick beats: line, "be", brand -->
-  <div id="splash">
-    <div class="splash-line1" id="l1">Products that make you</div>
-    <div class="splash-be"    id="l2">be</div>
-    <div class="splash-brand"   id="brand">
-      <span class="brand-eqv">eqv</span>
-      <span class="brand-group">Group</span>
-    </div>
   </div>
 
   <script src="nav.js"></script>
   <script>
-    /* Hide nav until splash lifts */
-    const siteNav = document.querySelector('.site-nav');
-    if (siteNav) siteNav.style.opacity = '0';
-
-    function runSplash() {
-      setTimeout(() => document.getElementById('l1').classList.add('show'), 150);
-      setTimeout(() => document.getElementById('l2').classList.add('show'), 650);
-      setTimeout(() => document.getElementById('brand').classList.add('show'), 1350);
-
-      setTimeout(() => {
-        document.getElementById('splash').classList.add('lift');
-        document.body.style.overflowY = 'auto';
-        if (siteNav) {
-          siteNav.style.transition = 'opacity 0.6s ease';
-          siteNav.style.opacity = '1';
-        }
-      }, 2100);
-
-      setTimeout(() => {
-        document.getElementById('splash').style.display = 'none';
-      }, 3300);
-    }
-
-    runSplash();
+    /* Hide the scroll cue as soon as the visitor starts moving: it has
+       done its job and shouldn't sit over the content. */
+    (function () {
+      var cue = document.getElementById('scrollCue');
+      if (!cue) return;
+      window.addEventListener('scroll', function () {
+        cue.classList.toggle('hide', window.scrollY > 40);
+      }, { passive: true });
+    })();
   </script>
 </body>
 </html>

@@ -3,8 +3,23 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>About — EQV Group</title>
-  <meta name="description" content="About EQV Group — Esse Quam Videri." />
+<!-- meta:start -->
+  <title>About | EQV Group</title>
+  <meta name="description" content="Esse Quam Videri. To be, rather than to seem to be. The people and the principle behind EQV Group." />
+  <link rel="canonical" href="https://eqvgroup.com.au/about.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="EQV Group" />
+  <meta property="og:title" content="About | EQV Group" />
+  <meta property="og:description" content="Esse Quam Videri. To be, rather than to seem to be. The people and the principle behind EQV Group." />
+  <meta property="og:url" content="https://eqvgroup.com.au/about.html" />
+  <meta property="og:image" content="https://eqvgroup.com.au/images/social-card.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="About | EQV Group" />
+  <meta name="twitter:description" content="Esse Quam Videri. To be, rather than to seem to be. The people and the principle behind EQV Group." />
+  <meta name="twitter:image" content="https://eqvgroup.com.au/images/social-card.png" />
+  <!-- meta:end -->
   <link rel="icon" href="favicon.ico" sizes="any" />
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
@@ -15,352 +30,278 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500&display=swap" />
   <link rel="stylesheet" href="shared.css" />
   <style>
-    /* ─────────────────────────────────────
-       ABOUT page styles
-       ───────────────────────────────────── */
+    /* About runs on the shared tokens. Only the people layout is local. */
 
-    .about-hero {
-      padding: 5rem 0 3rem;
+    .about-section {
+      padding: 3.5rem 0;
+      border-top: 1px solid var(--rule);
     }
 
-    .eyebrow {
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--grey);
-      margin-bottom: 1.5rem;
-    }
-
-    .about-headline {
-      font-family: var(--font-display);
-      font-style: italic;
-      font-size: clamp(36px, 6vw, 62px);
-      font-weight: 400;
-      color: var(--ink);
-      line-height: 1.1;
-      letter-spacing: -0.01em;
-      margin-bottom: 2.5rem;
-    }
-    .about-headline span { color: var(--navy); }
-
-    .about-lead {
-      font-family: var(--font-body);
-      font-size: 17px;
-      font-weight: 300;
-      color: var(--ink-muted);
-      line-height: 1.85;
-      max-width: 620px;
-      margin-bottom: 3.5rem;
-    }
-
-    /* Values grid */
-    .values-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 2rem;
-      padding: 3rem 0 4rem;
-      border-top: 1px solid #f0f0f0;
-    }
-
-    .value-card h3 {
-      font-family: var(--font-display);
-      font-style: italic;
-      font-size: 22px;
-      color: var(--navy);
-      margin-bottom: 0.6rem;
-    }
-
-    .value-card p {
-      font-family: var(--font-body);
-      font-size: 14px;
-      font-weight: 300;
-      color: var(--ink-muted);
-      line-height: 1.7;
-    }
-
-    /* People sections */
-    .people-section {
-      padding: 3.5rem 0 4rem;
-      border-top: 1px solid #f0f0f0;
-    }
-
-    .section-title {
-      font-family: var(--font-body);
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--grey);
-      margin-bottom: 2.5rem;
-    }
-
-    /* Founder card */
-    .founder-card {
-      display: grid;
-      grid-template-columns: 96px 1fr;
-      gap: 2rem;
-      align-items: start;
-      max-width: 560px;
-    }
-
-    @media (max-width: 480px) {
-      .founder-card { grid-template-columns: 1fr; }
-    }
-
-    .founder-avatar {
-      width: 96px;
-      height: 96px;
-      border-radius: 50%;
-      background: #f0f2f6;
-      border: 1px solid var(--light-grey);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      overflow: hidden;
-    }
-
-    /* Placeholder initials — replace src on the img tag when you have a photo */
-    .founder-avatar-initials {
-      font-family: var(--font-body);
-      font-size: 22px;
-      font-weight: 300;
-      color: var(--grey);
-      letter-spacing: 0.05em;
-    }
-
-    .founder-avatar img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    /* Advisors — same visual treatment as the founder card, repeated per person */
-    .advisors-list {
+    .people-list {
       display: flex;
       flex-direction: column;
       gap: 2.5rem;
+      margin-top: 2rem;
     }
 
-    .founder-name {
+    .person {
+      display: grid;
+      grid-template-columns: 92px 1fr;
+      gap: 1.8rem;
+      align-items: start;
+    }
+    @media (max-width: 520px) {
+      .person { grid-template-columns: 1fr; gap: 1.1rem; }
+    }
+
+    .person-avatar {
+      width: 92px;
+      height: 92px;
+      border-radius: 50%;
+      overflow: hidden;
+      background: var(--cream);
+      border: 1px solid var(--card-border);
+    }
+    .person-avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    .person-name {
       font-family: var(--font-display);
-      font-style: italic;
-      font-size: 24px;
+      font-size: var(--step-1);
       color: var(--ink);
-      margin-bottom: 0.2rem;
+      line-height: 1.2;
     }
-
-    .founder-role {
-      font-family: var(--font-body);
-      font-size: 11px;
-      font-weight: 500;
+    .person-role {
+      font-size: var(--step--1);
+      font-weight: var(--wt-med);
       letter-spacing: 0.14em;
       text-transform: uppercase;
       color: var(--navy);
-      margin-bottom: 0.9rem;
+      margin: 0.25rem 0 0.8rem;
     }
-
-    .founder-bio {
-      font-family: var(--font-body);
-      font-size: 14px;
-      font-weight: 300;
-      color: var(--ink-muted);
+    .person-bio {
+      font-size: var(--step-0);
       line-height: 1.75;
+      color: var(--ink-muted);
+      max-width: 58ch;
     }
+    .person-bio + .person-bio { margin-top: 0.9rem; }
+    .person-bio a { color: var(--navy); }
 
-    .founder-linkedin {
-      display: inline-block;
-      margin-top: 0.8rem;
-      font-family: var(--font-body);
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--navy);
-      text-decoration: none;
-      border-bottom: 1px solid var(--navy);
-      padding-bottom: 1px;
-      transition: opacity 0.2s;
-    }
-    .founder-linkedin:hover { opacity: 0.6; }
-
-    .founder-bio a {
-      color: var(--navy);
-      text-decoration: none;
-      border-bottom: 1px solid var(--navy);
-      padding-bottom: 1px;
-      transition: opacity 0.2s;
-    }
-    .founder-bio a:hover { opacity: 0.6; }
-
-    .founder-bio-list {
+    .person-list-items {
       list-style: none;
-      margin: 0.8rem 0 0.9rem;
+      margin: 0.9rem 0;
       padding: 0;
     }
-    .founder-bio-list li {
+    .person-list-items li {
       position: relative;
-      padding-left: 1.1rem;
+      padding-left: 1.2rem;
       margin-bottom: 0.5rem;
+      font-size: var(--step-0);
+      line-height: 1.7;
+      color: var(--ink-muted);
     }
-    .founder-bio-list li::before {
-      content: '—';
+    .person-list-items li::before {
+      content: '';
       position: absolute;
-      left: 0;
-      color: var(--terracotta);
+      left: 0; top: 0.72em;
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: var(--terracotta);
     }
 
-    .founder-more {
-      margin-top: 0.6rem;
+    .disclosure {
+      margin-top: 0.9rem;
     }
-    .founder-more summary {
+    .disclosure summary {
       display: inline-block;
       list-style: none;
       cursor: pointer;
-      font-family: var(--font-body);
-      font-size: 11px;
-      font-weight: 500;
+      font-size: var(--step--1);
+      font-weight: var(--wt-med);
       letter-spacing: 0.12em;
       text-transform: uppercase;
       color: var(--navy);
       border-bottom: 1px solid var(--navy);
       padding-bottom: 1px;
-      transition: opacity 0.2s;
+      transition: opacity var(--dur-fast) var(--ease);
     }
-    .founder-more summary::-webkit-details-marker { display: none; }
-    .founder-more summary:hover { opacity: 0.6; }
-    .founder-more[open] summary { margin-bottom: 0.9rem; }
-    .founder-more summary .more-label::after { content: 'Read more'; }
-    .founder-more[open] summary .more-label::after { content: 'Show less'; }
-    .founder-more-body p { margin-bottom: 0.9rem; }
-    .founder-more-body p:last-child { margin-bottom: 0; }
+    .disclosure summary::-webkit-details-marker { display: none; }
+    .disclosure summary:hover { opacity: 0.6; }
+    .disclosure[open] summary { margin-bottom: 1rem; }
+    .disclosure summary .more-label::after { content: 'Read more'; }
+    .disclosure[open] summary .more-label::after { content: 'Show less'; }
 
-    /* Board of advisors */
-    .advisors-coming-soon {
-      display: flex;
-      align-items: center;
-      gap: 1.5rem;
-      padding: 2rem 2.5rem;
-      border: 1px dashed var(--light-grey);
-      max-width: 480px;
+    .person-link {
+      display: inline-block;
+      margin-top: 1rem;
+      font-size: var(--step--1);
+      font-weight: var(--wt-med);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--navy);
+      text-decoration: none;
+      border-bottom: 1px solid var(--navy);
+      padding-bottom: 1px;
+      transition: opacity var(--dur-fast) var(--ease);
     }
+    .person-link:hover { opacity: 0.6; }
 
-    .advisors-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--light-grey);
-      flex-shrink: 0;
-    }
-
-    .advisors-text {
-      font-family: var(--font-body);
-      font-size: 14px;
-      font-weight: 300;
-      color: var(--grey);
-      line-height: 1.6;
-    }
+    .values-grid { margin-top: 2rem; }
   </style>
 </head>
 <body>
-  <!-- nav.js injects the nav automatically -->
+  <!-- nav:start -->
+<a class="skip-link" href="#main">Skip to content</a>
+<nav class="site-nav" aria-label="Primary">
+  <a class="nav-brand" href="index.html">
+    <span class="brand-eqv">eqv</span>
+    <span class="brand-group">Group</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html" class="nav-link" data-nav="index.html">Home</a></li>
+    <li class="nav-item" data-nav-group>
+      <div class="nav-group">
+        <a href="relay-suite.html" class="nav-link" data-nav="relay-suite.html">RELAY Suite</a>
+        <button class="nav-caret" type="button" aria-expanded="false" aria-controls="suite-menu" aria-label="Show RELAY Suite products">
+          <svg viewBox="0 0 10 6" fill="none" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+      <ul class="nav-submenu" id="suite-menu">
+        <li><a href="relay.html" data-nav="relay.html">
+          <span class="nav-sub-name">RELAY</span>
+          <span class="nav-sub-desc">Students and teachers, K&ndash;12</span>
+        </a></li>
+        <li><a href="fieldnote.html" data-nav="fieldnote.html">
+          <span class="nav-sub-name">Fieldnote</span>
+          <span class="nav-sub-desc">For teachers, K&ndash;12</span>
+        </a></li>
+        <li><a href="relayjr.html" data-nav="relayjr.html">
+          <span class="nav-sub-name">RELAY Jr</span>
+          <span class="nav-sub-desc">Early learning</span>
+        </a></li>
+      </ul>
+    </li>
+    <li><a href="adult-education.html" class="nav-link" data-nav="adult-education.html">Adult Education</a></li>
+    <li><a href="about.html" class="nav-link" data-nav="about.html">About</a></li>
+    <li><a href="contact.html" class="nav-link" data-nav="contact.html">Contact Us</a></li>
+  </ul>
+  <button class="nav-hamburger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="primary-menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+  <!-- nav:end -->
 
   <div class="page-content">
-    <div class="container">
-
+    <main id="main">
       <!-- ── Hero ── -->
-      <section class="about-hero">
-        <p class="eyebrow">About</p>
-        <h1 class="about-headline">
-          Esse Quam<br>
-          <span>Videri</span>
-        </h1>
-        <p class="about-lead">
-          EQV Group is an Australian company built on the Latin principle
-          <em style="color:var(--navy); font-style:normal;">esse quam videri</em>,
-          meaning to be, rather than to seem to be. Everything we build is grounded in
-          substance: research-backed, honestly made, and built to work, not just
-          to impress.
-        </p>
-        <a class="pill-btn pill-btn--navy" href="contact.html">Get in touch</a>
+      <section class="page-hero stage">
+        <div class="stage-decor" aria-hidden="true">
+          <span class="hero-ring hero-ring--r"></span>
+          <span class="hero-ring hero-ring--l"></span>
+          <span class="hero-dot hero-dot--a"></span>
+          <span class="hero-dot hero-dot--b"></span>
+          <span class="hero-dot hero-dot--c"></span>
+        </div>
+        <div class="container layer-up">
+          <p class="eyebrow" data-reveal>About</p>
+          <h1 class="impact" data-reveal style="--i:1">
+            We&rsquo;d rather be useful
+            than <em>impressive</em>.
+          </h1>
+          <p class="lede" data-reveal style="--i:2; margin-top: 2rem;">
+            EQV Group is an Australian company built on the Latin principle
+            <em style="color:var(--navy); font-style:normal;">esse quam videri</em>,
+            meaning to be, rather than to seem to be. Everything we build is
+            grounded in substance: research-backed, honestly made, and built to
+            work rather than to impress.
+          </p>
+          <p data-reveal style="--i:3; margin-top: 2rem;">
+            <a class="pill-btn pill-btn--navy" href="contact.html">Get in touch</a>
+          </p>
+        </div>
       </section>
 
-      <!-- ── Founder ── -->
-      <section class="people-section">
-        <p class="section-title">Founder</p>
+    <div class="container">
 
-        <div class="founder-card">
-          <div class="founder-avatar">
-            <img src="images/founder/luke-waked.png" alt="Luke Waked" />
+      <!-- ── Founder ── -->
+      <section class="about-section" data-reveal>
+        <h2 class="sr-only">Founder</h2>
+        <p class="eyebrow" aria-hidden="true">Founder</p>
+
+        <div class="people-list">
+        <div class="person">
+          <div class="person-avatar">
+            <img loading="lazy" decoding="async" width="92" height="92" src="images/founder/luke-waked.jpg" alt="Luke Waked" />
           </div>
           <div>
-            <p class="founder-name">Luke Waked</p>
-            <p class="founder-role">Founder</p>
-            <p class="founder-bio">
+            <h3 class="person-name">Luke Waked</h3>
+            <p class="person-role">Founder</p>
+            <p class="person-bio">
               Luke Waked is the founder of EQV Group. Alongside growing EQV, he
               works as a Research Assistant in the Faculty of Arts and School of
               Education at Macquarie University, researching how disruptive
-              technology — particularly AI — can be integrated effectively into
+              technology, particularly AI, can be integrated effectively into
               education.
             </p>
 
-            <details class="founder-more">
+            <details class="disclosure">
               <summary><span class="more-label"></span></summary>
-              <div class="founder-more-body">
-                <p class="founder-bio">
+              <div>
+                <p class="person-bio">
                   He has co-authored courses for the Macquarie University
                   Teachers' Learning Hub, including
                   <a href="https://www.coursera.org/learn/mqfoa-generative-ai-literacy-and-prompting-skills-for-educators" target="_blank" rel="noopener">Generative AI for Educators: AI Literacy &amp; Prompting Skills</a>,
                   and has contributed to peer-reviewed articles.
                 </p>
-                <p class="founder-bio">
+                <p class="person-bio">
                   His collaboration with academics and his research in AI, together
                   with time spent in the classroom tutoring secondary school
                   students, sparked a curiosity in the potential role AI-powered
                   tools can play in:
                 </p>
-                <ul class="founder-bio-list founder-bio">
+                <ul class="person-list-items">
                   <li>Improving student performance and helping them take more control of their learning.</li>
                   <li>Supporting teachers to monitor progress and identify learning gaps in real time.</li>
                 </ul>
-                <p class="founder-bio">
+                <p class="person-bio">
                   He holds a Bachelor of Arts in International Relations and
                   Politics from Macquarie University.
                 </p>
               </div>
             </details>
 
-            <a class="founder-linkedin"
+            <a class="person-link"
                href="https://www.linkedin.com/in/lukewaked/"
                target="_blank" rel="noopener">LinkedIn</a>
           </div>
         </div>
+        </div>
       </section>
 
       <!-- ── Board of Advisors ── -->
-      <section class="people-section">
-        <p class="section-title">Board of Advisors</p>
-        <div class="advisors-list">
+      <section class="about-section" data-reveal>
+        <h2 class="sr-only">Board of Advisors</h2>
+        <p class="eyebrow" aria-hidden="true">Board of Advisors</p>
+        <div class="people-list">
 
           <!-- Jackie Daher -->
-          <div class="founder-card">
-            <div class="founder-avatar">
-              <img src="images/advisors/jackie-daher.png" alt="Jackie Daher" />
+          <div class="person">
+            <div class="person-avatar">
+              <img loading="lazy" decoding="async" width="92" height="92" src="images/advisors/jackie-daher.jpg" alt="Jackie Daher" />
             </div>
             <div>
-              <p class="founder-name">Jackie Daher</p>
-              <p class="founder-role">Advisor</p>
-              <p class="founder-bio">
+              <h3 class="person-name">Jackie Daher</h3>
+              <p class="person-role">Advisor</p>
+              <p class="person-bio">
                 Jackie Daher is the founder of SoProductive and a commercial
                 strategist with more than 20 years' experience helping
                 organisations grow, innovate and navigate change.
               </p>
 
-              <details class="founder-more">
+              <details class="disclosure">
                 <summary><span class="more-label"></span></summary>
-                <div class="founder-more-body">
-                  <p class="founder-bio">
+                <div>
+                  <p class="person-bio">
                     After 18 years with American Express, where she led Client
                     Acquisition and Partnerships for Global Merchant Services
                     Australia, Jackie now works with businesses to unlock
@@ -368,22 +309,22 @@
                     strategies, process improvement and customer-focused
                     innovation.
                   </p>
-                  <p class="founder-bio">
+                  <p class="person-bio">
                     She holds a Bachelor of Economics and Business Finance from
                     Macquarie University and has completed the Leadership
                     Excellence Program through Harvard Business School.
                   </p>
-                  <p class="founder-bio">
+                  <p class="person-bio">
                     Jackie is an experienced mentor who enjoys helping
                     founders, emerging leaders and teams build confidence,
-                    think strategically and achieve their potential — known
+                    think strategically and achieve their potential. She is known
                     for her collaborative style, commercial insight and
                     ability to connect strategy with execution.
                   </p>
                 </div>
               </details>
 
-              <a class="founder-linkedin"
+              <a class="person-link"
                  href="https://www.linkedin.com/in/jackie-daher-29142616/"
                  target="_blank" rel="noopener">LinkedIn</a>
             </div>
@@ -393,10 +334,12 @@
       </section>
 
       <!-- ── Values ── -->
-      <section>
-        <div class="values-grid">
+      <section class="about-section" data-reveal>
+        <h2 class="sr-only">What we hold to</h2>
+        <p class="eyebrow" aria-hidden="true">What we hold to</p>
+        <div class="values-grid grid-3">
           <div class="color-card color-card--navy">
-            <h3>Rigor over hype</h3>
+            <h3>Rigour over hype</h3>
             <p>Evidence tells us what works. The people we work with tell us what's real.</p>
           </div>
           <div class="color-card color-card--terracotta">
@@ -411,9 +354,18 @@
       </section>
 
     </div><!-- /.container -->
+    </main>
 
-    <footer class="site-footer container">
-      © 2026 Esse Quam Videri Group Pty. Limited
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <span>&copy; 2026 Esse Quam Videri Group Pty. Limited</span>
+        <span class="footer-links">
+          <a href="privacy.html">Privacy</a>
+          <a href="terms.html">Terms of Use</a>
+          <a class="footer-social" href="https://www.linkedin.com/company/esse-quam-videri-group/" target="_blank" rel="noopener" aria-label="EQV Group on LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05a3.74 3.74 0 0 1 3.37-1.85c3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg></a>
+        </span>
+      </div>
     </footer>
   </div>
 

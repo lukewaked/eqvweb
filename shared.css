@@ -1,31 +1,83 @@
 /* ============================================================
-   EQV Group — shared styles
+   EQV Group : shared styles
    Edit this file to change colours, fonts, or nav across
    the whole site at once.
    ============================================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500&display=swap');
+/* Fonts are loaded via <link> in each page head: no @import here.
+   @import is render-blocking and was duplicating the same request. */
 
-/* ── Tokens ── */
+/* ── Tokens ──────────────────────────────────────────────────
+   Single source of truth for type, colour, motion and shape.
+   Every page reads from here. Change it once, changes everywhere.
+   ──────────────────────────────────────────────────────────── */
 :root {
-  --navy:       #1B4F8A;
-  --navy-light: #2a6ab8;
-  --grey:       #9A9A9A;
-  --light-grey: #CCCCCC;
-  --bg:         #ffffff;
-  --ink:        #1a1a1a;
-  --ink-muted:  #555555;
+  /* Colour: navy anchor, terracotta warmth.
+     Greys darkened from #9A9A9A / #CCCCCC, which failed WCAG AA
+     contrast on white (2.8:1 and 1.6:1). These pass. */
+  --navy:        #164A83;
+  --navy-deep:   #0F3563;
+  --navy-light:  #2a6ab8;
+  --grey:        #6B6B6B;   /* 5.3:1 on white  */
+  --grey-soft:   #8A8A8A;   /* 3.5:1: large text and borders only */
+  --light-grey:  #D8D8D8;   /* borders only, never text */
+  --rule:        #ECEAE4;
+  --bg:          #ffffff;
+  --ink:         #16181C;
+  --ink-muted:   #4A4E57;
 
-  /* Warm accent — introduced to soften the palette without losing the navy anchor */
-  --terracotta:       #C3542F;
+  --terracotta:       #B8482A;
   --terracotta-light: #E3DFD5;
   --cream:            #FBF9F5;
-  --card-border:      #EAE5D9;
+  --card-border:      #E5E0D4;
 
-  --nav-h: 72px;
+  /* Type scale: one ratio, so nothing feels bolted on.
+     The old site mixed ad-hoc clamps per page; that was the
+     "disconnected" feeling. */
+  --step--1: clamp(12px, 0.7vw + 10px, 13px);
+  --step-0:  clamp(15px, 0.4vw + 14px, 17px);
+  --step-1:  clamp(19px, 0.8vw + 17px, 23px);
+  --step-2:  clamp(24px, 1.6vw + 20px, 32px);
+  --step-3:  clamp(30px, 3vw + 22px, 46px);
+  --step-4:  clamp(38px, 5.5vw + 20px, 76px);
+  --step-5:  clamp(44px, 8vw + 18px, 104px);
 
   --font-display: 'DM Serif Display', Georgia, serif;
   --font-body:    'Inter', system-ui, sans-serif;
+
+  /* Body weight lifted 300 → 400. 300 at 14px was thin for a
+     readership that skews 40+. */
+  --wt-body: 400;
+  --wt-med:  500;
+
+  /* Motion: every transition and reveal reads these, so
+     prefers-reduced-motion can switch the whole site off at once. */
+  --dur-fast: 160ms;
+  --dur-base: 280ms;
+  --dur-slow: 620ms;
+  --ease:     cubic-bezier(0.22, 0.61, 0.36, 1);
+  --reveal-y: 22px;
+
+  --nav-h: 72px;
+  --measure: 62ch;
+}
+
+/* One switch. Honours the OS setting for anyone who gets motion
+   sick or has a vestibular disorder : and it's a WCAG requirement
+   that school procurement checklists do look for. */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --dur-fast: 0ms;
+    --dur-base: 0ms;
+    --dur-slow: 0ms;
+    --reveal-y: 0px;
+  }
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 
 /* ── Reset ── */
@@ -36,7 +88,9 @@ html { scroll-behavior: smooth; overflow-x: hidden; }
 body {
   background: var(--bg);
   font-family: var(--font-body);
-  font-weight: 300;
+  font-weight: var(--wt-body);
+  font-size: var(--step-0);
+  line-height: 1.7;
   color: var(--ink);
   -webkit-font-smoothing: antialiased;
   min-height: 100vh;
@@ -86,7 +140,7 @@ body {
   text-transform: uppercase;
 }
 
-/* RELAY's distinct nav lockup — "RELAY" leads, small "by eqv Group" caption
+/* RELAY's distinct nav lockup: "RELAY" leads, small "by eqv Group" caption
    sits underneath. Colours are set per-page (relay.html overrides for its
    dark world); these are sensible light-theme defaults. */
 .nav-brand--relay {
@@ -211,17 +265,17 @@ body {
   flex-direction: column;
 }
 
-/* ── Footer ── */
+/* ── Footer ──
+   The rule runs the full width of the viewport; only the text inside
+   is constrained by .container. Previously the border sat on the
+   container itself, so the line stopped 800px in and floated. */
 .site-footer {
-  padding: 2rem 3rem;
-  font-size: 11px;
-  color: var(--light-grey);
-  letter-spacing: 0.08em;
-  border-top: 1px solid #f0f0f0;
-}
-
-@media (max-width: 640px) {
-  .site-footer { padding: 2rem 1.5rem; }
+  padding: 2rem 0;
+  font-size: 12px;
+  color: var(--grey);
+  letter-spacing: 0.06em;
+  border-top: 1px solid var(--rule);
+  width: 100%;
 }
 
 /* ── Shared utilities ── */
@@ -304,7 +358,7 @@ body {
 }
 
 /* ── Hand-drawn underline accent ──
-   A small squiggle, not a straight rule — sits under a word to add a
+   A small squiggle, not a straight rule : sits under a word to add a
    touch of warmth without any illustration. */
 .squiggle-underline {
   position: relative;
@@ -410,3 +464,618 @@ body {
   transition: background 0.2s ease;
 }
 .warm-card-arrow.terracotta { background: var(--terracotta); }
+
+/* ════════════════════════════════════════════════════════════
+   DESIGN SYSTEM : added in the revamp.
+   Type, motion and shape primitives shared by every page.
+   ════════════════════════════════════════════════════════════ */
+
+/* ── Type ──
+   One family of classes so headings match across pages instead of
+   each page inventing its own clamp(). */
+.eyebrow {
+  font-family: var(--font-body);
+  font-size: var(--step--1);
+  font-weight: var(--wt-med);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--grey);
+  margin-bottom: 1.25rem;
+}
+
+/* The impact statement. Display face, tight leading, optically
+   centred. This is the treatment that was reading as disconnected :
+   it now shares a scale and a colour logic with everything else. */
+.impact {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: var(--step-4);
+  line-height: 1.04;
+  letter-spacing: -0.022em;
+  color: var(--ink);
+  text-wrap: balance;
+}
+.impact--centred {
+  text-align: center;
+  margin-inline: auto;
+  max-width: 16ch;
+}
+.impact em {
+  font-style: italic;
+  color: var(--navy);
+}
+
+.h-section {
+  font-family: var(--font-display);
+  font-size: var(--step-3);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+  text-wrap: balance;
+}
+
+.h-card {
+  font-family: var(--font-display);
+  font-size: var(--step-1);
+  font-weight: 400;
+  line-height: 1.25;
+  color: var(--ink);
+}
+
+.lede {
+  font-size: var(--step-1);
+  font-weight: var(--wt-body);
+  line-height: 1.6;
+  color: var(--ink-muted);
+  max-width: 46ch;
+  text-wrap: pretty;
+}
+
+.body-text {
+  font-size: var(--step-0);
+  line-height: 1.75;
+  color: var(--ink-muted);
+  max-width: var(--measure);
+  text-wrap: pretty;
+}
+
+.caption {
+  font-size: var(--step--1);
+  color: var(--grey);
+  letter-spacing: 0.01em;
+}
+
+/* ── Motion: scroll reveal ──
+   Generalised from the framework-step reveal. Any element with
+   [data-reveal] fades and rises once, when it first enters view.
+   Children can stagger via --i.
+
+   .no-js fallback: if the observer never runs, content must still
+   be visible : so the hidden state is only applied once JS has
+   marked the document ready. */
+[data-reveal] { opacity: 1; }
+
+html.js [data-reveal] {
+  opacity: 0;
+  transform: translateY(var(--reveal-y));
+  transition:
+    opacity   var(--dur-slow) var(--ease),
+    transform var(--dur-slow) var(--ease);
+  transition-delay: calc(var(--i, 0) * 90ms);
+  will-change: opacity, transform;
+}
+
+html.js [data-reveal].is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ── Shape motifs ──
+   Built from the Banner Graphics in 02 Marketing. Decorative only :
+   always aria-hidden, always pointer-events:none so they can never
+   swallow a click. */
+.motif {
+  position: absolute;
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+}
+.motif--dot {
+  border-radius: 50%;
+  background: var(--navy);
+  opacity: 0.14;
+}
+.motif--dot-terracotta { background: var(--terracotta); opacity: 0.16; }
+.motif--ring {
+  border-radius: 50%;
+  border: 1.5px solid var(--terracotta);
+  opacity: 0.28;
+  background: none;
+}
+.motif--ring-navy { border-color: var(--navy); opacity: 0.2; }
+
+.motif-cluster {
+  display: grid;
+  grid-template-columns: repeat(3, 6px);
+  gap: 6px;
+}
+.motif-cluster span {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--navy);
+  opacity: 0.2;
+}
+
+/* Anything that sits above the motifs */
+.layer-up { position: relative; z-index: 1; }
+
+/* ── Full-bleed decoration ──
+   The container caps content at 800px, which is right for reading but
+   wrong for graphics: motifs placed inside it stop dead in a rectangle
+   with white margins either side, which reads as a box floating on the
+   page rather than a page with atmosphere.
+
+   .stage is the section. .stage-decor is a sibling layer that ignores
+   the container entirely and spans the full viewport, so rings and dots
+   can run off every edge. Content still sits in .container on top.
+
+   Requires overflow-x:hidden on <html>, which is already set. */
+.stage {
+  position: relative;
+  overflow: hidden;
+}
+
+.stage-decor {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+/* Elements inside .stage-decor position against the full width, so
+   negative offsets genuinely hang off the edge of the screen. */
+.stage-decor .motif { position: absolute; }
+
+/* Visually hidden, still read aloud. For giving a logo lockup a real
+   text name so screen readers and search engines see a heading. */
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ── Page hero ──
+   Shared by every interior page so they open the same way. The decor
+   layer is full-bleed; the text sits in the container on top. */
+.page-hero {
+  padding: 6rem 0 3.5rem;
+}
+
+/* Default decorative furniture. Rings are deliberately hung off the
+   edges : the crop is what stops the page reading as a box. */
+.hero-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1.5px solid var(--terracotta);
+  opacity: 0.3;
+}
+.hero-ring--r {
+  width: clamp(300px, 40vw, 560px);
+  height: clamp(300px, 40vw, 560px);
+  right: clamp(-240px, -12vw, -110px);
+  top: clamp(-150px, -8vw, -60px);
+}
+.hero-ring--l {
+  width: clamp(240px, 30vw, 420px);
+  height: clamp(240px, 30vw, 420px);
+  left: clamp(-200px, -13vw, -110px);
+  bottom: clamp(-170px, -10vw, -80px);
+  border-color: var(--navy);
+  opacity: 0.18;
+}
+
+.hero-dot {
+  position: absolute;
+  border-radius: 50%;
+  background: var(--navy);
+  opacity: 0.2;
+}
+.hero-dot--a { width: 14px; height: 14px; right: 12%; top: 18%; background: var(--terracotta); opacity: 0.4; }
+.hero-dot--b { width: 9px;  height: 9px;  right: 26%; top: 46%; }
+.hero-dot--c { width: 11px; height: 11px; left: 6%;   bottom: 14%; background: var(--terracotta); opacity: 0.3; }
+
+/* The shapes drift rather than sitting still. Slow and staggered, so it
+   reads as atmosphere rather than movement demanding attention. */
+.hero-ring--r { animation: ringDrift 22s ease-in-out infinite; }
+.hero-ring--l { animation: ringDrift 28s ease-in-out infinite reverse; }
+.hero-dot--a  { animation: dotFloat 7s  ease-in-out infinite; }
+.hero-dot--b  { animation: dotFloat 9s  ease-in-out infinite 1.4s; }
+.hero-dot--c  { animation: dotFloat 11s ease-in-out infinite 0.7s; }
+
+@keyframes ringDrift {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33%      { transform: translate(-18px, 14px) scale(1.04); }
+  66%      { transform: translate(12px, -10px) scale(0.98); }
+}
+@keyframes dotFloat {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-14px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-ring--r, .hero-ring--l,
+  .hero-dot--a, .hero-dot--b, .hero-dot--c { animation: none; }
+}
+
+@media (max-width: 640px) {
+  .page-hero { padding: 3.5rem 0 2.5rem; }
+  .hero-dot--b, .hero-dot--c { display: none; }
+}
+
+/* ── Card grids ──
+   The container gives 704px of content (800 minus 3rem padding each side).
+   auto-fit with a 220 to 240px minimum needs 708 to 752px for three columns,
+   so every three-up grid on the site was silently wrapping to 2 + 1.
+   These are explicit instead of hopeful. */
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.1rem;
+}
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.1rem;
+}
+@media (max-width: 720px) {
+  .grid-3, .grid-2 { grid-template-columns: 1fr; }
+}
+
+/* ── Social icons ── */
+.social-row {
+  display: flex;
+  gap: 0.6rem;
+  align-items: center;
+}
+.social-link {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--card-border);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--navy);
+  transition: background var(--dur-fast) var(--ease),
+              color var(--dur-fast) var(--ease),
+              border-color var(--dur-fast) var(--ease);
+}
+.social-link svg { width: 17px; height: 17px; fill: currentColor; }
+.social-link:hover {
+  background: var(--navy);
+  border-color: var(--navy);
+  color: #fff;
+}
+
+/* ── Legal pages ──
+   Long-form prose. Narrower measure, clear hierarchy, generous
+   leading : these get read carefully or not at all. */
+.legal { padding: 1rem 0 5rem; max-width: 68ch; }
+.legal h2 {
+  font-family: var(--font-display);
+  font-size: var(--step-2);
+  font-weight: 400;
+  color: var(--ink);
+  margin: 2.8rem 0 0.9rem;
+  line-height: 1.2;
+}
+.legal h3 {
+  font-size: var(--step-0);
+  font-weight: var(--wt-med);
+  color: var(--ink);
+  margin: 1.6rem 0 0.5rem;
+}
+.legal p, .legal li {
+  font-size: var(--step-0);
+  line-height: 1.8;
+  color: var(--ink-muted);
+}
+.legal p { margin-bottom: 1rem; }
+.legal ul { margin: 0 0 1.2rem 1.2rem; }
+.legal li { margin-bottom: 0.5rem; }
+.legal a { color: var(--navy); }
+.legal strong { color: var(--ink); font-weight: var(--wt-med); }
+
+.legal-meta {
+  font-size: var(--step--1);
+  color: var(--grey);
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 1.4rem;
+  margin-bottom: 1rem;
+}
+
+/* Anything still to be confirmed is marked, not quietly guessed. */
+.tbc {
+  background: #FFF4E0;
+  border-left: 3px solid var(--terracotta);
+  border-radius: 0;
+  padding: 0.9rem 1.1rem;
+  margin: 1rem 0 1.4rem;
+  font-size: 14.5px;
+  line-height: 1.7;
+  color: #6B4310;
+}
+.tbc strong { color: #4A2D08; }
+
+/* ── Introducing band ──
+   Full-bleed navy strip. Does the framing work so the product cards
+   underneath don't have to fight each other for status. */
+.band {
+  background: var(--navy);
+  color: #fff;
+  padding: 3.2rem 0;
+  width: 100%;
+}
+.band .eyebrow { color: rgba(255,255,255,0.62); }
+.band-title {
+  font-family: var(--font-display);
+  font-size: var(--step-3);
+  font-weight: 400;
+  line-height: 1.12;
+  letter-spacing: -0.015em;
+  color: #fff;
+  text-wrap: balance;
+}
+.band-title em { font-style: italic; color: #F0A385; }
+.band-sub {
+  font-size: var(--step-0);
+  line-height: 1.7;
+  color: rgba(255,255,255,0.78);
+  max-width: 52ch;
+  margin-top: 1rem;
+}
+
+/* ── Product cards ──
+   Shared by the homepage and the RELAY Suite page so the two never
+   drift apart. */
+.suite-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 2.5rem 0 4rem;
+}
+
+.suite-card {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 2rem;
+  background: var(--cream);
+  border: 1px solid var(--card-border);
+  border-radius: 14px;
+  padding: 2rem 2.2rem;
+  text-decoration: none;
+  transition: border-color var(--dur-base) var(--ease),
+              transform var(--dur-base) var(--ease);
+}
+.suite-card:hover {
+  border-color: var(--terracotta);
+  transform: translateY(-2px);
+}
+
+/* The flagship gets a heavier border and a warmer ground: enough to
+   lead without demoting the others to footnotes. */
+.suite-card--flagship {
+  background: #fff;
+  border: 2px solid var(--navy);
+  padding: 2.3rem 2.2rem;
+}
+.suite-card--flagship:hover { border-color: var(--terracotta); }
+.suite-card--flagship h2 { font-size: var(--step-3); }
+.suite-card--flagship p { font-size: var(--step-0); }
+
+@media (max-width: 560px) {
+  .suite-card { grid-template-columns: 1fr; gap: 1.2rem; }
+}
+
+.suite-card-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.6rem;
+  flex-wrap: wrap;
+}
+.suite-tag {
+  font-size: 11px;
+  font-weight: var(--wt-med);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--navy);
+  background: #E4ECF7;
+  padding: 0.28rem 0.65rem;
+  border-radius: 999px;
+}
+.suite-tag--flagship { color: #fff; background: var(--terracotta); }
+.suite-tag--soon     { color: #6E4310; background: #F6EBDA; }
+
+.suite-card h2 {
+  font-family: var(--font-display);
+  font-size: var(--step-2);
+  font-weight: 400;
+  color: var(--ink);
+  line-height: 1.15;
+}
+.suite-card p {
+  font-size: 14.5px;
+  color: var(--ink-muted);
+  line-height: 1.7;
+  margin-top: 0.5rem;
+  max-width: 48ch;
+}
+
+.suite-arrow {
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  background: var(--navy);
+  color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 15px;
+  flex-shrink: 0;
+  transition: background var(--dur-base) var(--ease);
+}
+.suite-card:hover .suite-arrow { background: var(--terracotta); }
+
+/* ── Focus ──
+   Visible keyboard focus everywhere. There was none before. */
+:where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+  outline: 2px solid var(--navy);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* Skip link: first tab stop, for keyboard and screen reader users. */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 500;
+  background: var(--navy);
+  color: #fff;
+  padding: 0.7rem 1.1rem;
+  font-size: var(--step--1);
+  font-weight: var(--wt-med);
+  text-decoration: none;
+}
+.skip-link:focus {
+  left: 0.75rem;
+  top: 0.75rem;
+}
+
+/* ════════════════════════════════════════════════════════════
+   NAVIGATION : RELAY Suite dropdown
+   The parent is a real link to the suite master page, with a
+   separate toggle button for the submenu. That way the parent is
+   reachable by keyboard and on touch, where hover doesn't exist.
+   ════════════════════════════════════════════════════════════ */
+.nav-item { position: relative; }
+
+.nav-group {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.nav-caret {
+  background: none;
+  border: none;
+  padding: 4px;
+  cursor: pointer;
+  color: var(--ink-muted);
+  display: inline-flex;
+  line-height: 0;
+  transition: transform var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease);
+}
+.nav-caret svg { width: 9px; height: 9px; }
+.nav-caret[aria-expanded="true"] { transform: rotate(180deg); color: var(--navy); }
+
+.nav-submenu {
+  list-style: none;
+  position: absolute;
+  top: calc(100% + 14px);
+  left: -1rem;
+  min-width: 230px;
+  background: #fff;
+  border: 1px solid var(--rule);
+  border-radius: 12px;
+  padding: 0.5rem;
+  box-shadow: 0 12px 34px rgba(22, 24, 28, 0.09);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-6px);
+  transition:
+    opacity var(--dur-fast) var(--ease),
+    transform var(--dur-fast) var(--ease),
+    visibility var(--dur-fast);
+}
+.nav-item.open > .nav-submenu {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+}
+
+.nav-submenu a {
+  display: block;
+  padding: 0.6rem 0.8rem;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background var(--dur-fast) var(--ease);
+}
+.nav-submenu a:hover { background: var(--cream); }
+
+.nav-sub-name {
+  display: block;
+  font-size: 14px;
+  font-weight: var(--wt-med);
+  color: var(--ink);
+}
+.nav-sub-desc {
+  display: block;
+  font-size: 12px;
+  color: var(--grey);
+  margin-top: 1px;
+}
+
+@media (max-width: 640px) {
+  .nav-submenu {
+    position: static;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    box-shadow: none;
+    border: none;
+    border-radius: 0;
+    padding: 0 0 0.5rem 0.75rem;
+    min-width: 0;
+    display: none;
+  }
+  .nav-item.open > .nav-submenu { display: block; }
+  .nav-group { justify-content: space-between; width: 100%; }
+  .nav-caret { padding: 12px 4px; }
+}
+
+/* Footer: copyright left, legal links right. */
+.footer-inner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem 1.6rem;
+  align-items: baseline;
+  justify-content: space-between;
+}
+.footer-links { display: flex; gap: 1.2rem; }
+.footer-links a {
+  color: var(--grey);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: color var(--dur-fast) var(--ease), border-color var(--dur-fast) var(--ease);
+}
+.footer-links a:hover { color: var(--navy); border-bottom-color: var(--navy); }
+
+
+
+/* LinkedIn mark in the footer, sized to sit level with the legal links. */
+.footer-social {
+  display: inline-flex;
+  align-items: center;
+  color: var(--grey);
+  transition: color var(--dur-fast) var(--ease);
+}
+.footer-social svg { width: 15px; height: 15px; fill: currentColor; }
+.footer-social:hover { color: var(--navy); }

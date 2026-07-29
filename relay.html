@@ -3,8 +3,23 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>RELAY — EQV Group</title>
-  <meta name="description" content="RELAY by EQV Group — AI-powered EdTech for K–12 schools. Apply to become a pilot school." />
+<!-- meta:start -->
+  <title>RELAY | Formative AI for students and teachers</title>
+  <meta name="description" content="RELAY makes student confusion visible in real time to the teacher who can act on it. No grade, no judgment, built on your classroom's own material." />
+  <link rel="canonical" href="https://eqvgroup.com.au/relay.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="EQV Group" />
+  <meta property="og:title" content="RELAY | Formative AI for students and teachers" />
+  <meta property="og:description" content="RELAY makes student confusion visible in real time to the teacher who can act on it. No grade, no judgment, built on your classroom's own material." />
+  <meta property="og:url" content="https://eqvgroup.com.au/relay.html" />
+  <meta property="og:image" content="https://eqvgroup.com.au/images/social-card.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="RELAY | Formative AI for students and teachers" />
+  <meta name="twitter:description" content="RELAY makes student confusion visible in real time to the teacher who can act on it. No grade, no judgment, built on your classroom's own material." />
+  <meta name="twitter:image" content="https://eqvgroup.com.au/images/social-card.png" />
+  <!-- meta:end -->
   <link rel="icon" href="favicon.ico" sizes="any" />
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
@@ -16,43 +31,65 @@
   <link rel="stylesheet" href="shared.css" />
   <style>
     /* ═══════════════════════════════════════════════
-       RELAY — "site within a site"
+       RELAY : "site within a site"
        Dark navy world, distinct from white EQV pages.
        Palette pulled directly from the pitch deck.
     ═══════════════════════════════════════════════ */
 
     :root {
-      --relay-bg:        #3D5A88;
-      --relay-surface:   #46628F;
-      --relay-card:      #edf0f7;
-      --relay-card-text: #1b2744;
+      /* Deepened from #3D5A88. The old navy was washed out: it read as
+         soft rather than serious, and it gave white text nowhere to go.
+         A darker ground also lets the coral actually register. */
+      --relay-bg:        #1B406F;
+      --relay-deep:      #132F53;
+      --relay-surface:   #24528C;
+      --relay-line:      rgba(255,255,255,0.14);
+      --relay-card:      #EDF1F8;
+      --relay-card-text: #14213D;
       --relay-white:     #ffffff;
-      --relay-grey:      rgba(255,255,255,0.55);
-      --relay-blue:      #E8916B;
+      --relay-grey:      rgba(255,255,255,0.72);
+      --relay-faint:     rgba(255,255,255,0.62);
+      --relay-blue:      #F5824F;
+      --relay-coral-dim: #A8431F;
       --relay-accent:    #ffffff;
     }
 
     /* Override body for dark world */
     body {
       background: var(--relay-bg);
+      color: var(--relay-white);
     }
 
-    /* Nav override — keep it but tint it to match the RELAY world */
+    /* Nav override: keep it but tint it to match the RELAY world */
     .site-nav {
-      background: rgba(61, 90, 136, 0.92) !important;
-      border-bottom-color: rgba(255,255,255,0.1) !important;
+      background: rgba(27, 64, 111, 0.94) !important;
+      border-bottom-color: var(--relay-line) !important;
     }
-    .brand-eqv  { color: rgba(255,255,255,0.45) !important; }
+    /* The suite dropdown is a light panel on light pages; on RELAY it
+       has to invert or it punches a white hole in the dark nav. */
+    .nav-submenu {
+      background: var(--relay-surface);
+      border-color: var(--relay-line);
+      box-shadow: 0 14px 40px rgba(4, 16, 34, 0.45);
+    }
+    .nav-submenu a:hover { background: rgba(255,255,255,0.08); }
+    .nav-sub-name { color: var(--relay-white); }
+    .nav-sub-desc { color: var(--relay-faint); }
+    .nav-caret { color: var(--relay-grey); }
+    .nav-caret[aria-expanded="true"] { color: var(--relay-blue); }
+    .skip-link { background: var(--relay-blue); color: #2A1206; }
+    :where(a, button, summary, [tabindex]):focus-visible { outline-color: var(--relay-blue); }
+    .brand-eqv  { color: rgba(255,255,255,0.6) !important; }
     .brand-group { color: rgba(255,255,255,0.7) !important; }
     .brand-relay { color: #fff !important; }
-    .brand-relay-by { color: rgba(255,255,255,0.4) !important; }
-    .nav-link   { color: rgba(255,255,255,0.5) !important; }
+    .brand-relay-by { color: rgba(255,255,255,0.6) !important; }
+    .nav-link   { color: rgba(255,255,255,0.72) !important; }
     .nav-link:hover,
     .nav-link.active { color: #fff !important; }
     .nav-link::after { background: #fff !important; }
     .nav-hamburger span { background: #fff !important; }
 
-    /* Mobile nav dropdown — shared.css defaults the open dropdown to a
+    /* Mobile nav dropdown: shared.css defaults the open dropdown to a
        white background, which combined with the near-white nav-link
        colour above makes the mobile menu unreadable on this page. Tint
        the dropdown to match the RELAY world instead. */
@@ -65,10 +102,14 @@
         border-bottom-color: rgba(255,255,255,0.12) !important;
       }
     }
+    .footer-social { color: rgba(255,255,255,0.72); }
+    .footer-social:hover { color: #fff; }
+    .footer-links a { color: rgba(255,255,255,0.72); }
+    .footer-links a:hover { color: #fff; border-bottom-color: rgba(255,255,255,0.6); }
     .site-footer {
       background: var(--relay-surface);
-      color: rgba(255,255,255,0.3);
-      border-top-color: rgba(255,255,255,0.08);
+      color: rgba(255,255,255,0.72);
+      border-top-color: rgba(255,255,255,0.16);
     }
 
     /* ── HERO ── */
@@ -109,11 +150,11 @@
     }
 
     /* ── Handwriting-cycle intro ──
-       "RELAY" steps through a few handwritten treatments — a nod to
-       different students' handwriting — before settling into the real
+       "RELAY" steps through a few handwritten treatments : a nod to
+       different students' handwriting : before settling into the real
        Inter wordmark. Runs once on load, ~3.6s total. Words stack on top
        of one another so the layout never shifts. Swaps between beats are
-       hard cuts (no cross-fade) — only the very first word gets a soft
+       hard cuts (no cross-fade) : only the very first word gets a soft
        fade-and-rise entrance. */
     .relay-wordmark .cycle-word {
       position: absolute;
@@ -140,14 +181,14 @@
     .cycle-3 { font-family: 'Shadows Into Light', cursive; font-weight: 400; letter-spacing: 0; font-size: 0.85em; }
     .cycle-final { font-family: var(--font-body); font-weight: 500; letter-spacing: -0.04em; }
 
-    /* Squiggle underline on the settled wordmark — ties RELAY back to the
+    /* Squiggle underline on the settled wordmark: ties RELAY back to the
        same hand-drawn accent under "be" on the homepage. */
     .cycle-final .squiggle-underline svg {
       bottom: -0.16em;
       height: 0.14em;
     }
     /* Squiggle draws itself on once the wordmark settles, rather than
-       just appearing — path is hidden via dash offset, then animated in. */
+       just appearing : path is hidden via dash offset, then animated in. */
     .cycle-final .squiggle-underline svg path {
       stroke-dasharray: 200;
       stroke-dashoffset: 200;
@@ -157,23 +198,50 @@
       stroke-dashoffset: 0;
     }
 
+    /* The suite line leads. Full white rather than the muted grey :
+       it's the promise, not supporting text. */
     .relay-hero-tagline {
       font-family: var(--font-display);
+      font-size: clamp(26px, 4.4vw, 46px);
+      color: var(--relay-white);
+      margin-bottom: 1.1rem;
+      max-width: 22ch;
+      line-height: 1.14;
+      letter-spacing: -0.015em;
+      text-wrap: balance;
+    }
+    .relay-hero-tagline em {
       font-style: italic;
-      font-size: clamp(20px, 3.2vw, 30px);
-      color: var(--relay-grey);
-      margin-bottom: 2.5rem;
-      max-width: 560px;
-      line-height: 1.35;
+      color: var(--relay-blue);
+    }
+
+    /* The specific RELAY claim, sitting under the broader promise. */
+    .relay-hero-sub {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: clamp(17px, 2.2vw, 22px);
+      color: rgba(255,255,255,0.78);
+      margin-bottom: 2.2rem;
+      max-width: 34ch;
+      line-height: 1.4;
+    }
+
+    /* Real-time is the thing schools remember, so it gets marked. */
+    .hl {
+      font-style: normal;
+      color: var(--relay-blue);
+      font-weight: 500;
+      position: relative;
+      white-space: nowrap;
     }
 
     .relay-hero-body {
       font-family: var(--font-body);
-      font-size: 15px;
-      font-weight: 300;
-      color: var(--relay-grey);
-      line-height: 1.85;
-      max-width: 520px;
+      font-size: 15.5px;
+      font-weight: 400;
+      color: rgba(255,255,255,0.72);
+      line-height: 1.8;
+      max-width: 52ch;
       margin-bottom: 3rem;
     }
 
@@ -229,13 +297,33 @@
     }
 
     .stats-inner {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: clamp(2rem, 7vw, 5rem);
     }
 
-    .stat-item {
+    .stat-divider {
+      width: 1px;
+      align-self: stretch;
+      background: rgba(255,255,255,0.18);
+    }
+
+    .stat-item { text-align: center; }
+
+    .stats-note {
       text-align: center;
+      font-size: 13.5px;
+      line-height: 1.7;
+      color: var(--relay-grey);
+      max-width: 52ch;
+      margin: 1.8rem auto 0;
+    }
+    .stats-note a {
+      color: var(--relay-blue);
+      text-decoration: underline;
+      text-decoration-color: rgba(245,130,79,0.45);
+      white-space: nowrap;
     }
 
     .stat-number {
@@ -248,8 +336,10 @@
       margin-bottom: 0.4rem;
     }
 
+    .stat-number--down { color: rgba(255,255,255,0.62); }
+
     .stat-label {
-      font-size: 13px;
+      font-size: 13.5px;
       font-weight: 300;
       color: var(--relay-grey);
       line-height: 1.5;
@@ -257,7 +347,7 @@
 
     .stat-source {
       font-size: 12px;
-      color: rgba(255,255,255,0.45);
+      color: var(--relay-faint);
       letter-spacing: 0.04em;
       font-style: italic;
       margin-top: 0.4rem;
@@ -275,7 +365,7 @@
     .diff-body a {
       color: inherit;
       text-decoration: underline;
-      text-decoration-color: rgba(255,255,255,0.3);
+      text-decoration-color: rgba(255,255,255,0.45);
       transition: color 0.2s;
     }
     .diff-body a:hover {
@@ -283,20 +373,17 @@
     }
 
     @media (max-width: 640px) {
-      .stats-inner { grid-template-columns: 1fr; gap: 2rem; }
-    }
-
-    /* ── FRAMEWORK SECTION ── */
-    .framework-section {
-      padding: 6rem 0;
+      .stats-inner { flex-direction: column; gap: 1.8rem; }
+      .stat-divider { width: 60%; height: 1px; align-self: center; }
     }
 
     .section-eyebrow {
-      font-size: 11px;
+      font-size: 11.5px;
       font-weight: 500;
       letter-spacing: 0.22em;
       text-transform: uppercase;
-      color: var(--relay-blue);
+      /* Lighter than --relay-blue: at 11px the coral alone was short of AA. */
+      color: #FFB08A;
       margin-bottom: 1.2rem;
     }
 
@@ -319,132 +406,489 @@
       margin-bottom: 4rem;
     }
 
-    /* Steps — vertical stack on mobile, flowing on desktop */
-    .steps-list {
+    /* ── EVIDENCE ──
+       Collapsed by default. A principal skims the claims; a Head of
+       Teaching and Learning opens the ones they want to argue with. */
+    .evidence-section {
+      padding: 5rem 0 5rem;
+      border-top: 1px solid var(--relay-line);
+    }
+    .ev-list {
+      border-top: 1px solid var(--relay-line);
+      margin-top: 1rem;
+    }
+    .ev-item { border-bottom: 1px solid var(--relay-line); }
+    .ev-item summary {
       display: flex;
-      flex-direction: column;
-      gap: 0;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 1.4rem;
+      flex-wrap: wrap;
+      padding: 1.2rem 2rem 1.2rem 0;
+      cursor: pointer;
+      list-style: none;
+      position: relative;
+      transition: color var(--dur-fast) var(--ease);
     }
-
-    .step {
-      display: grid;
-      grid-template-columns: 80px 1fr;
-      gap: 0 2rem;
-      padding: 2.4rem 0;
-      border-top: 1px solid rgba(255,255,255,0.08);
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.55s ease, transform 0.55s ease;
+    .ev-item summary::-webkit-details-marker { display: none; }
+    .ev-item summary::after {
+      content: '+';
+      position: absolute;
+      right: 0;
+      top: 1.05rem;
+      font-size: 19px;
+      color: var(--relay-blue);
+      transition: transform var(--dur-base) var(--ease);
     }
-    .step:last-child { border-bottom: 1px solid rgba(255,255,255,0.08); }
-    .step.visible { opacity: 1; transform: translateY(0); }
-
-    .step-number {
-      width: 52px;
-      height: 52px;
-      border-radius: 50%;
-      background: var(--relay-surface);
-      border: 1px solid rgba(255,255,255,0.15);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: var(--font-body);
-      font-size: 18px;
-      font-weight: 300;
-      color: var(--relay-white);
-      flex-shrink: 0;
-      margin-top: 4px;
-      transition: background 0.2s, border-color 0.2s;
-    }
-    .step:hover .step-number {
-      background: var(--relay-blue);
-      border-color: var(--relay-blue);
-    }
-
-    .step-content {}
-
-    .step-title {
+    .ev-item[open] summary::after { content: '\2013'; }
+    .ev-claim {
       font-family: var(--font-display);
       font-style: italic;
-      font-size: clamp(20px, 2.8vw, 26px);
+      font-size: clamp(17px, 2.1vw, 21px);
       color: var(--relay-white);
-      margin-bottom: 0.5rem;
-      line-height: 1.2;
+    }
+    .ev-src {
+      font-size: 12px;
+      letter-spacing: 0.06em;
+      color: var(--relay-faint);
+    }
+    .ev-body { padding: 0 2rem 1.5rem 0; max-width: 62ch; }
+    .ev-body p { font-size: 14.5px; line-height: 1.8; color: var(--relay-grey); margin-bottom: 0.8rem; }
+    .ev-cite { font-size: 12.5px; color: var(--relay-faint); font-style: italic; }
+    .ev-cite a { color: var(--relay-blue); }
+    .ev-cta { margin-top: 2.6rem; }
+
+    /* ── TRUST ── */
+    .trust-section {
+      padding: 5rem 0 6rem;
+      border-top: 1px solid var(--relay-line);
+    }
+    .trust-grid { margin-top: 2.5rem; }
+    .trust-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--relay-line);
+      border-radius: 14px;
+      padding: 1.6rem 1.7rem;
+    }
+    .trust-card h3 {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 19px;
+      font-weight: 400;
+      color: var(--relay-white);
+      margin-bottom: 0.6rem;
+      line-height: 1.25;
+    }
+    .trust-card p {
+      font-size: 14px;
+      color: var(--relay-grey);
+      line-height: 1.7;
     }
 
-    .step-body {
+    /* ── HOW IT WORKS: tabbed use cases ──
+       Pattern borrowed from Anthropic's Claude for Teachers page. A row
+       of plain-language tabs; each one swaps a panel showing an input on
+       the left and the thing RELAY produces on the right, animating in.
+
+       The panels are abstract rather than screenshots : they show what
+       happens, not what the UI currently looks like, so they can't date
+       or over-promise a feature that isn't finished. */
+    .how-section { padding: 5rem 0 6rem; }
+
+    .tab-row {
+      display: flex;
+      gap: 0.4rem;
+      overflow-x: auto;
+      scrollbar-width: none;
+      border-bottom: 1px solid var(--relay-line);
+      margin-bottom: 2.5rem;
+      padding-bottom: 0;
+    }
+    .tab-row::-webkit-scrollbar { display: none; }
+
+    .tab-btn {
+      flex: 0 0 auto;
+      background: none;
+      border: none;
+      border-bottom: 2px solid transparent;
+      color: var(--relay-faint);
+      font-family: var(--font-body);
       font-size: 14px;
-      font-weight: 300;
+      font-weight: 500;
+      padding: 0.8rem 1rem 0.9rem;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: color var(--dur-fast) var(--ease),
+                  border-color var(--dur-fast) var(--ease);
+    }
+    .tab-btn:hover { color: var(--relay-white); }
+    .tab-btn[aria-selected="true"] {
+      color: var(--relay-white);
+      border-bottom-color: var(--relay-blue);
+    }
+
+    .tab-panel[hidden] { display: none; }
+
+    /* Reserve the height so switching tabs doesn't make the page jump. */
+    .tab-stack { min-height: 430px; }
+    @media (max-width: 760px) { .tab-stack { min-height: 0; } }
+
+    .panel-grid {
+      display: grid;
+      grid-template-columns: 0.85fr 1.15fr;
+      gap: 1.2rem;
+      align-items: stretch;
+    }
+    @media (max-width: 760px) {
+      .panel-grid { grid-template-columns: 1fr; }
+    }
+
+    .panel-side {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--relay-line);
+      border-radius: 14px;
+      padding: 1.5rem 1.6rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .panel-label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #FFB08A;
+      margin-bottom: 0.9rem;
+    }
+
+    /* The light card is the "output": deliberately the only light
+       surface on the page, so the eye goes to it. */
+    .panel-out {
+      background: var(--relay-card);
+      color: var(--relay-card-text);
+      border-radius: 14px;
+      padding: 1.5rem 1.6rem;
+      min-height: 250px;
+    }
+    .panel-out .panel-label { color: var(--relay-coral-dim); }
+
+    .panel-caption {
+      margin-top: 1.6rem;
+      max-width: 58ch;
+    }
+    .panel-caption h3 {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: clamp(19px, 2.4vw, 25px);
+      font-weight: 400;
+      color: var(--relay-white);
+      margin-bottom: 0.5rem;
+    }
+    .panel-caption p {
+      font-size: 14.5px;
       color: var(--relay-grey);
       line-height: 1.75;
     }
 
-    .step-caption {
-      font-size: 11px;
-      color: rgba(255,255,255,0.2);
-      letter-spacing: 0.06em;
-      font-style: italic;
-      margin-top: 0.8rem;
-    }
-
-    .step-more {
-      margin-top: 0.9rem;
-    }
-    .step-more summary {
-      display: inline-block;
-      list-style: none;
-      cursor: pointer;
-      font-family: var(--font-body);
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--relay-blue);
-      border-bottom: 1px solid var(--relay-blue);
-      padding-bottom: 1px;
-      transition: opacity 0.2s;
-    }
-    .step-more summary::-webkit-details-marker { display: none; }
-    .step-more summary:hover { opacity: 0.6; }
-    .step-more[open] summary { margin-bottom: 0.9rem; }
-    .step-more summary .more-label::after { content: 'See the three phases'; }
-    .step-more[open] summary .more-label::after { content: 'Hide'; }
-    .step-more-body {
-      display: flex;
-      flex-direction: column;
-      gap: 0.9rem;
-    }
-    .step-more-phase-title {
-      font-family: var(--font-display);
-      font-style: italic;
-      font-size: 15px;
+    /* ── Panel innards ── */
+    .stu-line {
+      font-size: 14.5px;
+      line-height: 1.7;
       color: var(--relay-white);
-      margin-bottom: 0.2rem;
     }
-    .step-more-phase-body {
-      font-size: 13px;
-      font-weight: 300;
-      color: var(--relay-grey);
-      line-height: 1.65;
+    .stu-line .hesitant { color: var(--relay-blue); }
+
+    .caret {
+      display: inline-block;
+      width: 2px;
+      height: 1em;
+      background: var(--relay-blue);
+      vertical-align: -2px;
+      animation: blink 1.05s step-end infinite;
+    }
+    @keyframes blink { 50% { opacity: 0; } }
+
+    .out-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(20,33,61,0.12);
+      padding-bottom: 0.7rem;
+      margin-bottom: 0.9rem;
+      font-size: 12.5px;
+      font-weight: 500;
+      color: #4A5878;
     }
 
-    @media (max-width: 500px) {
-      .step { grid-template-columns: 52px 1fr; gap: 0 1.2rem; }
+    .quote-row {
+      border-left: 3px solid var(--relay-coral-dim);
+      padding: 0.15rem 0 0.15rem 0.85rem;
+      margin-bottom: 0.9rem;
+      border-radius: 0;
+    }
+    .quote-row .who {
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #56648A;
+      margin-bottom: 0.25rem;
+    }
+    .quote-row .what {
+      font-size: 14px;
+      line-height: 1.6;
+      color: var(--relay-card-text);
+    }
+
+    /* Class grid: each dot is a student. */
+    .class-grid {
+      display: grid;
+      grid-template-columns: repeat(8, 1fr);
+      gap: 9px;
+      margin-bottom: 1rem;
+    }
+    .pupil {
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background: #C9D3E6;
+    }
+    .pupil.flag { background: var(--relay-coral-dim); }
+
+    .legend {
+      display: flex;
+      gap: 1.2rem;
+      font-size: 12px;
+      color: #4A5878;
+      align-items: center;
+    }
+    .legend i {
+      display: inline-block;
+      width: 9px; height: 9px;
+      border-radius: 50%;
+      margin-right: 6px;
+      vertical-align: -1px;
+    }
+
+    .grade-row {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      padding: 0.7rem 0;
+      border-bottom: 1px solid rgba(20,33,61,0.1);
+      font-size: 13.5px;
+      color: #4A5878;
+    }
+    .grade-row b { color: var(--relay-card-text); font-weight: 500; }
+    .grade-none { color: var(--relay-coral-dim); font-style: italic; }
+
+    .action {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      border: 1px solid rgba(20,33,61,0.16);
+      border-radius: 10px;
+      padding: 0.7rem 0.9rem;
+      margin-bottom: 0.55rem;
+      font-size: 13.5px;
+      color: var(--relay-card-text);
+    }
+    .action .pick {
+      margin-left: auto;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #56648A;
+    }
+    .action-note {
+      font-size: 12.5px;
+      color: #4A5878;
+      font-style: italic;
+      margin-top: 0.9rem;
+      line-height: 1.6;
+    }
+
+    .src-chip {
+      display: inline-block;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.22);
+      border-radius: 999px;
+      padding: 0.35rem 0.8rem;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--relay-white);
+      margin: 0 0.4rem 0.5rem 0;
+    }
+    .src-chip.on { background: var(--relay-blue); border-color: var(--relay-blue); color: #2A1206; }
+
+    .swap {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      gap: 0.7rem;
+      padding: 0.6rem 0;
+      border-bottom: 1px solid rgba(20,33,61,0.1);
+      font-size: 13.5px;
+    }
+    .swap .gone { color: #94A0BC; text-decoration: line-through; }
+    .swap .arrow { color: #56648A; font-size: 12px; }
+    .swap .kept { color: var(--relay-card-text); font-weight: 500; }
+
+    /* Desk at night: a warm pool of lamplight against the dark page. */
+    .desk {
+      position: relative;
+      border: 1px solid var(--relay-line);
+      border-radius: 12px;
+      padding: 1.1rem 1.2rem;
+      background: rgba(245, 130, 79, 0.07);
+      overflow: hidden;
+    }
+    .desk-lamp {
+      position: absolute;
+      top: -60px; right: -40px;
+      width: 170px; height: 170px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(245,130,79,0.30) 0%, transparent 70%);
+      animation: lampGlow 5s ease-in-out infinite;
+    }
+    @keyframes lampGlow {
+      0%, 100% { opacity: 0.75; transform: scale(1); }
+      50%      { opacity: 1;    transform: scale(1.07); }
+    }
+    .desk-time {
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--relay-faint);
+      margin-bottom: 0.7rem;
+    }
+    .side-note {
+      font-size: 13px;
+      color: var(--relay-faint);
+      line-height: 1.7;
+      margin-top: 0.9rem;
+      font-style: italic;
+    }
+
+    /* Meter: a bar that fills, rather than another line of text. */
+    .meter { margin-top: 1rem; }
+    .meter-label {
+      font-size: 11.5px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #56648A;
+      margin-bottom: 0.5rem;
+    }
+    .meter-track {
+      height: 8px;
+      background: rgba(20,33,61,0.09);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+    .meter-fill {
+      display: block;
+      height: 100%;
+      background: var(--relay-coral-dim);
+      border-radius: 999px;
+    }
+    .meter-val {
+      font-size: 12.5px;
+      color: #56648A;
+      margin-top: 0.45rem;
+    }
+
+    /* The grade row that never arrives: struck through as it lands. */
+    .grade-row.is-none b, .grade-none { position: relative; }
+    .strike {
+      position: relative;
+      display: inline-block;
+      color: #94A0BC;
+    }
+    .strike::after {
+      content: '';
+      position: absolute;
+      left: 0; right: 0; top: 52%;
+      height: 1.5px;
+      background: var(--relay-coral-dim);
+      transform: scaleX(0);
+      transform-origin: left;
+    }
+    .tab-panel.is-live .strike::after {
+      animation: strikeThrough 0.5s var(--ease) forwards;
+      animation-delay: calc(var(--d, 0) * 1ms);
+    }
+    @keyframes strikeThrough { to { transform: scaleX(1); } }
+
+    /* Source chips travel from left to right as they are ingested. */
+    .tab-panel.is-live .src-chip {
+      animation: chipIn 0.55s var(--ease) forwards;
+      animation-delay: calc(var(--d, 0) * 1ms);
+    }
+    .src-chip { opacity: 0; transform: translateX(-14px); }
+    @keyframes chipIn { to { opacity: 1; transform: none; } }
+
+    /* Redaction: the identifying value is blacked out before it leaves. */
+    .redact { position: relative; display: inline-block; }
+    .redact::after {
+      content: '';
+      position: absolute;
+      inset: -2px -4px;
+      background: var(--relay-card-text);
+      border-radius: 3px;
+      transform: scaleX(0);
+      transform-origin: left;
+    }
+    .tab-panel.is-live .redact::after {
+      animation: redactIn 0.4s var(--ease) forwards;
+      animation-delay: calc(var(--d, 0) * 1ms);
+    }
+    @keyframes redactIn { to { transform: scaleX(1); } }
+
+    @media (prefers-reduced-motion: reduce) {
+      .desk-lamp { animation: none; }
+      .strike::after, .tab-panel.is-live .strike::after { transform: scaleX(1); animation: none; }
+      .redact::after, .tab-panel.is-live .redact::after { transform: scaleX(1); animation: none; }
+      .src-chip, .tab-panel.is-live .src-chip { opacity: 1; transform: none; animation: none; }
+    }
+
+    /* ── Panel motion ──
+       Elements animate in when their panel becomes active (.is-live),
+       so switching tabs replays the sequence rather than showing a
+       finished still. */
+    .anim { opacity: 0; }
+    .tab-panel.is-live .anim {
+      animation: riseIn 0.5s var(--ease) forwards;
+      animation-delay: calc(var(--d, 0) * 1ms);
+    }
+    @keyframes riseIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to   { opacity: 1; transform: none; }
+    }
+
+    .grow { transform: scaleX(0); transform-origin: left; }
+    .tab-panel.is-live .grow {
+      animation: growIn 0.55s var(--ease) forwards;
+      animation-delay: calc(var(--d, 0) * 1ms);
+    }
+    @keyframes growIn { to { transform: scaleX(1); } }
+
+    /* Anyone who has asked for reduced motion sees the finished state
+       immediately : the information is identical, just not animated. */
+    @media (prefers-reduced-motion: reduce) {
+      .anim, .tab-panel.is-live .anim { opacity: 1; animation: none; transform: none; }
+      .grow, .tab-panel.is-live .grow { transform: none; animation: none; }
+      .caret { animation: none; }
     }
 
     /* ── DIFFERENTIATORS ── */
+
+
     .diff-section {
       padding: 5rem 0;
       background: var(--relay-surface);
       border-top: 1px solid rgba(255,255,255,0.07);
     }
 
-    .diff-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-      gap: 1.5rem;
-      margin-top: 3rem;
-    }
+    .diff-grid { margin-top: 3rem; }
 
     .diff-card {
       background: rgba(255,255,255,0.04);
@@ -516,7 +960,7 @@
       line-height: 1.6;
     }
     .pilot-criteria li::before {
-      content: '—';
+      content: '\2013';
       position: absolute;
       left: 0;
       color: var(--relay-blue);
@@ -552,9 +996,49 @@
   </style>
 </head>
 <body>
-  <!-- nav.js injects nav — dark overrides above handle the appearance -->
+  <!-- nav:start -->
+<a class="skip-link" href="#main">Skip to content</a>
+<nav class="site-nav" aria-label="Primary">
+  <a class="nav-brand" href="index.html">
+    <span class="brand-eqv">eqv</span>
+    <span class="brand-group">Group</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html" class="nav-link" data-nav="index.html">Home</a></li>
+    <li class="nav-item" data-nav-group>
+      <div class="nav-group">
+        <a href="relay-suite.html" class="nav-link" data-nav="relay-suite.html">RELAY Suite</a>
+        <button class="nav-caret" type="button" aria-expanded="false" aria-controls="suite-menu" aria-label="Show RELAY Suite products">
+          <svg viewBox="0 0 10 6" fill="none" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+      <ul class="nav-submenu" id="suite-menu">
+        <li><a href="relay.html" data-nav="relay.html">
+          <span class="nav-sub-name">RELAY</span>
+          <span class="nav-sub-desc">Students and teachers, K&ndash;12</span>
+        </a></li>
+        <li><a href="fieldnote.html" data-nav="fieldnote.html">
+          <span class="nav-sub-name">Fieldnote</span>
+          <span class="nav-sub-desc">For teachers, K&ndash;12</span>
+        </a></li>
+        <li><a href="relayjr.html" data-nav="relayjr.html">
+          <span class="nav-sub-name">RELAY Jr</span>
+          <span class="nav-sub-desc">Early learning</span>
+        </a></li>
+      </ul>
+    </li>
+    <li><a href="adult-education.html" class="nav-link" data-nav="adult-education.html">Adult Education</a></li>
+    <li><a href="about.html" class="nav-link" data-nav="about.html">About</a></li>
+    <li><a href="contact.html" class="nav-link" data-nav="contact.html">Contact Us</a></li>
+  </ul>
+  <button class="nav-hamburger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="primary-menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+  <!-- nav:end -->
 
   <div class="page-content">
+    <main id="main">
 
     <!-- ══ HERO ══ -->
     <section class="relay-hero">
@@ -565,16 +1049,17 @@
           <span class="cycle-word cycle-3" id="cw3">Relay</span>
           <span class="cycle-word cycle-final" id="cwFinal"><span class="squiggle-underline">RELAY<svg viewBox="0 0 140 14" preserveAspectRatio="none"><path id="wordmarkSquiggle" d="M2 8 Q 35 2, 70 7 T 138 6" style="stroke:var(--relay-blue);" stroke-width="3" fill="none" stroke-linecap="round"/></svg></span></span>
         </h1>
-        <p class="relay-hero-tagline">Every student's confusion, heard. Every teacher, in the loop.</p>
+        <p class="relay-hero-tagline">Every student&rsquo;s confusion, <em>heard</em>.</p>
+        <p class="relay-hero-sub">Every teacher, in the loop, in <em class="hl">real time</em>.</p>
         <p class="relay-hero-body">
-          RELAY is an AI-powered EdTech tool for K–12 schools, built on
-          learning science, not assumptions. It gives students the guardrails
-          that research shows improve outcomes, and teachers the visibility
-          they need without adding to their workload.
+          RELAY is an AI-supported tool for K-12 schools, built on learning
+          science rather than assumptions. Students get the guardrails research
+          shows improve outcomes. Teachers get <em class="hl">real-time</em>
+          visibility of where a class actually is, without any extra marking.
         </p>
         <div class="relay-cta-row">
-          <a class="btn-primary" href="#apply">Apply as a pilot school</a>
-          <a class="btn-ghost"   href="#framework">Our approach ↓</a>
+          <a class="btn-primary" href="#apply">Talk to us about a pilot</a>
+          <a class="btn-ghost"   href="#how">See how it works ↓</a>
         </div>
       </div>
     </section>
@@ -585,132 +1070,433 @@
         <div class="stats-inner">
           <div class="stat-item">
             <div class="stat-number">+127%</div>
-            <div class="stat-label">better outcomes with guardrailed AI vs no AI</div>
-            <div class="stat-source"><a href="https://doi.org/10.1073/pnas.2422633122" target="_blank" rel="noopener">Bastani et al., PNAS 2025</a></div>
+            <div class="stat-label">with guardrails in place</div>
           </div>
+          <div class="stat-divider" aria-hidden="true"></div>
           <div class="stat-item">
-            <div class="stat-number">−17%</div>
-            <div class="stat-label">exam scores with unrestricted AI access</div>
-            <div class="stat-source"><a href="https://doi.org/10.1073/pnas.2422633122" target="_blank" rel="noopener">Bastani et al., PNAS 2025</a></div>
-          </div>
-          <div class="stat-item">
-            <div class="stat-number">28.2%</div>
-            <div class="stat-label">of students have a "complicated" relationship with their teacher</div>
-            <div class="stat-source"><a href="https://doi.org/10.1002/jad.12093" target="_blank" rel="noopener">Burns et al., 2022</a></div>
+            <div class="stat-number stat-number--down">&minus;17%</div>
+            <div class="stat-label">with unrestricted access</div>
           </div>
         </div>
+        <p class="stats-note">
+          Same underlying model in both. What changed was how it was designed to
+          behave with a student.
+          <a href="https://doi.org/10.1073/pnas.2422633122" target="_blank" rel="noopener">Bastani et al., PNAS 2025</a>
+        </p>
       </div>
     </div>
 
-    <!-- ══ 5-STEP FRAMEWORK ══ -->
-    <section class="framework-section" id="framework">
+    <!-- ══ WHAT MAKES RELAY DIFFERENT ══ -->
+    <section class="diff-section">
       <div class="container">
-        <p class="section-eyebrow">Our approach</p>
-        <h2 class="section-heading">5-Step Engagement<br>Framework</h2>
-        <p class="section-sub">
-          Every school that partners with RELAY moves through the same
-          structured process. Each step builds on the last: collaborative,
-          trust-centred, and grounded in evidence at every stage.
-        </p>
-
-        <div class="steps-list">
-
-          <div class="step">
-            <div class="step-number">1</div>
-            <div class="step-content">
-              <h3 class="step-title">Understand Context</h3>
-              <p class="step-body">We interview stakeholders across the school, including leaders, teachers, and where appropriate, students, to map challenges, priorities, goals, culture, attitudes, and existing policy. No two schools are the same; this step ensures we design for yours.</p>
-              <p class="step-caption">Stakeholder interviews · Policy audit · Culture mapping</p>
-            </div>
+        <p class="section-eyebrow" data-reveal>What makes RELAY different</p>
+        <h2 class="section-heading" data-reveal>Three decisions<br>most tools don&rsquo;t make.</h2>
+        <div class="diff-grid grid-3">
+          <div class="diff-card" data-reveal style="--i:0">
+            <div class="diff-num">01</div>
+            <div class="diff-title">No grade, no judgment</div>
+            <p class="diff-body">Purely formative. A student can admit what they don&rsquo;t understand without it costing them a mark. That honesty is the whole mechanism: it is what makes confusion visible in the first place.</p>
           </div>
-
-          <div class="step">
-            <div class="step-number">2</div>
-            <div class="step-content">
-              <h3 class="step-title">Collaboratively Design</h3>
-              <p class="step-body">We co-design a bespoke engagement journey with your team, for both teachers and students. The journey moves through three phases: Foundation, Fluency, and Future, each building capability before the next begins.</p>
-              <details class="step-more">
-                <summary><span class="more-label"></span></summary>
-                <div class="step-more-body">
-                  <div>
-                    <p class="step-more-phase-title">Foundation</p>
-                    <p class="step-more-phase-body">Building shared understanding of the tool, the ethics behind it, and how staff and students will use it together.</p>
-                  </div>
-                  <div>
-                    <p class="step-more-phase-title">Fluency</p>
-                    <p class="step-more-phase-body">Moving from understanding to confident, everyday use in real classroom conditions.</p>
-                  </div>
-                  <div>
-                    <p class="step-more-phase-title">Future</p>
-                    <p class="step-more-phase-body">Embedding sustainable practice and preparing the school to adapt as needs and tools evolve.</p>
-                  </div>
-                </div>
-              </details>
-              <p class="step-caption">Foundation → Fluency → Future</p>
-            </div>
+          <div class="diff-card" data-reveal style="--i:1">
+            <div class="diff-num">02</div>
+            <div class="diff-title">It informs, it never decides</div>
+            <p class="diff-body">RELAY reports what it saw and stops. It does not recommend an action, contact a student, or put anything on a report. Your teachers keep the professional judgement that only they can exercise.</p>
           </div>
-
-          <div class="step">
-            <div class="step-number">3</div>
-            <div class="step-content">
-              <h3 class="step-title">Pilot</h3>
-              <p class="step-body">We test with safeguards in place. Drawing on both qualitative and quantitative data, we refine the approach and measure real impact before any broader rollout. This is the phase pilot schools enter.</p>
-              <p class="step-caption">Controlled pilot · Data collection · Impact measurement</p>
-            </div>
+          <div class="diff-card" data-reveal style="--i:2">
+            <div class="diff-num">03</div>
+            <div class="diff-title">The guardrails are yours to set</div>
+            <p class="diff-body">RELAY draws only on the material your teachers supply, shaped to your curriculum, ethos and cohort. Guardrailed does not mean prescriptive: the constraint is deliberate, the configuration is your school&rsquo;s.</p>
           </div>
-
-          <div class="step">
-            <div class="step-number">4</div>
-            <div class="step-content">
-              <h3 class="step-title">Implement &amp; Adapt</h3>
-              <p class="step-body">Leader-led rollout with accountability champions embedded across departments. We review and refine continuously, building an ongoing relationship with the school rather than a one-off implementation.</p>
-              <p class="step-caption">Leader-led rollout · Accountability champions · Continuous review</p>
-            </div>
-          </div>
-
-          <div class="step">
-            <div class="step-number">5</div>
-            <div class="step-content">
-              <h3 class="step-title">Achieve Impact</h3>
-              <p class="step-body">Delivery of meaningful learning outcomes across the school. We workshop on trust across every stakeholder relationship, and audit trust levels to confirm the impact is real and lasting.</p>
-              <p class="step-caption">Learning outcomes · Trust audit · Stakeholder review</p>
-            </div>
-          </div>
-
         </div>
       </div>
     </section>
 
-    <!-- ══ DIFFERENTIATORS ══ -->
-    <section class="diff-section">
+    <!-- ══ HOW IT WORKS: tabbed use cases ══ -->
+    <section class="how-section" id="how">
       <div class="container">
-        <p class="section-eyebrow">What makes RELAY different</p>
-        <h2 class="section-heading">Built differently,<br>by design.</h2>
-        <div class="diff-grid">
-          <div class="diff-card">
-            <div class="diff-num">01</div>
-            <div class="diff-title">No Grade · No Judgment</div>
-            <p class="diff-body">Purely formative. Students can admit what they don't understand without fear of a mark. That honesty is what makes their confusion visible, and worth listening to.</p>
+        <p class="section-eyebrow" data-reveal>How RELAY works</p>
+        <h2 class="section-heading" data-reveal>Six things it does,<br>and one it won&rsquo;t.</h2>
+        <p class="section-sub" data-reveal>
+          Pick any of them. Each shows what a student or a teacher actually
+          puts in, and what comes back.
+        </p>
+
+        <div class="tab-row" role="tablist" aria-label="How RELAY works">
+            <button class="tab-btn" type="button" role="tab" id="tab-ask"
+                    aria-controls="panel-ask" aria-selected="true"
+                    tabindex="0">Ask without asking</button>
+            <button class="tab-btn" type="button" role="tab" id="tab-home"
+                    aria-controls="panel-home" aria-selected="false"
+                    tabindex="-1">Stuck at home</button>
+            <button class="tab-btn" type="button" role="tab" id="tab-live"
+                    aria-controls="panel-live" aria-selected="false"
+                    tabindex="-1">See it in real time</button>
+            <button class="tab-btn" type="button" role="tab" id="tab-nograde"
+                    aria-controls="panel-nograde" aria-selected="false"
+                    tabindex="-1">No grade, no judgment</button>
+            <button class="tab-btn" type="button" role="tab" id="tab-decide"
+                    aria-controls="panel-decide" aria-selected="false"
+                    tabindex="-1">You decide what happens next</button>
+            <button class="tab-btn" type="button" role="tab" id="tab-yours"
+                    aria-controls="panel-yours" aria-selected="false"
+                    tabindex="-1">Built on your material</button>
+            <button class="tab-btn" type="button" role="tab" id="tab-private"
+                    aria-controls="panel-private" aria-selected="false"
+                    tabindex="-1">Nothing personal leaves</button>
+        </div>
+
+        <div class="tab-stack">
+        <div class="tab-panel" id="panel-ask" role="tabpanel" aria-labelledby="tab-ask">
+          <div class="panel-grid">
+            <div class="panel-side">
+              <p class="panel-label">A student, on their own</p>
+              <p class="stu-line anim" style="--d:100">I get that the writer uses a metaphor here.</p>
+              <p class="stu-line anim" style="--d:800; margin-top:0.7rem;">
+                <span class="hesitant">But I don&rsquo;t really know what &ldquo;tone&rdquo; means in this question.</span><span class="caret"></span>
+              </p>
+            </div>
+            <div class="panel-out">
+              <p class="panel-label">What the teacher sees</p>
+              <div class="out-head anim" style="--d:1500"><span>Needs support &middot; 9 English</span><span>4 flagged</span></div>
+              <div class="quote-row anim" style="--d:1800">
+                <p class="who">Student 04</p>
+                <p class="what">&ldquo;I don&rsquo;t really know what &lsquo;tone&rsquo; means in this question.&rdquo;</p>
+              </div>
+              <div class="quote-row anim" style="--d:2100">
+                <p class="who">Student 11</p>
+                <p class="what">&ldquo;I picked the answer but I&rsquo;m not sure why it&rsquo;s right.&rdquo;</p>
+              </div>
+            </div>
           </div>
-          <div class="diff-card">
-            <div class="diff-num">02</div>
-            <div class="diff-title">Student-Facing Pedagogy</div>
-            <p class="diff-body">Built on co-regulation and self-regulated learning, not productivity shortcuts, for students and the teachers guiding them. Designed for how people actually learn together.</p>
+          <div class="panel-caption">
+            <h3>The question they would never raise in front of the class.</h3>
+            <p>Students rarely put their hand up to say they&rsquo;re lost. RELAY gives them somewhere to say it plainly, and passes it on in their own words, so it reaches the person who can actually help.</p>
           </div>
-          <div class="diff-card">
-            <div class="diff-num">03</div>
-            <div class="diff-title">Cross-Curricular, K–12</div>
-            <p class="diff-body">One consistent tool across every subject and year level. Not locked to maths or a single subject area.</p>
+        </div>
+
+        <div class="tab-panel" id="panel-home" role="tabpanel" aria-labelledby="tab-home" hidden>
+          <div class="panel-grid">
+            <div class="panel-side">
+              <p class="panel-label">Wednesday, 9:40pm</p>
+              <div class="desk anim" style="--d:100">
+                <div class="desk-lamp" aria-hidden="true"></div>
+                <p class="desk-time">Homework, question 4</p>
+                <p class="stu-line anim" style="--d:600">I got an answer but I don&rsquo;t know if the method is right.</p>
+                <p class="stu-line anim" style="--d:1400">
+                  <span class="hesitant">I think I just copied the example.</span><span class="caret"></span>
+                </p>
+              </div>
+              <p class="side-note anim" style="--d:2000">
+                No teacher awake. No hand to put up. Nowhere else this goes.
+              </p>
+            </div>
+            <div class="panel-out">
+              <p class="panel-label">Thursday, 8:15am</p>
+              <div class="out-head anim" style="--d:2300"><span>Before period 1 &middot; 9 Maths</span><span>6 flagged</span></div>
+              <div class="quote-row anim" style="--d:2600">
+                <p class="who">Student 07 &middot; last night</p>
+                <p class="what">&ldquo;I think I just copied the example.&rdquo;</p>
+              </div>
+              <div class="meter anim" style="--d:2900">
+                <p class="meter-label">Same issue, same question</p>
+                <div class="meter-track"><span class="meter-fill grow" style="--d:3100; width:64%"></span></div>
+                <p class="meter-val">6 of 28 students</p>
+              </div>
+              <p class="action-note anim" style="--d:3500">
+                The teacher walks in already knowing what to open with.
+              </p>
+            </div>
           </div>
-          <div class="diff-card">
-            <div class="diff-num">04</div>
-            <div class="diff-title">School-Context Customisation</div>
-            <p class="diff-body">Shaped to your curriculum, ethos, and student cohort, not a one-size-fits-all subscription.</p>
+          <div class="panel-caption">
+            <h3>The moment nobody sees.</h3>
+            <p>
+              Most confusion happens at a kitchen table at night, hours from the
+              nearest teacher. RELAY catches it there and has it waiting before
+              period one, so the lesson starts where the class actually is.
+            </p>
           </div>
-          <div class="diff-card">
-            <div class="diff-num">05</div>
-            <div class="diff-title">AI Implementation Strategy</div>
-            <p class="diff-body">The plan behind the tool. Guardrailed AI outperforms unrestricted AI by 127% (<a href="https://doi.org/10.1073/pnas.2422633122" target="_blank" rel="noopener">Bastani et al., 2025</a>). The variable is always design.</p>
+        </div>
+
+        <div class="tab-panel" id="panel-live" role="tabpanel" aria-labelledby="tab-live" hidden>
+          <div class="panel-grid">
+            <div class="panel-side">
+              <p class="panel-label">Tuesday, period 3</p>
+              <p class="stu-line anim" style="--d:100">The class is working through the set task.</p>
+              <p class="stu-line anim" style="--d:900; color:var(--relay-grey); font-size:13.5px;">
+                Nothing is marked. Nothing is submitted. Understanding is simply
+                becoming visible as it happens.
+              </p>
+            </div>
+            <div class="panel-out">
+              <p class="panel-label">Live, mid-lesson</p>
+              <div class="class-grid">
+                <span class="pupil anim" style="--d:300"></span>
+                <span class="pupil anim" style="--d:345"></span>
+                <span class="pupil anim" style="--d:390"></span>
+                <span class="pupil flag anim" style="--d:435"></span>
+                <span class="pupil anim" style="--d:480"></span>
+                <span class="pupil anim" style="--d:525"></span>
+                <span class="pupil anim" style="--d:570"></span>
+                <span class="pupil anim" style="--d:615"></span>
+                <span class="pupil anim" style="--d:660"></span>
+                <span class="pupil flag anim" style="--d:705"></span>
+                <span class="pupil anim" style="--d:750"></span>
+                <span class="pupil anim" style="--d:795"></span>
+                <span class="pupil anim" style="--d:840"></span>
+                <span class="pupil anim" style="--d:885"></span>
+                <span class="pupil flag anim" style="--d:930"></span>
+                <span class="pupil anim" style="--d:975"></span>
+                <span class="pupil anim" style="--d:1020"></span>
+                <span class="pupil anim" style="--d:1065"></span>
+                <span class="pupil anim" style="--d:1110"></span>
+                <span class="pupil anim" style="--d:1155"></span>
+                <span class="pupil anim" style="--d:1200"></span>
+                <span class="pupil flag anim" style="--d:1245"></span>
+                <span class="pupil anim" style="--d:1290"></span>
+                <span class="pupil anim" style="--d:1335"></span>
+              </div>
+              <div class="legend anim" style="--d:1700">
+                <span><i style="background:#C9D3E6"></i>Tracking</span>
+                <span><i style="background:#C4552A"></i>Needs a moment</span>
+              </div>
+            </div>
+          </div>
+          <div class="panel-caption">
+            <h3>Before the test, not after it.</h3>
+            <p>Confusion surfaces while there is still a lesson left to change. Not in a summative result three weeks later, when the chance to do anything about it has already gone.</p>
+          </div>
+        </div>
+        <div class="tab-panel" id="panel-nograde" role="tabpanel" aria-labelledby="tab-nograde" hidden>
+          <div class="panel-grid">
+            <div class="panel-side">
+              <p class="panel-label">What the student is asked</p>
+              <p class="stu-line anim" style="--d:100">Explain your reasoning in your own words.</p>
+              <p class="stu-line anim" style="--d:700; margin-top:0.8rem; color:var(--relay-grey); font-size:13.5px;">
+                No mark is attached. Nothing here counts towards a report.
+                There is no one to perform for.
+              </p>
+            </div>
+            <div class="panel-out">
+              <p class="panel-label">What comes back</p>
+              <div class="grade-row anim" style="--d:1100"><span>Feedback</span><b>Returned</b></div>
+              <div class="grade-row anim" style="--d:1400"><span>Reasoning captured</span><b>In their words</b></div>
+              <div class="grade-row anim" style="--d:1700"><span>Teacher notified</span><b>Yes</b></div>
+              <div class="grade-row anim" style="--d:2000"><span>Grade</span><span><span class="strike" style="--d:2500">A&ndash;E</span> <span class="grade-none">none, by design</span></span></div>
+            </div>
+          </div>
+          <div class="panel-caption">
+            <h3>Remove the mark and you remove the performance.</h3>
+            <p>A graded task teaches students to look like they understand. RELAY is purely formative, so honesty costs them nothing, and honesty is the only thing that makes the confusion visible in the first place.</p>
+          </div>
+        </div>
+        <div class="tab-panel" id="panel-decide" role="tabpanel" aria-labelledby="tab-decide" hidden>
+          <div class="panel-grid">
+            <div class="panel-side">
+              <p class="panel-label">RELAY has surfaced something</p>
+              <p class="stu-line anim" style="--d:100">Four students are stuck on the same idea.</p>
+              <p class="stu-line anim" style="--d:700; margin-top:0.8rem; color:var(--relay-grey); font-size:13.5px;">
+                RELAY reports it. It does not decide what to do about it,
+                and it never contacts a student on your behalf.
+              </p>
+            </div>
+            <div class="panel-out">
+              <p class="panel-label">Yours to choose</p>
+              <div class="action anim" style="--d:1100">Reteach it to the whole class <span class="pick">Your call</span></div>
+              <div class="action anim" style="--d:1400">Pull the four aside <span class="pick">Your call</span></div>
+              <div class="action anim" style="--d:1700">Leave it, you know this cohort <span class="pick">Your call</span></div>
+              <p class="action-note anim" style="--d:2100">RELAY stops here. That is a deliberate design decision, not a missing feature.</p>
+            </div>
+          </div>
+          <div class="panel-caption">
+            <h3>It informs. You decide.</h3>
+            <p>RELAY never recommends an action or replaces a professional judgement. It tells you what it saw and stops. The teacher knows the child, the room and the week, and remains the one who decides.</p>
+          </div>
+        </div>
+        <div class="tab-panel" id="panel-yours" role="tabpanel" aria-labelledby="tab-yours" hidden>
+          <div class="panel-grid">
+            <div class="panel-side">
+              <p class="panel-label">What you give it</p>
+              <p class="src-chip anim" style="--d:100">Your syllabus</p>
+              <p class="src-chip anim" style="--d:300">Your class notes</p>
+              <p class="src-chip anim" style="--d:500">Your answer sheet</p>
+              <p class="src-chip anim" style="--d:700">Your rubric</p>
+              <p class="stu-line anim" style="--d:1000; margin-top:0.9rem; color:var(--relay-grey); font-size:13.5px;">
+                Nothing from the open internet. Nothing from another school.
+              </p>
+            </div>
+            <div class="panel-out">
+              <p class="panel-label">What it works from</p>
+              <div class="grade-row anim" style="--d:1300"><span>Marking standard</span><b>Yours</b></div>
+              <div class="grade-row anim" style="--d:1600"><span>Wording and terminology</span><b>Yours</b></div>
+              <div class="grade-row anim" style="--d:1900"><span>Guardrails</span><b>Yours to set</b></div>
+              <p class="action-note anim" style="--d:2300">
+                The constraint is deliberate. The configuration is the school&rsquo;s.
+              </p>
+            </div>
+          </div>
+          <div class="panel-caption">
+            <h3>The guardrails are yours to set.</h3>
+            <p>Guardrailed does not mean prescriptive. RELAY only ever draws on what your teachers provide, and the school decides how tightly it is drawn, which is exactly why it isn&rsquo;t an off-the-shelf subscription.</p>
+          </div>
+        </div>
+        <div class="tab-panel" id="panel-private" role="tabpanel" aria-labelledby="tab-private" hidden>
+          <div class="panel-grid">
+            <div class="panel-side">
+              <p class="panel-label">Before it leaves the school</p>
+              <p class="stu-line anim" style="--d:100">Every student is a nickname.</p>
+              <p class="stu-line anim" style="--d:700; margin-top:0.8rem; color:var(--relay-grey); font-size:13.5px;">
+                No names, no identifiers, nothing that could point back to a child.
+              </p>
+            </div>
+            <div class="panel-out">
+              <p class="panel-label">What we hold</p>
+              <div class="swap anim" style="--d:1100"><span class="gone"><span class="redact" style="--d:1500">Amelia Nguyen</span></span><span class="arrow">&rarr;</span><span class="kept">Student 04</span></div>
+              <div class="swap anim" style="--d:1400"><span class="gone">Date of birth</span><span class="arrow">&rarr;</span><span class="kept">Not collected</span></div>
+              <div class="swap anim" style="--d:1700"><span class="gone">Contact details</span><span class="arrow">&rarr;</span><span class="kept">Not collected</span></div>
+              <div class="swap anim" style="--d:2000"><span class="gone">Model training</span><span class="arrow">&rarr;</span><span class="kept">Never</span></div>
+            </div>
+          </div>
+          <div class="panel-caption">
+            <h3>No personal information. No model training.</h3>
+            <p>Student data is never used to train models, and no personally identifying information leaves your school. If your ICT manager wants the detail before the second meeting, they should have it.</p>
+          </div>
+        </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ EVIDENCE ══ -->
+    <section class="evidence-section" id="evidence">
+      <div class="container">
+        <p class="section-eyebrow" data-reveal>The research underneath</p>
+        <h2 class="section-heading" data-reveal>Every design decision<br>traces to a finding.</h2>
+        <p class="section-sub" data-reveal>
+          RELAY is built from published learning science rather than from
+          assumptions about what AI should do in a classroom. Each choice below
+          links to the work it came from.
+        </p>
+
+        <div class="ev-list">
+
+          <details class="ev-item">
+            <summary>
+              <span class="ev-claim">No grade, no judgment</span>
+              <span class="ev-src">Black &amp; Wiliam, 1998</span>
+            </summary>
+            <div class="ev-body">
+              <p>
+                Formative assessment produces some of the largest measured gains
+                in education, but only where feedback is separated from grading.
+                Attach a mark and students attend to the mark rather than the
+                feedback. Removing the grade is what makes the feedback do any work.
+              </p>
+              <p class="ev-cite">Black, P. &amp; Wiliam, D. (1998). <em>Assessment and Classroom Learning.</em></p>
+            </div>
+          </details>
+
+          <details class="ev-item">
+            <summary>
+              <span class="ev-claim">Built to make itself unnecessary</span>
+              <span class="ev-src">Zimmerman, 2002 &middot; Torrington et al., 2024</span>
+            </summary>
+            <div class="ev-body">
+              <p>
+                Self-regulated learning is learnable, not innate. Students move
+                towards it through scaffolding they eventually stop needing.
+                RELAY is designed as that scaffold: guided questioning early,
+                withdrawn as a student demonstrates they can do the work themselves.
+              </p>
+              <p class="ev-cite">Zimmerman, B. (2002). <em>Becoming a Self-Regulated Learner.</em> Torrington et al. (2024).</p>
+            </div>
+          </details>
+
+          <details class="ev-item">
+            <summary>
+              <span class="ev-claim">The teacher stays in the loop</span>
+              <span class="ev-src">McCaslin &amp; Hickey, 2001</span>
+            </summary>
+            <div class="ev-body">
+              <p>
+                Co-regulation describes the adult support that precedes
+                self-regulation. It is a relationship, not a feature. This is why
+                RELAY routes a student&rsquo;s confusion to their teacher rather
+                than resolving it alone: the point is to prompt the conversation,
+                not to replace it.
+              </p>
+              <p class="ev-cite">McCaslin, M. &amp; Hickey, D. (2001). <em>Self-regulated learning and academic achievement.</em></p>
+            </div>
+          </details>
+
+          <details class="ev-item">
+            <summary>
+              <span class="ev-claim">Why the relationship is the target</span>
+              <span class="ev-src">Van Bergen et al., 2023 &middot; Burns et al., 2022</span>
+            </summary>
+            <div class="ev-body">
+              <p>
+                Student-teacher relationship quality predicts engagement,
+                behaviour and achievement. It is also uneven: a substantial
+                minority of students describe their relationship with their
+                teacher as difficult or distant. Making a student&rsquo;s thinking
+                visible gives a teacher something concrete to respond to.
+              </p>
+              <p class="ev-cite">Van Bergen et al. (2023). Burns et al. (2022), <em>Journal of Adolescence.</em></p>
+            </div>
+          </details>
+
+          <details class="ev-item">
+            <summary>
+              <span class="ev-claim">Guardrails change the outcome</span>
+              <span class="ev-src">Bastani et al., PNAS 2025</span>
+            </summary>
+            <div class="ev-body">
+              <p>
+                In a randomised trial with nearly a thousand secondary students,
+                a carefully designed, guardrailed tool produced a substantial
+                lift in performance. Unrestricted access did not. How a tool is
+                designed to behave with a student decides whether it helps.
+              </p>
+              <p class="ev-cite">
+                Bastani et al. (2025).
+                <a href="https://doi.org/10.1073/pnas.2422633122" target="_blank" rel="noopener">PNAS</a>
+              </p>
+            </div>
+          </details>
+
+        </div>
+
+        <div class="ev-cta">
+          <p class="body-text" style="color:var(--relay-grey); max-width:52ch; margin-bottom:1.2rem;">
+            The full argument, including the evidence that did not make the final
+            cut, is set out in our position paper.
+          </p>
+          <a class="btn-ghost" href="contact.html">Request the position paper</a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ══ TRUST ══ -->
+    <section class="trust-section" id="trust">
+      <div class="container">
+        <p class="section-eyebrow" data-reveal>Safe with student data</p>
+        <h2 class="section-heading" data-reveal>Built for a school<br>to say yes to.</h2>
+        <p class="section-sub" data-reveal>
+          The questions an ICT manager or a deputy principal will ask, answered
+          before they have to ask them.
+        </p>
+        <div class="trust-grid grid-3">
+          <div class="trust-card" data-reveal style="--i:0">
+            <h3>Your data doesn&rsquo;t train our models</h3>
+            <p>Nothing a student or teacher writes in RELAY is used to train a model. Not by us, not by anyone downstream.</p>
+          </div>
+          <div class="trust-card" data-reveal style="--i:1">
+            <h3>No personally identifying information</h3>
+            <p>Students are nicknames. No names, dates of birth or contact details leave your school.</p>
+          </div>
+          <div class="trust-card" data-reveal style="--i:2">
+            <h3>Only your classroom&rsquo;s material</h3>
+            <p>RELAY works from the syllabus, notes and rubrics your teachers supply, not a generic model answering from the open internet.</p>
           </div>
         </div>
       </div>
@@ -722,13 +1508,12 @@
         <div class="pilot-inner">
 
           <div class="pilot-left">
-            <p class="section-eyebrow">Pilot programme</p>
-            <h2 class="section-heading">Apply as a<br>pilot school.</h2>
-            <p class="section-sub">
-              We're partnering with a small number of K–12 independent schools
-              for our initial pilot. Pilot schools work directly with the EQV
-              team through Steps 1–3 of our framework at a discounted rate,
-              with pricing agreed before any work begins.
+            <p class="section-eyebrow" data-reveal>Pilot programme</p>
+            <h2 class="section-heading" data-reveal>See if RELAY<br>fits your school.</h2>
+            <p class="section-sub" data-reveal>
+              We&rsquo;re working with a small number of K&ndash;12 schools on our first
+              pilot. Pilot schools work directly with the EQV team at a discounted
+              rate, with pricing agreed before any work begins.
             </p>
             <p class="section-sub" style="margin-bottom:0;">
               We're looking for schools that:
@@ -743,18 +1528,27 @@
 
           <div class="pilot-right">
             <div class="apply-cta">
-              <p class="form-title">Interested in becoming a pilot school?</p>
-              <p class="form-sub">Contact us for more information.</p>
-              <a class="btn-primary" href="contact.html">Contact us</a>
+              <p class="form-title">Start a conversation</p>
+              <p class="form-sub">Tell us about your school and we&rsquo;ll come back to you. No form to fill in beyond a name and an email.</p>
+              <a class="btn-primary" href="contact.html">Talk to us about a pilot</a>
             </div>
           </div>
 
         </div>
       </div>
     </section>
+    </main>
 
-    <footer class="site-footer container">
-      © 2026 Esse Quam Videri Group Pty. Limited
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <span>&copy; 2026 Esse Quam Videri Group Pty. Limited</span>
+        <span class="footer-links">
+          <a href="privacy.html">Privacy</a>
+          <a href="terms.html">Terms of Use</a>
+          <a class="footer-social" href="https://www.linkedin.com/company/esse-quam-videri-group/" target="_blank" rel="noopener" aria-label="EQV Group on LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05a3.74 3.74 0 0 1 3.37-1.85c3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg></a>
+        </span>
+      </div>
     </footer>
 
   </div><!-- /.page-content -->
@@ -764,11 +1558,11 @@
     /* ── Handwriting-cycle intro ──
        Step through three handwritten treatments of "Relay", then settle
        on the real Inter wordmark with its squiggle drawing on underneath.
-       Runs once, ~3.6s total. Swaps are hard cuts — only the first word
+       Runs once, ~3.6s total. Swaps are hard cuts : only the first word
        gets a soft entrance (see the wordmarkEntrance keyframe in <style>).
 
        The handwritten webfonts need to actually finish downloading before
-       we start swapping classes — otherwise each beat renders in the
+       we start swapping classes : otherwise each beat renders in the
        browser's fallback cursive font for its entire on-screen window
        (they never get a chance to repaint with the real font before the
        next beat hides them), which looks like the same generic font
@@ -799,19 +1593,91 @@
     const fontsReady = Promise.all(wordmarkFonts.map(f => document.fonts.load(f)));
     const safetyTimeout = new Promise(resolve => setTimeout(resolve, 1200));
 
-    Promise.race([fontsReady, safetyTimeout]).then(runWordmarkCycle);
+    /* Skip the handwriting intro for anyone who has asked their OS to
+       reduce motion : settle straight on the real wordmark. */
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      var settled = document.getElementById('cwFinal');
+      if (settled) settled.classList.add('show');
+      var sq = document.getElementById('wordmarkSquiggle');
+      if (sq) sq.classList.add('draw');
+    } else {
+      Promise.race([fontsReady, safetyTimeout]).then(runWordmarkCycle);
+    }
 
-    /* ── Scroll-triggered step reveals ── */
-    const steps = document.querySelectorAll('.step');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
+    /* ── Tabs ──
+       Standard tablist keyboard model: arrows move between tabs, Home
+       and End jump to the ends. Switching a tab re-arms its panel
+       animation so the sequence plays again rather than showing a
+       finished still. */
+    (function () {
+      var tablist = document.querySelector('[role="tablist"]');
+      if (!tablist) return;
+      var tabs = Array.prototype.slice.call(tablist.querySelectorAll('[role="tab"]'));
+
+      function panelFor(tab) {
+        return document.getElementById(tab.getAttribute('aria-controls'));
+      }
+
+      function select(tab, focus) {
+        tabs.forEach(function (t) {
+          var on = t === tab;
+          t.setAttribute('aria-selected', String(on));
+          t.tabIndex = on ? 0 : -1;
+          var panel = panelFor(t);
+          if (!panel) return;
+          panel.hidden = !on;
+          panel.classList.remove('is-live');
+        });
+        var live = panelFor(tab);
+        if (live) {
+          /* Force a reflow so removing and re-adding the class actually
+             restarts the CSS animations. */
+          void live.offsetWidth;
+          live.classList.add('is-live');
         }
+        if (focus) tab.focus();
+
+        /* Only nudge the row when the tab is actually off-screen. Scrolling
+           on every click was what produced the sideways slide. */
+        var rowLeft = tablist.scrollLeft;
+        var rowRight = rowLeft + tablist.clientWidth;
+        if (tab.offsetLeft < rowLeft) {
+          tablist.scrollLeft = Math.max(0, tab.offsetLeft - 16);
+        } else if (tab.offsetLeft + tab.offsetWidth > rowRight) {
+          tablist.scrollLeft = tab.offsetLeft + tab.offsetWidth - tablist.clientWidth + 16;
+        }
+      }
+
+      tabs.forEach(function (tab, i) {
+        tab.addEventListener('click', function () { select(tab, false); });
+        tab.addEventListener('keydown', function (e) {
+          var next = null;
+          if (e.key === 'ArrowRight') next = tabs[(i + 1) % tabs.length];
+          else if (e.key === 'ArrowLeft') next = tabs[(i - 1 + tabs.length) % tabs.length];
+          else if (e.key === 'Home') next = tabs[0];
+          else if (e.key === 'End') next = tabs[tabs.length - 1];
+          if (!next) return;
+          e.preventDefault();
+          select(next, true);
+        });
       });
-    }, { threshold: 0.15 });
-    steps.forEach(s => observer.observe(s));
+
+      /* Don't play the first panel until it's actually on screen :
+         otherwise the animation is over before anyone scrolls to it. */
+      var first = panelFor(tabs[0]);
+      if (first && 'IntersectionObserver' in window) {
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (!entry.isIntersecting) return;
+            first.classList.add('is-live');
+            io.disconnect();
+          });
+        }, { threshold: 0.25 });
+        io.observe(first);
+      } else if (first) {
+        first.classList.add('is-live');
+      }
+    })();
   </script>
 </body>
 </html>

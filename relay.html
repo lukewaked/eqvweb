@@ -50,7 +50,8 @@
       --relay-grey:      var(--ink-muted);
       --relay-faint:     var(--grey);
       --relay-blue:      var(--c-relay);
-      --relay-coral-dim: #A8431F;
+      --relay-coral-dim: var(--c-relay);   /* structural accents */
+      --relay-alert:     #A8431F;          /* only where it means "needs attention" */
       --relay-accent:    var(--navy);
     }
 
@@ -72,17 +73,6 @@
       overflow: hidden;
     }
 
-    /* Subtle radial glow behind hero text */
-    .relay-hero::before {
-      content: '';
-      position: absolute;
-      top: -10%;
-      left: -5%;
-      width: 60%;
-      height: 80%;
-      background: radial-gradient(ellipse at 30% 40%, rgba(184,72,42,0.07) 0%, transparent 70%);
-      pointer-events: none;
-    }
 
     .relay-wordmark {
       position: relative;
@@ -565,7 +555,7 @@
     }
 
     .quote-row {
-      border-left: 3px solid var(--relay-coral-dim);
+      border-left: 3px solid var(--relay-alert);
       padding: 0.15rem 0 0.15rem 0.85rem;
       margin-bottom: 0.9rem;
       border-radius: 0;
@@ -595,7 +585,7 @@
       border-radius: 50%;
       background: #C9D3E6;
     }
-    .pupil.flag { background: var(--relay-coral-dim); }
+    .pupil.flag { background: var(--relay-alert); }
 
     .legend {
       display: flex;
@@ -622,7 +612,7 @@
       color: #4A5878;
     }
     .grade-row b { color: var(--relay-card-text); font-weight: 500; }
-    .grade-none { color: var(--relay-coral-dim);  }
+    .grade-none { color: var(--relay-alert);  }
 
     .action {
       display: flex;
@@ -681,7 +671,7 @@
       border: 1px solid var(--relay-line);
       border-radius: 12px;
       padding: 1.1rem 1.2rem;
-      background: #FFF7F2;
+      background: var(--cream);
       overflow: hidden;
     }
     .desk-lamp {
@@ -689,7 +679,7 @@
       top: -60px; right: -40px;
       width: 170px; height: 170px;
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(245,130,79,0.22) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(168,67,31,0.10) 0%, transparent 70%);
       animation: lampGlow 5s ease-in-out infinite;
     }
     @keyframes lampGlow {
@@ -1198,7 +1188,7 @@
               </div>
               <div class="legend anim" style="--d:1700">
                 <span><i style="background:#C9D3E6"></i>Tracking</span>
-                <span><i style="background:#C4552A"></i>Needs a moment</span>
+                <span><i style="background:#A8431F"></i>Needs a moment</span>
               </div>
             </div>
           </div>

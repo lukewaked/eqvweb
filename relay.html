@@ -37,80 +37,29 @@
     ═══════════════════════════════════════════════ */
 
     :root {
-      /* Deepened from #3D5A88. The old navy was washed out: it read as
-         soft rather than serious, and it gave white text nowhere to go.
-         A darker ground also lets the coral actually register. */
-      --relay-bg:        #1B406F;
-      --relay-deep:      #132F53;
-      --relay-surface:   #24528C;
-      --relay-line:      rgba(255,255,255,0.14);
-      --relay-card:      #EDF1F8;
-      --relay-card-text: #14213D;
-      --relay-white:     #ffffff;
-      --relay-grey:      rgba(255,255,255,0.72);
-      --relay-faint:     rgba(255,255,255,0.62);
-      --relay-blue:      #F5824F;
+      /* Light ground. RELAY now reads as part of the same site rather than
+         a dark room you walk into, and long copy is far easier on the eye.
+         One navy band is kept for rhythm. */
+      --relay-bg:        #ffffff;
+      --relay-deep:      var(--navy-deep);
+      --relay-surface:   var(--navy);      /* the one dark band */
+      --relay-line:      var(--rule);
+      --relay-card:      var(--cream);
+      --relay-card-text: var(--ink);
+      --relay-white:     var(--ink);       /* primary text */
+      --relay-grey:      var(--ink-muted);
+      --relay-faint:     var(--grey);
+      --relay-blue:      var(--c-relay);
       --relay-coral-dim: #A8431F;
-      --relay-accent:    #ffffff;
+      --relay-accent:    var(--navy);
     }
 
-    /* Override body for dark world */
+    /* RELAY shares the site ground now. */
     body {
       background: var(--relay-bg);
       color: var(--relay-white);
     }
 
-    /* Nav override: keep it but tint it to match the RELAY world */
-    .site-nav {
-      background: rgba(27, 64, 111, 0.94) !important;
-      border-bottom-color: var(--relay-line) !important;
-    }
-    /* The suite dropdown is a light panel on light pages; on RELAY it
-       has to invert or it punches a white hole in the dark nav. */
-    .nav-submenu {
-      background: var(--relay-surface);
-      border-color: var(--relay-line);
-      box-shadow: 0 14px 40px rgba(4, 16, 34, 0.45);
-    }
-    .nav-submenu a:hover { background: rgba(255,255,255,0.08); }
-    .nav-sub-name { color: var(--relay-white); }
-    .nav-sub-desc { color: var(--relay-faint); }
-    .nav-caret { color: var(--relay-grey); }
-    .nav-caret[aria-expanded="true"] { color: var(--relay-blue); }
-    .skip-link { background: var(--relay-blue); color: #2A1206; }
-    :where(a, button, summary, [tabindex]):focus-visible { outline-color: var(--relay-blue); }
-    .brand-eqv  { color: rgba(255,255,255,0.6) !important; }
-    .brand-group { color: rgba(255,255,255,0.7) !important; }
-    .brand-relay { color: #fff !important; }
-    .brand-relay-by { color: rgba(255,255,255,0.6) !important; }
-    .nav-link   { color: rgba(255,255,255,0.72) !important; }
-    .nav-link:hover,
-    .nav-link.active { color: #fff !important; }
-    .nav-link::after { background: #fff !important; }
-    .nav-hamburger span { background: #fff !important; }
-
-    /* Mobile nav dropdown: shared.css defaults the open dropdown to a
-       white background, which combined with the near-white nav-link
-       colour above makes the mobile menu unreadable on this page. Tint
-       the dropdown to match the RELAY world instead. */
-    @media (max-width: 640px) {
-      .nav-links {
-        background: var(--relay-surface) !important;
-        border-bottom-color: rgba(255,255,255,0.1) !important;
-      }
-      .nav-link {
-        border-bottom-color: rgba(255,255,255,0.12) !important;
-      }
-    }
-    .footer-social { color: rgba(255,255,255,0.72); }
-    .footer-social:hover { color: #fff; }
-    .footer-links a { color: rgba(255,255,255,0.72); }
-    .footer-links a:hover { color: #fff; border-bottom-color: rgba(255,255,255,0.6); }
-    .site-footer {
-      background: var(--relay-surface);
-      color: rgba(255,255,255,0.72);
-      border-top-color: rgba(255,255,255,0.16);
-    }
 
     /* ── HERO ── */
     .relay-hero {
@@ -131,7 +80,7 @@
       left: -5%;
       width: 60%;
       height: 80%;
-      background: radial-gradient(ellipse at 30% 40%, rgba(58,107,196,0.18) 0%, transparent 70%);
+      background: radial-gradient(ellipse at 30% 40%, rgba(184,72,42,0.07) 0%, transparent 70%);
       pointer-events: none;
     }
 
@@ -211,16 +160,14 @@
       text-wrap: balance;
     }
     .relay-hero-tagline em {
-      font-style: italic;
       color: var(--relay-blue);
     }
 
     /* The specific RELAY claim, sitting under the broader promise. */
     .relay-hero-sub {
       font-family: var(--font-display);
-      font-style: italic;
       font-size: clamp(17px, 2.2vw, 22px);
-      color: rgba(255,255,255,0.78);
+      color: var(--ink-muted);
       margin-bottom: 2.2rem;
       max-width: 34ch;
       line-height: 1.4;
@@ -239,7 +186,7 @@
       font-family: var(--font-body);
       font-size: 15.5px;
       font-weight: 400;
-      color: rgba(255,255,255,0.72);
+      color: var(--ink-muted);
       line-height: 1.8;
       max-width: 52ch;
       margin-bottom: 3rem;
@@ -254,8 +201,9 @@
 
     .btn-primary {
       display: inline-block;
-      background: var(--relay-white);
-      color: var(--relay-surface);
+      background: var(--c-relay);
+      color: #fff;
+      border-radius: 999px;
       font-family: var(--font-body);
       font-size: 13px;
       font-weight: 500;
@@ -265,36 +213,37 @@
       padding: 0.85rem 2rem;
       transition: background 0.2s, color 0.2s;
     }
-    .btn-primary:hover {
-      background: var(--relay-blue);
-      color: #fff;
-    }
+    .btn-primary:hover { background: var(--navy-deep); }
 
     .btn-ghost {
       display: inline-block;
-      color: rgba(255,255,255,0.6);
+      color: var(--ink-muted);
       font-family: var(--font-body);
       font-size: 13px;
       font-weight: 400;
       letter-spacing: 0.08em;
       text-transform: uppercase;
       text-decoration: none;
-      border-bottom: 1px solid rgba(255,255,255,0.25);
+      border-bottom: 1px solid var(--light-grey);
       padding-bottom: 2px;
       transition: color 0.2s, border-color 0.2s;
     }
     .btn-ghost:hover {
-      color: #fff;
-      border-color: #fff;
+      color: var(--c-relay);
+      border-color: var(--c-relay);
     }
 
     /* ── STATS BAND ── */
     .stats-band {
-      background: var(--relay-surface);
-      padding: 3rem 0;
-      border-top: 1px solid rgba(255,255,255,0.07);
-      border-bottom: 1px solid rgba(255,255,255,0.07);
+      background: var(--c-relay);
+      padding: 3.2rem 0;
     }
+    .stats-band .stat-number { color: #fff; }
+    .stats-band .stat-label  { color: rgba(255,255,255,0.82); }
+    .stats-band .stats-note  { color: rgba(255,255,255,0.78); }
+    .stats-band .stats-note a { color: #A9C8EC; text-decoration-color: rgba(169,200,236,0.5); }
+    .stats-band .stat-divider { background: rgba(255,255,255,0.22); }
+    .stats-band .stat-number--down { color: rgba(255,255,255,0.68); }
 
     .stats-inner {
       display: flex;
@@ -306,7 +255,7 @@
     .stat-divider {
       width: 1px;
       align-self: stretch;
-      background: rgba(255,255,255,0.18);
+      background: var(--light-grey);
     }
 
     .stat-item { text-align: center; }
@@ -336,7 +285,7 @@
       margin-bottom: 0.4rem;
     }
 
-    .stat-number--down { color: rgba(255,255,255,0.62); }
+    .stat-number--down { color: var(--grey); }
 
     .stat-label {
       font-size: 13.5px;
@@ -349,28 +298,25 @@
       font-size: 12px;
       color: var(--relay-faint);
       letter-spacing: 0.04em;
-      font-style: italic;
       margin-top: 0.4rem;
     }
     .stat-source a {
       color: inherit;
       text-decoration: underline;
-      text-decoration-color: rgba(255,255,255,0.25);
+      text-decoration-color: var(--light-grey);
       transition: color 0.2s;
     }
     .stat-source a:hover {
-      color: rgba(255,255,255,0.65);
-      text-decoration-color: rgba(255,255,255,0.5);
+      color: var(--ink);
+      text-decoration-color: var(--grey);
     }
     .diff-body a {
       color: inherit;
       text-decoration: underline;
-      text-decoration-color: rgba(255,255,255,0.45);
+      text-decoration-color: var(--grey-soft);
       transition: color 0.2s;
     }
-    .diff-body a:hover {
-      color: #fff;
-    }
+    .diff-body a:hover { color: var(--c-relay); }
 
     @media (max-width: 640px) {
       .stats-inner { flex-direction: column; gap: 1.8rem; }
@@ -383,13 +329,12 @@
       letter-spacing: 0.22em;
       text-transform: uppercase;
       /* Lighter than --relay-blue: at 11px the coral alone was short of AA. */
-      color: #FFB08A;
+      color: var(--terracotta);
       margin-bottom: 1.2rem;
     }
 
     .section-heading {
       font-family: var(--font-display);
-      font-style: italic;
       font-size: clamp(28px, 4.5vw, 46px);
       font-weight: 400;
       color: var(--relay-white);
@@ -443,7 +388,6 @@
     .ev-item[open] summary::after { content: '\2013'; }
     .ev-claim {
       font-family: var(--font-display);
-      font-style: italic;
       font-size: clamp(17px, 2.1vw, 21px);
       color: var(--relay-white);
     }
@@ -454,7 +398,7 @@
     }
     .ev-body { padding: 0 2rem 1.5rem 0; max-width: 62ch; }
     .ev-body p { font-size: 14.5px; line-height: 1.8; color: var(--relay-grey); margin-bottom: 0.8rem; }
-    .ev-cite { font-size: 12.5px; color: var(--relay-faint); font-style: italic; }
+    .ev-cite { font-size: 12.5px; color: var(--relay-faint);  }
     .ev-cite a { color: var(--relay-blue); }
     .ev-cta { margin-top: 2.6rem; }
 
@@ -465,14 +409,13 @@
     }
     .trust-grid { margin-top: 2.5rem; }
     .trust-card {
-      background: rgba(255,255,255,0.05);
+      background: var(--cream);
       border: 1px solid var(--relay-line);
       border-radius: 14px;
       padding: 1.6rem 1.7rem;
     }
     .trust-card h3 {
       font-family: var(--font-display);
-      font-style: italic;
       font-size: 19px;
       font-weight: 400;
       color: var(--relay-white);
@@ -521,10 +464,10 @@
       transition: color var(--dur-fast) var(--ease),
                   border-color var(--dur-fast) var(--ease);
     }
-    .tab-btn:hover { color: var(--relay-white); }
+    .tab-btn:hover { color: var(--ink); }
     .tab-btn[aria-selected="true"] {
-      color: var(--relay-white);
-      border-bottom-color: var(--relay-blue);
+      color: var(--ink);
+      border-bottom-color: var(--c-relay);
     }
 
     .tab-panel[hidden] { display: none; }
@@ -544,7 +487,7 @@
     }
 
     .panel-side {
-      background: rgba(255,255,255,0.05);
+      background: var(--cream);
       border: 1px solid var(--relay-line);
       border-radius: 14px;
       padding: 1.5rem 1.6rem;
@@ -558,15 +501,16 @@
       font-weight: 500;
       letter-spacing: 0.16em;
       text-transform: uppercase;
-      color: #FFB08A;
+      color: var(--terracotta);
       margin-bottom: 0.9rem;
     }
 
     /* The light card is the "output": deliberately the only light
        surface on the page, so the eye goes to it. */
     .panel-out {
-      background: var(--relay-card);
-      color: var(--relay-card-text);
+      background: #fff;
+      color: var(--ink);
+      border: 1px solid var(--navy);
       border-radius: 14px;
       padding: 1.5rem 1.6rem;
       min-height: 250px;
@@ -579,7 +523,6 @@
     }
     .panel-caption h3 {
       font-family: var(--font-display);
-      font-style: italic;
       font-size: clamp(19px, 2.4vw, 25px);
       font-weight: 400;
       color: var(--relay-white);
@@ -679,7 +622,7 @@
       color: #4A5878;
     }
     .grade-row b { color: var(--relay-card-text); font-weight: 500; }
-    .grade-none { color: var(--relay-coral-dim); font-style: italic; }
+    .grade-none { color: var(--relay-coral-dim);  }
 
     .action {
       display: flex;
@@ -702,20 +645,19 @@
     .action-note {
       font-size: 12.5px;
       color: #4A5878;
-      font-style: italic;
       margin-top: 0.9rem;
       line-height: 1.6;
     }
 
     .src-chip {
       display: inline-block;
-      background: rgba(255,255,255,0.12);
-      border: 1px solid rgba(255,255,255,0.22);
+      background: #fff;
+      border: 1px solid var(--card-border);
       border-radius: 999px;
       padding: 0.35rem 0.8rem;
       font-size: 13px;
       font-weight: 500;
-      color: var(--relay-white);
+      color: var(--ink);
       margin: 0 0.4rem 0.5rem 0;
     }
     .src-chip.on { background: var(--relay-blue); border-color: var(--relay-blue); color: #2A1206; }
@@ -739,7 +681,7 @@
       border: 1px solid var(--relay-line);
       border-radius: 12px;
       padding: 1.1rem 1.2rem;
-      background: rgba(245, 130, 79, 0.07);
+      background: #FFF7F2;
       overflow: hidden;
     }
     .desk-lamp {
@@ -747,7 +689,7 @@
       top: -60px; right: -40px;
       width: 170px; height: 170px;
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(245,130,79,0.30) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(245,130,79,0.22) 0%, transparent 70%);
       animation: lampGlow 5s ease-in-out infinite;
     }
     @keyframes lampGlow {
@@ -766,7 +708,7 @@
       color: var(--relay-faint);
       line-height: 1.7;
       margin-top: 0.9rem;
-      font-style: italic;
+      
     }
 
     /* Meter: a bar that fills, rather than another line of text. */
@@ -885,20 +827,20 @@
     .diff-section {
       padding: 5rem 0;
       background: var(--relay-surface);
-      border-top: 1px solid rgba(255,255,255,0.07);
+      border-top: 1px solid var(--rule);
     }
 
     .diff-grid { margin-top: 3rem; }
 
     .diff-card {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.08);
+      background: var(--cream);
+      border: 1px solid var(--card-border);
       padding: 1.8rem;
       transition: border-color 0.2s, background 0.2s;
     }
     .diff-card:hover {
-      background: rgba(255,255,255,0.07);
-      border-color: rgba(255,255,255,0.18);
+      background: var(--rule);
+      border-color: var(--light-grey);
     }
 
     .diff-num {
@@ -911,7 +853,6 @@
 
     .diff-title {
       font-family: var(--font-display);
-      font-style: italic;
       font-size: 19px;
       color: var(--relay-white);
       margin-bottom: 0.5rem;
@@ -969,9 +910,10 @@
 
     /* Pilot CTA */
     .apply-cta {
-      background: var(--relay-surface);
-      padding: 2.5rem;
-      border: 1px solid rgba(255,255,255,0.1);
+      background: var(--cream);
+      padding: 2.2rem;
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
     }
     .apply-cta .btn-primary {
       margin-top: 0.5rem;
@@ -979,9 +921,8 @@
 
     .form-title {
       font-family: var(--font-display);
-      font-style: italic;
       font-size: 22px;
-      color: var(--relay-white);
+      color: var(--ink);
       margin-bottom: 0.4rem;
     }
 
@@ -1037,7 +978,8 @@
 </nav>
   <!-- nav:end -->
 
-  <div class="page-content">
+  <div class="page-content page-accent" style="--accent: var(--c-relay);">
+    <div class="accent-rule" aria-hidden="true"></div>
     <main id="main">
 
     <!-- ══ HERO ══ -->
@@ -1662,9 +1604,24 @@
         });
       });
 
-      /* Don't play the first panel until it's actually on screen :
+      /* Deep links: /relay.html#tab-live opens that tab directly, which is
+         what the homepage problem chips point at. */
+      var hash = (location.hash || '').replace('#', '');
+      var landed = null;
+      if (hash) {
+        landed = tabs.filter(function (t) { return t.id === hash; })[0] || null;
+        if (landed) {
+          select(landed, false);
+          setTimeout(function () {
+            var sec = document.getElementById('how');
+            if (sec) sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }, 60);
+        }
+      }
+
+      /* Don't play the first panel until it's actually on screen:
          otherwise the animation is over before anyone scrolls to it. */
-      var first = panelFor(tabs[0]);
+      var first = panelFor(landed || tabs[0]);
       if (first && 'IntersectionObserver' in window) {
         var io = new IntersectionObserver(function (entries) {
           entries.forEach(function (entry) {

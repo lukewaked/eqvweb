@@ -233,17 +233,17 @@
       border-color: var(--c-relay);
     }
 
-    /* ── STATS BAND ── */
+    /* ── STATS BAND ──
+       Cream rather than a colour block: the page stays white, and the two
+       figures carry the emphasis on their own. */
     .stats-band {
-      background: var(--c-relay);
-      padding: 3.2rem 0;
+      background: var(--cream);
+      padding: 3rem 0;
+      border-top: 1px solid var(--card-border);
+      border-bottom: 1px solid var(--card-border);
     }
-    .stats-band .stat-number { color: #fff; }
-    .stats-band .stat-label  { color: rgba(255,255,255,0.82); }
-    .stats-band .stats-note  { color: rgba(255,255,255,0.78); }
-    .stats-band .stats-note a { color: #A9C8EC; text-decoration-color: rgba(169,200,236,0.5); }
-    .stats-band .stat-divider { background: rgba(255,255,255,0.22); }
-    .stats-band .stat-number--down { color: rgba(255,255,255,0.68); }
+    .stats-band .stat-number { color: var(--c-relay); }
+    .stats-band .stat-number--down { color: var(--grey); }
 
     .stats-inner {
       display: flex;
@@ -271,7 +271,7 @@
     .stats-note a {
       color: var(--relay-blue);
       text-decoration: underline;
-      text-decoration-color: rgba(245,130,79,0.45);
+      text-decoration-color: rgba(22,74,131,0.4);
       white-space: nowrap;
     }
 
@@ -826,7 +826,6 @@
 
     .diff-section {
       padding: 5rem 0;
-      background: var(--relay-surface);
       border-top: 1px solid var(--rule);
     }
 

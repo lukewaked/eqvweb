@@ -113,10 +113,11 @@
     @media (max-height: 700px) { .scroll-cue { display: none; } }
 
     /* Adult Education sits outside the RELAY Suite, so it gets its own
-       block rather than a fourth card in the suite list. */
-    /* No top rule: the accent bar on the left is the separation now. */
+       block rather than a fourth card in the suite list. A hairline above
+       marks the break; the violet eyebrow and button carry its identity. */
     .beyond {
-      padding: 1rem 0 4rem;
+      border-top: 1px solid var(--rule);
+      padding: 3rem 0 4rem;
     }
     .beyond-inner {
       display: grid;
@@ -165,13 +166,13 @@
           <span class="nav-sub-name">RELAY</span>
           <span class="nav-sub-desc">Students and teachers, K&ndash;12</span>
         </a></li>
-        <li><a href="fieldnote.html" data-nav="fieldnote.html">
-          <span class="nav-sub-name">Fieldnote</span>
-          <span class="nav-sub-desc">For teachers, K&ndash;12</span>
-        </a></li>
         <li><a href="relayjr.html" data-nav="relayjr.html">
           <span class="nav-sub-name">RELAY Jr</span>
           <span class="nav-sub-desc">Early learning</span>
+        </a></li>
+        <li><a href="fieldnote.html" data-nav="fieldnote.html">
+          <span class="nav-sub-name">Fieldnote</span>
+          <span class="nav-sub-desc">For teachers, K&ndash;12</span>
         </a></li>
       </ul>
     </li>
@@ -251,7 +252,7 @@ The RELAY Suite.
               <div class="suite-card-foot">
                 <ul class="solve-chips">
                   <li><a class="chip" href="relay.html#tab-ask">Students who speak up</a></li>
-                  <li><a class="chip" href="relay.html#tab-home">Support at the kitchen table</a></li>
+                  <li><a class="chip" href="relay.html#tab-home">Support at home</a></li>
                   <li><a class="chip" href="relay.html#tab-live">Gaps closed in real time</a></li>
                 </ul>
                 <a class="learn-more" href="relay.html#how">See how it works <span aria-hidden="true">&rarr;</span></a>
@@ -295,8 +296,8 @@ The RELAY Suite.
               <div class="suite-card-foot">
                 <ul class="solve-chips">
                   <li><span class="chip">Planning time returned</span></li>
-                  <li><span class="chip">Confident parent conversations</span></li>
-                  <li><span class="chip">Pastoral notes in one place</span></li>
+                  <li><span class="chip">Parent conversations ready</span></li>
+                  <li><span class="chip">Notes in one place</span></li>
                 </ul>
                 <a class="learn-more" href="fieldnote.html">Learn more <span aria-hidden="true">&rarr;</span></a>
               </div>

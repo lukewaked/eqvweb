@@ -1112,9 +1112,9 @@ html.js [data-reveal].is-visible {
   margin-top: 1.3rem;
   padding-top: 1.1rem;
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 0.75rem 1rem;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.9rem;
 }
 
 .solve-chips {
@@ -1130,13 +1130,14 @@ html.js [data-reveal].is-visible {
    li and the anchor separately gave linked chips two markers. */
 .chip {
   display: inline-block;
-  font-size: 12.5px;
+  white-space: nowrap;
+  font-size: 12px;
   line-height: 1.4;
   color: var(--ink-muted);
   background: #fff;
   border: 1px solid var(--card-border);
   border-radius: 999px;
-  padding: 0.35rem 0.75rem;
+  padding: 0.32rem 0.7rem;
   text-decoration: none;
   transition: border-color var(--dur-fast) var(--ease),
               color var(--dur-fast) var(--ease);
@@ -1156,7 +1157,6 @@ a.chip:hover {
 }
 
 .learn-more {
-  margin-left: auto;
   font-size: 12.5px;
   font-weight: var(--wt-med);
   letter-spacing: 0.08em;
@@ -1170,10 +1170,6 @@ a.chip:hover {
 .learn-more:hover { border-bottom-color: currentColor; }
 .learn-more span { transition: transform var(--dur-fast) var(--ease); display: inline-block; }
 .learn-more:hover span { transform: translateX(3px); }
-
-@media (max-width: 560px) {
-  .learn-more { margin-left: 0; }
-}
 
 /* Card title is the link now, not the whole card. */
 .suite-card h2 a {
@@ -1189,11 +1185,6 @@ a.chip:hover {
 
 /* Adult Education sits outside the suite but still carries its own colour,
    so the four-colour motif holds across the whole homepage. */
-.beyond { border-left: 3px solid var(--accent); padding-left: 1.6rem; border-top: none !important; }
 .beyond-eyebrow { color: var(--accent); }
 .pill-btn--accent { background: var(--accent, var(--navy)); color: #fff; }
 .pill-btn--accent:hover { opacity: 0.88; }
-
-@media (max-width: 620px) {
-  .beyond { padding-left: 1.1rem; }
-}

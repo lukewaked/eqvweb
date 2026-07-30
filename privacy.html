@@ -134,12 +134,19 @@
 
           <h3>Information collected automatically</h3>
           <p>
-            This site is served as static pages by Vercel. We do not use
-            analytics, advertising or tracking cookies. Our hosting provider
+            This site is served as static pages by Vercel. Our hosting provider
             records standard server logs, which may include your IP address,
             browser type and the pages you requested, for security and
             reliability purposes. Vercel operates a global network, so those logs
             may be handled outside Australia.
+          </p>
+          <p>
+            We use <strong>Vercel Web Analytics</strong> to count visits and page
+            views. It uses <strong>no cookies</strong>, does not follow you across
+            other websites, and does not build a profile of you. It records the
+            page visited, the referring page, and general details such as country,
+            browser and device type. We use this only to understand which pages
+            are useful. We do not use advertising or tracking cookies of any kind.
           </p>
           <p>
             The site loads typefaces from Google Fonts. Doing so discloses your IP
@@ -278,5 +285,11 @@
   </div>
 
   <script src="nav.js"></script>
+  <!-- analytics:start -->
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <!-- analytics:end -->
 </body>
 </html>

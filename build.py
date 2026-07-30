@@ -79,6 +79,17 @@ NAV_START = "<!-- nav:start -->"
 NAV_END = "<!-- nav:end -->"
 META_START = "<!-- meta:start -->"
 META_END = "<!-- meta:end -->"
+ANALYTICS_START = "<!-- analytics:start -->"
+ANALYTICS_END = "<!-- analytics:end -->"
+
+# Vercel Web Analytics, plain-HTML flavour. No npm package is needed: the
+# script is served first-party from the site's own domain, which is also why
+# the Content Security Policy in vercel.json needs no exception for it.
+# Set to "" to switch analytics off everywhere.
+ANALYTICS = """  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>"""
 
 
 def meta_block(page: str) -> str:
@@ -122,6 +133,8 @@ def main() -> None:
         original = html
         html = replace_block(html, NAV_START, NAV_END, nav_block)
         html = replace_block(html, META_START, META_END, meta_block(page))
+        analytics = f"{ANALYTICS_START}\n{ANALYTICS}\n  {ANALYTICS_END}" if ANALYTICS else f"{ANALYTICS_START}\n  {ANALYTICS_END}"
+        html = replace_block(html, ANALYTICS_START, ANALYTICS_END, analytics)
         if html != original:
             path.write_text(html)
             touched.append(page)

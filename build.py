@@ -33,12 +33,12 @@ PAGES = {
         "relationships in a school rather than replacing them.",
     ),
     "relay.html": (
-        "RELAY | Formative AI for students and teachers",
+        "RELAY | Understanding, before the assessment",
         "RELAY makes student confusion visible to the teacher who can act on it, "
         "well before a summative assessment. No grade, no judgement.",
     ),
     "fieldnote.html": (
-        "Fieldnote | AI for K-12 teachers",
+        "Fieldnote | For K-12 teachers",
         "Lesson planning, pastoral care, and preparing for the conversations "
         "that matter. Built for teachers, K-12.",
     ),

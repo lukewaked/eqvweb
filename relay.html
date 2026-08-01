@@ -4,19 +4,19 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <!-- meta:start -->
-  <title>RELAY | Formative AI for students and teachers</title>
+  <title>RELAY | Understanding, before the assessment</title>
   <meta name="description" content="RELAY makes student confusion visible to the teacher who can act on it, well before a summative assessment. No grade, no judgement." />
   <link rel="canonical" href="https://eqvgroup.com.au/relay.html" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="EQV Group" />
-  <meta property="og:title" content="RELAY | Formative AI for students and teachers" />
+  <meta property="og:title" content="RELAY | Understanding, before the assessment" />
   <meta property="og:description" content="RELAY makes student confusion visible to the teacher who can act on it, well before a summative assessment. No grade, no judgement." />
   <meta property="og:url" content="https://eqvgroup.com.au/relay.html" />
   <meta property="og:image" content="https://eqvgroup.com.au/images/social-card.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="RELAY | Formative AI for students and teachers" />
+  <meta name="twitter:title" content="RELAY | Understanding, before the assessment" />
   <meta name="twitter:description" content="RELAY makes student confusion visible to the teacher who can act on it, well before a summative assessment. No grade, no judgement." />
   <meta name="twitter:image" content="https://eqvgroup.com.au/images/social-card.png" />
   <!-- meta:end -->
@@ -911,6 +911,39 @@
       line-height: 1.7;
     }
 
+    /* ── STUDENT OUTCOMES ── */
+    .student-section {
+      padding: 5rem 0;
+      border-top: 1px solid var(--rule);
+    }
+    .student-grid { margin-top: 3rem; }
+
+    .stu-card {
+      background: var(--cream);
+      border: 1px solid var(--card-border);
+      border-top: 2px solid var(--relay-blue);
+      padding: 1.8rem;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .stu-card:hover {
+      background: var(--rule);
+      border-color: var(--light-grey);
+      border-top-color: var(--relay-blue);
+    }
+    .stu-card-title {
+      font-family: var(--font-display);
+      font-size: 19px;
+      color: var(--relay-white);
+      margin-bottom: 0.5rem;
+      line-height: 1.25;
+    }
+    .stu-card-body {
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--relay-grey);
+      line-height: 1.7;
+    }
+
     /* ── PILOT APPLICATION ── */
     .pilot-section {
       padding: 6rem 0;
@@ -1357,6 +1390,89 @@
             <p>Student data is never used to train models, and no personally identifying information leaves your school. Full technical detail is available on request.</p>
           </div>
         </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ STUDENT OUTCOMES ══ -->
+    <section class="student-section" id="students">
+      <div class="container">
+        <p class="section-eyebrow" data-reveal>For students</p>
+        <h2 class="section-heading" data-reveal>What a student<br>gets out of it.</h2>
+        <p class="section-sub" data-reveal>
+          RELAY is usually described by what a teacher sees. This is the other
+          half: what changes for the student sitting in the room.
+        </p>
+
+        <div class="student-grid grid-3">
+          <div class="stu-card" data-reveal style="--i:0">
+            <div class="stu-card-title">Somewhere to say &ldquo;I don&rsquo;t understand&rdquo;</div>
+            <p class="stu-card-body">
+              Around half the students we surveyed said they are uncomfortable
+              telling a teacher they haven&rsquo;t understood something. So they
+              say nothing, and the lesson moves on. RELAY gives them a way to
+              say it that isn&rsquo;t in front of the class and doesn&rsquo;t
+              cost them a mark.
+            </p>
+          </div>
+          <div class="stu-card" data-reveal style="--i:1">
+            <div class="stu-card-title">Support that steps back</div>
+            <p class="stu-card-body">
+              RELAY is built on co-regulation: more structure early, less of it
+              over time. The aim is a student who can judge their own
+              understanding without an adult having to ask first. The
+              scaffolding is meant to become unnecessary.
+            </p>
+          </div>
+          <div class="stu-card" data-reveal style="--i:2">
+            <div class="stu-card-title">Confidence to attempt more</div>
+            <p class="stu-card-body">
+              A student who is sure they have understood something is readier to
+              take a risk on a harder question, or a subject they had written
+              off. This is the outcome we care most about.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ TEACHER OUTCOMES ══ -->
+    <section class="student-section" id="teachers">
+      <div class="container">
+        <p class="section-eyebrow" data-reveal>For teachers</p>
+        <h2 class="section-heading" data-reveal>A formative assessment partner<br>for learning environments.</h2>
+        <p class="section-sub" data-reveal>
+          RELAY works alongside the assessment a school already does. It carries
+          no marks and reaches no conclusions. It gives a teacher a clearer view
+          of where a group actually is, in the classroom and beyond it.
+        </p>
+
+        <div class="student-grid grid-3">
+          <div class="stu-card" data-reveal style="--i:0">
+            <div class="stu-card-title">Visibility before it counts</div>
+            <p class="stu-card-body">
+              Where a class has actually landed on a concept, in the students&rsquo;
+              own words, well before a summative assessment is sitting in front
+              of them. Early enough that there is still something a teacher can
+              do about it.
+            </p>
+          </div>
+          <div class="stu-card" data-reveal style="--i:1">
+            <div class="stu-card-title">Conversations you can prepare for</div>
+            <p class="stu-card-body">
+              Rather than approaching a student cold, a teacher walks in already
+              knowing what the difficulty is. The same holds for a conversation
+              with a colleague, a head of faculty, or a parent.
+            </p>
+          </div>
+          <div class="stu-card" data-reveal style="--i:2">
+            <div class="stu-card-title">No extra marking</div>
+            <p class="stu-card-body">
+              Nothing here is graded, so nothing here is added to a marking pile.
+              The point is to lower what a teacher has to hold in their head, not
+              to hand them another system to keep on top of.
+            </p>
+          </div>
         </div>
       </div>
     </section>

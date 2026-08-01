@@ -29,13 +29,13 @@ PAGES = {
     ),
     "relay-suite.html": (
         "The RELAY Suite | EQV Group",
-        "Three products, one idea: technology that makes the human "
-        "relationships in a school stronger, not thinner.",
+        "Three products, one idea: technology that strengthens the human "
+        "relationships in a school rather than replacing them.",
     ),
     "relay.html": (
         "RELAY | Formative AI for students and teachers",
-        "RELAY makes student confusion visible in real time to the teacher who "
-        "can act on it. No grade, no judgment, built on your classroom's own material.",
+        "RELAY makes student confusion visible to the teacher who can act on it, "
+        "well before a summative assessment. No grade, no judgement.",
     ),
     "fieldnote.html": (
         "Fieldnote | AI for K-12 teachers",

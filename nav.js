@@ -31,14 +31,16 @@
     }
   }
 
-  /* ── RELAY Suite dropdown ──
+  /* ── Nav dropdowns (RELAY Suite, About, and any future group) ──
      Opens on hover for pointer users, and on click/Enter via the caret
      button for everyone else. The parent link always goes to the master
-     page, so touch users are never trapped. */
-  var item = nav.querySelector('[data-nav-group]');
-  if (item) {
+     page, so touch users are never trapped. There can be more than one
+     of these in the nav, so each gets its own listeners rather than
+     assuming it is the only group on the page. */
+  var isDesktop = function () { return window.matchMedia('(min-width: 641px)').matches; };
+
+  nav.querySelectorAll('[data-nav-group]').forEach(function (item) {
     var caret = item.querySelector('.nav-caret');
-    var isDesktop = function () { return window.matchMedia('(min-width: 641px)').matches; };
 
     var setOpen = function (open) {
       item.classList.toggle('open', open);
@@ -70,7 +72,7 @@
         if (caret) caret.focus();
       }
     });
-  }
+  });
 
   /* ── Mobile menu ── */
   var burger = nav.querySelector('.nav-hamburger');

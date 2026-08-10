@@ -1055,7 +1055,20 @@
       </ul>
     </li>
     <li><a href="adult-education.html" class="nav-link" data-nav="adult-education.html">Adult Education</a></li>
-    <li><a href="about.html" class="nav-link" data-nav="about.html">About</a></li>
+    <li class="nav-item" data-nav-group>
+      <div class="nav-group">
+        <a href="about.html" class="nav-link" data-nav="about.html">About</a>
+        <button class="nav-caret" type="button" aria-expanded="false" aria-controls="about-menu" aria-label="Show About pages">
+          <svg viewBox="0 0 10 6" fill="none" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+      <ul class="nav-submenu" id="about-menu">
+        <li><a href="ai.html" data-nav="ai.html">
+          <span class="nav-sub-name">EQV on AI</span>
+          <span class="nav-sub-desc">Where we stand</span>
+        </a></li>
+      </ul>
+    </li>
     <li><a href="contact.html" class="nav-link" data-nav="contact.html">Contact Us</a></li>
   </ul>
   <button class="nav-hamburger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="primary-menu">

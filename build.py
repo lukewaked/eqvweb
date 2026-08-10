@@ -52,6 +52,11 @@ PAGES = {
         "Professional development, workshops, and comprehension tools for "
         "adult learning contexts.",
     ),
+    "ai.html": (
+        "EQV on AI | EQV Group",
+        "AI can make a student seem to understand. We build for the tools "
+        "that make them actually understand. Our position on AI in schools.",
+    ),
     "about.html": (
         "About | EQV Group",
         "Esse Quam Videri. To be, rather than to seem to be. The people and "

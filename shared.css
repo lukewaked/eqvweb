@@ -290,7 +290,7 @@ body {
 /* ── Shared utilities ── */
 .container {
   width: 100%;
-  max-width: 800px;
+  max-width: 1120px;
   margin: 0 auto;
   padding: 0 3rem;
 }
@@ -619,7 +619,7 @@ html.js [data-reveal].is-visible {
 .layer-up { position: relative; z-index: 1; }
 
 /* ── Full-bleed decoration ──
-   The container caps content at 800px, which is right for reading but
+   The container caps content at 1120px, which is right for reading but
    wrong for graphics: motifs placed inside it stop dead in a rectangle
    with white margins either side, which reads as a box floating on the
    page rather than a page with atmosphere.

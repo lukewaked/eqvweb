@@ -14,6 +14,9 @@ page's title / description / social card.
 """
 
 from pathlib import Path
+import base64
+import hashlib
+import json
 import re
 
 ROOT = Path(__file__).parent
@@ -37,10 +40,11 @@ PAGES = {
         "RELAY makes student confusion visible to the teacher who can act on it, "
         "well before a summative assessment. No grade, no judgement.",
     ),
-    "fieldnote.html": (
-        "Fieldnote | For K-12 teachers",
-        "Lesson planning, pastoral care, and preparing for the conversations "
-        "that matter. Built for teachers, K-12.",
+    "school-memory.html": (
+        "School Memory | For every teacher who wasn't in the room",
+        "Curriculum, policy, and how your school actually runs, in one "
+        "place your staff and their AI tools can trust. No student data, "
+        "ever.",
     ),
     "relayjr.html": (
         "RELAY Jr | Early learning",
@@ -126,9 +130,51 @@ def replace_block(html: str, start: str, end: str, new: str) -> str:
     return pattern.sub(lambda _: new, html)
 
 
+# Every inline <script> block on the site (excluding JSON-LD, which the CSP
+# spec doesn't treat as executable) gets hashed so the Content-Security-Policy
+# in vercel.json can list exactly those hashes instead of 'unsafe-inline'.
+# That means a page can never run a script an attacker injected -- only the
+# scripts already in this repo, byte for byte. Add or edit an inline script
+# and re-run this file: the allowed hash list updates itself.
+SCRIPT_TAG = re.compile(r"<script([^>]*)>(.*?)</script>", re.S)
+
+
+def csp_hashes_for(html: str) -> set[str]:
+    hashes = set()
+    for attrs, content in SCRIPT_TAG.findall(html):
+        if "src=" in attrs or "application/ld+json" in attrs:
+            continue
+        digest = base64.b64encode(hashlib.sha256(content.encode("utf-8")).digest()).decode()
+        hashes.add(f"'sha256-{digest}'")
+    return hashes
+
+
+def update_vercel_csp(hashes: set[str]) -> bool:
+    path = ROOT / "vercel.json"
+    data = json.loads(path.read_text())
+    script_src = "script-src 'self' " + " ".join(sorted(hashes))
+    changed = False
+    for group in data["headers"]:
+        for header in group["headers"]:
+            if header["key"] != "Content-Security-Policy":
+                continue
+            directives = header["value"].split("; ")
+            new_directives = [
+                script_src if d.startswith("script-src") else d for d in directives
+            ]
+            new_value = "; ".join(new_directives)
+            if new_value != header["value"]:
+                header["value"] = new_value
+                changed = True
+    if changed:
+        path.write_text(json.dumps(data, indent=2) + "\n")
+    return changed
+
+
 def main() -> None:
     nav_block = f"{NAV_START}\n{NAV}\n  {NAV_END}"
     touched = []
+    all_hashes: set[str] = set()
     for page in PAGES:
         path = ROOT / page
         if not path.exists():
@@ -143,7 +189,10 @@ def main() -> None:
         if html != original:
             path.write_text(html)
             touched.append(page)
+        all_hashes |= csp_hashes_for(html)
     print(f"built {len(touched)} page(s): {', '.join(touched) or 'none'}")
+    if update_vercel_csp(all_hashes):
+        print(f"updated vercel.json CSP with {len(all_hashes)} script hash(es)")
 
 
 if __name__ == "__main__":

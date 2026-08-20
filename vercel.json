@@ -1,6 +1,13 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/fieldnote.html",
+      "destination": "/school-memory.html",
+      "permanent": true
+    }
+  ],
   "headers": [
     {
       "source": "/(.*)",
@@ -26,8 +33,16 @@
           "value": "camera=(), microphone=(), geolocation=(), payment=()"
         },
         {
+          "key": "Cross-Origin-Opener-Policy",
+          "value": "same-origin"
+        },
+        {
+          "key": "Cross-Origin-Resource-Policy",
+          "value": "same-origin"
+        },
+        {
           "key": "Content-Security-Policy",
-          "value": "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://formspree.io; form-action https://formspree.io; base-uri 'self'; frame-ancestors 'none'; object-src 'none'"
+          "value": "default-src 'self'; script-src 'self' 'sha256-ielizl+OiZZw3R8BtQiUH+QxDFH97AYC3y36q5s5eyQ=' 'sha256-jqVVYXt81A9wtyPvt1jwv4CuiWMSnavDCnF7jhYFKq4=' 'sha256-pBnG2yWly4uvH9tliU+PyFGka90dpWnMiEViZcvXZ3o=' 'sha256-tLU5RBMHCDhVW/t+CL2XiCiC1j2P1M2vs2Jbo304tH8=' 'sha256-yr3ZYe62pB2aJ+2jKh5eIzZ8lhP+pIkL3Y1+cGjO804='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://formspree.io; form-action https://formspree.io; base-uri 'self'; frame-ancestors 'none'; object-src 'none'"
         }
       ]
     },

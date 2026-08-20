@@ -63,7 +63,7 @@
      changing the whole ground. All four pass AA as text on white and take
      white text when used as a band. */
   --c-relay:     #164A83;   /* navy    */
-  --c-fieldnote: #1A6153;   /* teal    */
+  --c-memory:    #1A6153;   /* teal    */
   --c-relayjr:   #B8482A;   /* terracotta */
   --c-adult:     #4A4478;   /* violet  */
 
@@ -364,6 +364,14 @@ body {
   background: var(--terracotta);
   color: #fff;
 }
+
+/* Solid white, for a CTA sitting on a colour band where a navy or
+   terracotta pill would fight the background instead of sitting on it. */
+.pill-btn--light {
+  background: #fff;
+  color: var(--accent, var(--navy));
+}
+.pill-btn--light:hover { opacity: 0.85; }
 
 /* ── Hand-drawn underline accent ──
    A small squiggle, not a straight rule : sits under a word to add a
@@ -825,7 +833,7 @@ html.js [data-reveal].is-visible {
 
 /* A product page announces itself with a hairline of its own colour under
    the nav, then uses that colour for accents. Cheap, and it means RELAY and
-   Fieldnote never feel like the same page. */
+   School Memory never feel like the same page. */
 .accent-rule {
   height: 3px;
   width: 100%;

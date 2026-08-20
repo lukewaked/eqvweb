@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- meta:start -->
+  <title>School Memory | For every teacher who wasn't in the room</title>
+  <meta name="description" content="Curriculum, policy, and how your school actually runs, in one place your staff and their AI tools can trust. No student data, ever." />
+  <link rel="canonical" href="https://eqvgroup.com.au/school-memory.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="EQV Group" />
+  <meta property="og:title" content="School Memory | For every teacher who wasn't in the room" />
+  <meta property="og:description" content="Curriculum, policy, and how your school actually runs, in one place your staff and their AI tools can trust. No student data, ever." />
+  <meta property="og:url" content="https://eqvgroup.com.au/school-memory.html" />
+  <meta property="og:image" content="https://eqvgroup.com.au/images/social-card.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="School Memory | For every teacher who wasn't in the room" />
+  <meta name="twitter:description" content="Curriculum, policy, and how your school actually runs, in one place your staff and their AI tools can trust. No student data, ever." />
+  <meta name="twitter:image" content="https://eqvgroup.com.au/images/social-card.png" />
+  <!-- meta:end -->
+  <link rel="icon" href="favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="favicon-192x192.png" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500&display=swap" />
+  <link rel="stylesheet" href="shared.css" />
+  <style>
+    /* School Memory runs on the shared tokens. Only this page's section
+       layout is local, in the style of the RELAY page: a bordered card
+       component reused across three sections keeps the rhythm consistent
+       without a new component per section. */
+
+    .mem-section { padding: 3.5rem 0; }
+    .mem-section + .mem-section { border-top: 1px solid var(--rule); }
+
+    .mem-sub {
+      font-size: var(--step-0);
+      line-height: 1.7;
+      color: var(--ink-muted);
+      max-width: 56ch;
+      margin-top: 0.8rem;
+    }
+
+    .mem-card {
+      background: var(--cream);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      padding: 1.9rem 1.8rem;
+      height: 100%;
+    }
+    .mem-card-num {
+      font-family: var(--font-display);
+      font-size: 26px;
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: 0.7rem;
+    }
+    .mem-card h3 {
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: var(--step-1);
+      color: var(--ink);
+      line-height: 1.25;
+      margin-bottom: 0.6rem;
+    }
+    .mem-card p {
+      font-size: 14.5px;
+      line-height: 1.7;
+      color: var(--ink-muted);
+    }
+
+    .mem-grid { margin-top: 2.2rem; }
+
+    /* The boundary section gets its own, firmer visual treatment: this is
+       the one part of the page a risk-averse reader needs to trust without
+       having to take our word for it. */
+    .boundary-box {
+      border: 1px solid var(--card-border);
+      border-left: 4px solid var(--accent);
+      border-radius: 4px 14px 14px 4px;
+      background: var(--cream);
+      padding: 0.2rem 2rem;
+      margin-top: 2.2rem;
+    }
+    @media (max-width: 640px) {
+      .boundary-box { padding: 0.2rem 1.3rem; }
+    }
+    .boundary-item { padding: 1.7rem 0; }
+    .boundary-item + .boundary-item { border-top: 1px solid var(--rule); }
+    .boundary-item h3 {
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: var(--step-1);
+      color: var(--ink);
+      margin-bottom: 0.5rem;
+      line-height: 1.3;
+    }
+    .boundary-item p {
+      font-size: 14.5px;
+      line-height: 1.7;
+      color: var(--ink-muted);
+      max-width: 58ch;
+    }
+  </style>
+</head>
+<body>
+  <!-- nav:start -->
+<a class="skip-link" href="#main">Skip to content</a>
+<nav class="site-nav" aria-label="Primary">
+  <a class="nav-brand" href="index.html">
+    <span class="brand-eqv">eqv</span>
+    <span class="brand-group">Group</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html" class="nav-link" data-nav="index.html">Home</a></li>
+    <li class="nav-item" data-nav-group>
+      <div class="nav-group">
+        <a href="relay-suite.html" class="nav-link" data-nav="relay-suite.html">RELAY Suite</a>
+        <button class="nav-caret" type="button" aria-expanded="false" aria-controls="suite-menu" aria-label="Show RELAY Suite products">
+          <svg viewBox="0 0 10 6" fill="none" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+      <ul class="nav-submenu" id="suite-menu">
+        <li><a href="relay.html" data-nav="relay.html">
+          <span class="nav-sub-name">RELAY</span>
+          <span class="nav-sub-desc">Students and teachers, K&ndash;12</span>
+        </a></li>
+        <li><a href="relayjr.html" data-nav="relayjr.html">
+          <span class="nav-sub-name">RELAY Jr</span>
+          <span class="nav-sub-desc">Early learning</span>
+        </a></li>
+        <li><a href="school-memory.html" data-nav="school-memory.html">
+          <span class="nav-sub-name">School Memory</span>
+          <span class="nav-sub-desc">What your school already knows</span>
+        </a></li>
+      </ul>
+    </li>
+    <li><a href="adult-education.html" class="nav-link" data-nav="adult-education.html">Adult Education</a></li>
+    <li class="nav-item" data-nav-group>
+      <div class="nav-group">
+        <a href="about.html" class="nav-link" data-nav="about.html">About</a>
+        <button class="nav-caret" type="button" aria-expanded="false" aria-controls="about-menu" aria-label="Show About pages">
+          <svg viewBox="0 0 10 6" fill="none" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+      <ul class="nav-submenu" id="about-menu">
+        <li><a href="about.html" data-nav="about.html">
+          <span class="nav-sub-name">About EQV</span>
+          <span class="nav-sub-desc">Who we are</span>
+        </a></li>
+        <li><a href="ai.html" data-nav="ai.html">
+          <span class="nav-sub-name">EQV on AI</span>
+          <span class="nav-sub-desc">Where we stand</span>
+        </a></li>
+      </ul>
+    </li>
+    <li><a href="contact.html" class="nav-link" data-nav="contact.html">Contact Us</a></li>
+  </ul>
+  <button class="nav-hamburger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="primary-menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+  <!-- nav:end -->
+
+  <div class="page-content page-accent" style="--accent: var(--c-memory);">
+    <div class="accent-rule" aria-hidden="true"></div>
+    <main id="main">
+
+      <!-- ══ HERO ══ -->
+      <section class="page-hero stage">
+        <div class="stage-decor" aria-hidden="true">
+          <span class="hero-ring hero-ring--r"></span>
+          <span class="hero-ring hero-ring--l"></span>
+          <span class="hero-dot hero-dot--a"></span>
+          <span class="hero-dot hero-dot--b"></span>
+          <span class="hero-dot hero-dot--c"></span>
+        </div>
+        <div class="container layer-up">
+          <p class="eyebrow" data-reveal>School Memory</p>
+          <h1 class="impact" data-reveal style="--i:1">So it doesn&rsquo;t walk out the door <em>when they do</em>.</h1>
+          <p class="lede" data-reveal style="--i:2; margin-top: 2rem; max-width: 54ch;">
+            Every school runs on a huge amount of knowledge that lives only
+            in the people who work there: the curriculum, the policies, the
+            way things are actually done here. School Memory captures it
+            properly, once, so a relief teacher, a new starter, or the AI
+            tools your staff already use can get the real answer instead
+            of a guess.
+          </p>
+          <div class="relay-cta-row" data-reveal style="--i:3; margin-top: 2.2rem; display:flex; gap:1.2rem; align-items:center; flex-wrap:wrap;">
+            <a class="pill-btn pill-btn--navy" href="contact.html">Book a call</a>
+            <a class="cta-link" href="#inside">See what&rsquo;s inside &darr;</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ══ THREE DECISIONS ══ -->
+      <section class="mem-section container" data-reveal>
+        <p class="eyebrow" data-reveal>What makes it different</p>
+        <h2 class="h-section" data-reveal>Three decisions we made<br>before we wrote a word of it.</h2>
+        <div class="grid-3 mem-grid">
+          <div class="mem-card" data-reveal style="--i:0">
+            <div class="mem-card-num">01</div>
+            <h3>Built from what this school does</h3>
+            <p>Every entry traces back to your own curriculum documents, your own policies, or your own staff describing how something is actually handled here. Nothing generic, nothing borrowed from another school's template.</p>
+          </div>
+          <div class="mem-card" data-reveal style="--i:1">
+            <div class="mem-card-num">02</div>
+            <h3>A boundary that doesn't move</h3>
+            <p>Some things never go in it, no matter which school we're working with: nothing about a student, nothing safety-critical. That's not a setting you can turn off. <a class="cta-link" href="#boundary" style="font-size:11px;">Full detail below</a></p>
+          </div>
+          <div class="mem-card" data-reveal style="--i:2">
+            <div class="mem-card-num">03</div>
+            <h3>It informs. It doesn't decide</h3>
+            <p>Same principle behind everything else we build. School Memory hands a teacher the real answer. What they do with it is still entirely their professional judgement, not ours.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ══ WHAT'S INSIDE ══ -->
+      <section class="mem-section container" id="inside" data-reveal>
+        <p class="eyebrow" data-reveal>What's inside</p>
+        <h2 class="h-section" data-reveal>Three layers, all specific<br>to your school.</h2>
+        <p class="mem-sub" data-reveal>Not a document dump. Structured, so it's the same shape whether a person or an AI tool is reading it.</p>
+        <div class="grid-3 mem-grid">
+          <div class="mem-card" data-reveal style="--i:0">
+            <h3>Curriculum &amp; assessment</h3>
+            <p>Scope and sequence, syllabus outcomes, and the actual language your rubrics use, so when a teacher asks an AI tool to help draft feedback, it sounds like your marking criteria, not a generic one pulled off the internet.</p>
+          </div>
+          <div class="mem-card" data-reveal style="--i:1">
+            <h3>Policy &amp; pastoral</h3>
+            <p>Behaviour management steps, wellbeing referral pathways, uniform and attendance policy: the procedural questions a relief or new teacher asks every single week, answered the same way every time.</p>
+          </div>
+          <div class="mem-card" data-reveal style="--i:2">
+            <h3>Institutional knowledge</h3>
+            <p>How this school actually runs its programs and traditions, the informal processes that live in a head of department's head, captured before a resignation or a retirement takes it with them.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ══ WHAT IT WILL NEVER HOLD ══ -->
+      <section class="mem-section container" id="boundary" data-reveal>
+        <p class="eyebrow" data-reveal>What it will never hold</p>
+        <h2 class="h-section" data-reveal>Built for a school<br>to say yes to.</h2>
+        <div class="boundary-box" data-reveal>
+          <div class="boundary-item">
+            <h3>No student data. Not a name, not a mark, not a note about a child.</h3>
+            <p>School Memory holds curriculum, policy and process, never anything that identifies or describes a specific student. That line doesn't move, whichever school we're working with.</p>
+          </div>
+          <div class="boundary-item">
+            <h3>Nothing safety-critical or time-sensitive.</h3>
+            <p>If there's a fire, the answer is the procedure on the wall and the training your staff already have, not something to look up. School Memory is for the questions that can wait five minutes, never the ones that can't.</p>
+          </div>
+          <div class="boundary-item">
+            <h3>Not a replacement for judgement. A running start on it.</h3>
+            <p>It tells a teacher what the school already knows. What they do with it, in that moment, with that student, is still entirely theirs.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ══ WHO NOTICES THE DIFFERENCE ══ -->
+      <section class="mem-section container" data-reveal>
+        <p class="eyebrow" data-reveal>Who notices the difference</p>
+        <h2 class="h-section" data-reveal>The same questions,<br>answered the same way.</h2>
+        <div class="grid-2 mem-grid">
+          <div class="mem-card" data-reveal style="--i:0">
+            <h3>The relief teacher, period one</h3>
+            <p>Who used to guess at the behaviour policy, or interrupt a colleague mid-lesson to ask. Now the answer is one search away, and it's the school's actual answer.</p>
+          </div>
+          <div class="mem-card" data-reveal style="--i:1">
+            <h3>The graduate, first term</h3>
+            <p>Who used to ask the same question to three different colleagues and get three different answers. Now there's one answer, and it's consistent.</p>
+          </div>
+          <div class="mem-card" data-reveal style="--i:2">
+            <h3>The head of department, twenty years in</h3>
+            <p>Whose way of running the program used to leave with them on their last day. Now it's written down properly, in their own words, before it's gone.</p>
+          </div>
+          <div class="mem-card" data-reveal style="--i:3">
+            <h3>The teacher, walking into a hard conversation</h3>
+            <p>With a parent, a colleague, or a student, prepared, because the policy and the history are both right there, not scattered across old emails and memory.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ══ STAGE / CTA ══ -->
+      <section class="band" id="apply" style="--accent: var(--c-memory);" data-reveal>
+        <div class="container">
+          <p class="eyebrow" data-reveal style="margin-bottom:0.9rem;">Now onboarding foundation schools</p>
+          <h2 class="band-title" data-reveal style="--i:1">See if School Memory <em>fits your school</em>.</h2>
+          <p class="band-sub" data-reveal style="--i:2">
+            We're working directly with a small number of schools to build
+            this properly, from the ground up, rather than off a template.
+            Tell us where the knowledge gaps actually are.
+          </p>
+          <div style="margin-top: 2rem;" data-reveal style="--i:3">
+            <a class="pill-btn pill-btn--light" href="contact.html">Book a call</a>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <span>&copy; 2026 Esse Quam Videri Group Pty. Limited</span>
+        <span class="footer-links">
+          <a href="mailto:hello@eqvgroup.com.au">hello@eqvgroup.com.au</a>
+          <a href="privacy.html">Privacy</a>
+          <a href="terms.html">Terms of Use</a>
+          <a class="footer-social" href="https://www.linkedin.com/company/esse-quam-videri-group/" target="_blank" rel="noopener" aria-label="EQV Group on LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05a3.74 3.74 0 0 1 3.37-1.85c3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg></a>
+        </span>
+      </div>
+    </footer>
+  </div>
+
+  <script src="nav.js"></script>
+  <!-- analytics:start -->
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <!-- analytics:end -->
+</body>
+</html>

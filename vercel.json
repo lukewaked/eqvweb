@@ -6,6 +6,11 @@
       "source": "/fieldnote.html",
       "destination": "/school-memory.html",
       "permanent": true
+    },
+    {
+      "source": "/relay.html",
+      "destination": "https://relaybyeqv.com",
+      "permanent": true
     }
   ],
   "headers": [

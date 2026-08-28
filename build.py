@@ -83,9 +83,12 @@ PAGES = {
 }
 
 NAV = (ROOT / "_partials" / "nav.html").read_text().strip()
+FOOTER = (ROOT / "_partials" / "footer.html").read_text().strip()
 
 NAV_START = "<!-- nav:start -->"
 NAV_END = "<!-- nav:end -->"
+FOOTER_START = "<!-- footer:start -->"
+FOOTER_END = "<!-- footer:end -->"
 META_START = "<!-- meta:start -->"
 META_END = "<!-- meta:end -->"
 ANALYTICS_START = "<!-- analytics:start -->"
@@ -121,6 +124,32 @@ def meta_block(page: str) -> str:
   <meta name="twitter:description" content="{desc}" />
   <meta name="twitter:image" content="{OG_IMAGE}" />
   {META_END}"""
+
+
+ASSETS = ("shared.css", "nav.js")
+
+
+def asset_versions() -> dict[str, str]:
+    versions = {}
+    for name in ASSETS:
+        path = ROOT / name
+        if path.exists():
+            versions[name] = hashlib.sha256(path.read_bytes()).hexdigest()[:8]
+    return versions
+
+
+def stamp_assets(html: str, versions: dict[str, str]) -> str:
+    """Stamp a content hash into shared.css / nav.js URLs.
+
+    vercel.json caches css and js, so a plain "nav.js" reference keeps
+    serving whatever the browser already holds after a deploy. Hashing
+    the contents means the URL changes exactly when the file does.
+    """
+    for name, digest in versions.items():
+        attr = "href" if name.endswith(".css") else "src"
+        pattern = re.compile(r'({}=")({})(\?v=[0-9a-f]+)?(")'.format(attr, re.escape(name)))
+        html = pattern.sub(lambda m: f"{m.group(1)}{m.group(2)}?v={digest}{m.group(4)}", html)
+    return html
 
 
 def replace_block(html: str, start: str, end: str, new: str) -> str:
@@ -173,6 +202,8 @@ def update_vercel_csp(hashes: set[str]) -> bool:
 
 def main() -> None:
     nav_block = f"{NAV_START}\n{NAV}\n  {NAV_END}"
+    footer_block = f"{FOOTER_START}\n{FOOTER}\n  {FOOTER_END}"
+    versions = asset_versions()
     touched = []
     all_hashes: set[str] = set()
     for page in PAGES:
@@ -183,9 +214,11 @@ def main() -> None:
         html = path.read_text()
         original = html
         html = replace_block(html, NAV_START, NAV_END, nav_block)
+        html = replace_block(html, FOOTER_START, FOOTER_END, footer_block)
         html = replace_block(html, META_START, META_END, meta_block(page))
         analytics = f"{ANALYTICS_START}\n{ANALYTICS}\n  {ANALYTICS_END}" if ANALYTICS else f"{ANALYTICS_START}\n  {ANALYTICS_END}"
         html = replace_block(html, ANALYTICS_START, ANALYTICS_END, analytics)
+        html = stamp_assets(html, versions)
         if html != original:
             path.write_text(html)
             touched.append(page)

@@ -27,8 +27,8 @@
   <link rel="apple-touch-icon" href="apple-touch-icon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500&display=swap" />
-  <link rel="stylesheet" href="shared.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&display=swap" />
+  <link rel="stylesheet" href="shared.css?v=65f4635c" />
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -51,329 +51,323 @@
   }
   </script>
 
-  <style>
-    /* ─────────────────────────────────────
-       HOME
-       ───────────────────────────────────── */
-
-    .home-hero {
-      min-height: calc(100vh - var(--nav-h));
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 4rem 0 5rem;
-    }
-
-    .home-hero .lede {
-      margin: 1.8rem auto 0;
-      max-width: 52ch;
-    }
-
-    .home-cta-row {
-      display: flex;
-      gap: 0.9rem;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin-top: 2.6rem;
-    }
-
-    /* Scroll cue: a quiet nudge that there is more below the fold.
-       Fades out once the visitor has started scrolling. */
-    .scroll-cue {
-      position: absolute;
-      bottom: 1rem;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.6rem;
-      color: var(--grey);
-      font-size: var(--step--1);
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      text-decoration: none;
-      transition: opacity var(--dur-base) var(--ease);
-    }
-    .scroll-cue.hide { opacity: 0; pointer-events: none; }
-    .scroll-cue span:last-child {
-      width: 1px;
-      height: 26px;
-      background: linear-gradient(var(--grey-soft), transparent);
-      animation: cueDrift 2.4s ease-in-out infinite;
-    }
-    @keyframes cueDrift {
-      0%, 100% { transform: translateY(0);   opacity: 0.9; }
-      50%      { transform: translateY(6px); opacity: 0.35; }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      .scroll-cue span:last-child { animation: none; }
-    }
-    @media (max-height: 700px) { .scroll-cue { display: none; } }
-
-    /* Adult Education sits outside the RELAY Suite, so it gets its own
-       block rather than a fourth card in the suite list. A hairline above
-       marks the break; the violet eyebrow and button carry its identity. */
-    .beyond {
-      border-top: 1px solid var(--rule);
-      padding: 3rem 0 4rem;
-    }
-    .beyond-inner {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      align-items: center;
-      gap: 2rem;
-    }
-    @media (max-width: 620px) {
-      .beyond-inner { grid-template-columns: 1fr; }
-    }
-
-    /* The motto, demoted from headline to closing note. */
-    .motto {
-      border-top: 1px solid var(--rule);
-      padding: 3rem 0 4rem;
-      text-align: center;
-    }
-    .motto-latin {
-      font-family: var(--font-display);
-      font-style: italic;   /* a Latin phrase, not a title */
-      font-size: var(--step-2);
-      color: var(--navy);
-      margin-bottom: 0.7rem;
-    }
-  </style>
 </head>
 <body>
   <!-- nav:start -->
 <a class="skip-link" href="#main">Skip to content</a>
 <nav class="site-nav" aria-label="Primary">
-  <a class="nav-brand" href="index.html">
-    <span class="brand-eqv">eqv</span>
-    <span class="brand-group">Group</span>
-  </a>
-  <ul class="nav-links">
-    <li><a href="index.html" class="nav-link" data-nav="index.html">Home</a></li>
-    <li class="nav-item" data-nav-group>
-      <div class="nav-group">
-        <a href="relay-suite.html" class="nav-link" data-nav="relay-suite.html">RELAY Suite</a>
-        <button class="nav-caret" type="button" aria-expanded="false" aria-controls="suite-menu" aria-label="Show RELAY Suite products">
-          <svg viewBox="0 0 10 6" fill="none" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </button>
-      </div>
-      <ul class="nav-submenu" id="suite-menu">
-        <li><a href="https://relaybyeqv.com" target="_blank" rel="noopener">
-          <span class="nav-sub-name">RELAY</span>
-          <span class="nav-sub-desc">Students and teachers, K&ndash;12</span>
-        </a></li>
-        <li><a href="relayjr.html" data-nav="relayjr.html">
-          <span class="nav-sub-name">RELAY Jr</span>
-          <span class="nav-sub-desc">Early learning</span>
-        </a></li>
-        <li><a href="school-memory.html" data-nav="school-memory.html">
-          <span class="nav-sub-name">School Memory</span>
-          <span class="nav-sub-desc">What your school already knows</span>
-        </a></li>
-      </ul>
-    </li>
-    <li><a href="adult-education.html" class="nav-link" data-nav="adult-education.html">Adult Education</a></li>
-    <li class="nav-item" data-nav-group>
-      <div class="nav-group">
-        <a href="about.html" class="nav-link" data-nav="about.html">About</a>
-        <button class="nav-caret" type="button" aria-expanded="false" aria-controls="about-menu" aria-label="Show About pages">
-          <svg viewBox="0 0 10 6" fill="none" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </button>
-      </div>
-      <ul class="nav-submenu" id="about-menu">
-        <li><a href="about.html" data-nav="about.html">
-          <span class="nav-sub-name">About EQV</span>
-          <span class="nav-sub-desc">Who we are</span>
-        </a></li>
-        <li><a href="ai.html" data-nav="ai.html">
-          <span class="nav-sub-name">EQV on AI</span>
-          <span class="nav-sub-desc">Where we stand</span>
-        </a></li>
-      </ul>
-    </li>
-    <li><a href="contact.html" class="nav-link" data-nav="contact.html">Contact Us</a></li>
-  </ul>
-  <button class="nav-hamburger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="primary-menu">
-    <span></span><span></span><span></span>
-  </button>
+  <div class="nav-inner">
+    <a class="nav-brand" href="index.html">
+      <span class="brand-eqv">eqv</span>
+      <span class="brand-group">Group</span>
+    </a>
+    <button class="nav-hamburger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="primary-menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="primary-menu">
+      <li><a href="index.html" class="nav-link" data-nav="index.html">Home</a></li>
+      <li class="nav-item" data-nav-group>
+        <div class="nav-group">
+          <a href="relay-suite.html" class="nav-link" data-nav="relay-suite.html">RELAY Suite</a>
+          <button class="nav-caret" type="button" aria-expanded="false" aria-controls="suite-menu" aria-label="Show RELAY Suite products">
+            <svg class="nav-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+        </div>
+        <div class="nav-submenu" id="suite-menu">
+          <ul class="nav-submenu-panel">
+            <li><a href="https://relaybyeqv.com" target="_blank" rel="noopener">
+              <span class="nav-sub-name">RELAY</span>
+              <span class="nav-sub-desc">Students and teachers, K&ndash;12</span>
+            </a></li>
+            <li><a href="relayjr.html" data-nav="relayjr.html">
+              <span class="nav-sub-name">RELAY Jr</span>
+              <span class="nav-sub-desc">Early learning</span>
+            </a></li>
+            <li><a href="school-memory.html" data-nav="school-memory.html">
+              <span class="nav-sub-name">School Memory</span>
+              <span class="nav-sub-desc">What your school already knows</span>
+            </a></li>
+          </ul>
+        </div>
+      </li>
+      <li><a href="adult-education.html" class="nav-link" data-nav="adult-education.html">Adult Education</a></li>
+      <li class="nav-item" data-nav-group>
+        <div class="nav-group">
+          <a href="about.html" class="nav-link" data-nav="about.html">About</a>
+          <button class="nav-caret" type="button" aria-expanded="false" aria-controls="about-menu" aria-label="Show About pages">
+            <svg class="nav-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+        </div>
+        <div class="nav-submenu" id="about-menu">
+          <ul class="nav-submenu-panel">
+            <li><a href="about.html" data-nav="about.html">
+              <span class="nav-sub-name">About EQV</span>
+              <span class="nav-sub-desc">Who we are</span>
+            </a></li>
+            <li><a href="ai.html" data-nav="ai.html">
+              <span class="nav-sub-name">EQV on AI</span>
+              <span class="nav-sub-desc">Where we stand</span>
+            </a></li>
+          </ul>
+        </div>
+      </li>
+      <li><a href="contact.html" class="nav-link" data-nav="contact.html">Contact</a></li>
+      <li class="nav-mobile-cta"><a class="btn-primary" href="contact.html">Get in touch</a></li>
+    </ul>
+    <div class="nav-right">
+      <a class="nav-cta" href="contact.html">Get in touch</a>
+    </div>
+  </div>
 </nav>
   <!-- nav:end -->
 
   <div class="page-content">
     <main id="main">
 
-      <!-- ══ HERO ══ -->
-      <section class="home-hero stage">
-        <div class="stage-decor" aria-hidden="true">
-          <span class="hero-ring hero-ring--r"></span>
-          <span class="hero-ring hero-ring--l"></span>
-          <span class="hero-dot hero-dot--a"></span>
-          <span class="hero-dot hero-dot--b"></span>
-          <span class="hero-dot hero-dot--c"></span>
-        </div>
-
-        <div class="container layer-up">
+    <!-- ══ HERO ══ -->
+    <section class="hero--lead">
+      <div class="container">
+        <div class="hero-copy">
           <p class="eyebrow" data-reveal>EQV Group</p>
-          <h1 class="impact impact--centred" data-reveal style="--i:1">
-            The future of education is <em>more human</em>.
+          <h1 class="display" data-reveal style="--i:1">
+            The future of education is <span class="hl">more human</span>.
           </h1>
           <p class="lede" data-reveal style="--i:2">
             We build AI-supported tools for Australian classrooms, grounded in
             learning science. Technology should strengthen the relationships a
             school already depends on, never replace them.
           </p>
-          <div class="home-cta-row" data-reveal style="--i:3">
-            <a class="pill-btn pill-btn--navy" href="relay-suite.html">See what we build</a>
-            <a class="pill-btn pill-btn--outline" href="contact.html">Get in touch</a>
+          <div class="cta-row" data-reveal style="--i:3">
+            <a class="btn-primary btn--lg" href="relay-suite.html">See what we build</a>
+            <a class="btn-secondary btn--lg" href="contact.html">Get in touch</a>
           </div>
         </div>
-
-        <a class="scroll-cue" href="#suite" id="scrollCue">
-          <span>Our offerings</span>
-          <span aria-hidden="true"></span>
-        </a>
-      </section>
-
-      <!-- ══ INTRODUCING THE SUITE ══ -->
-      <section class="band" id="suite">
-        <div class="container">
-          <p class="eyebrow" data-reveal style="margin-bottom:0.9rem;">Introducing</p>
-          <h2 class="band-title" data-reveal style="--i:1">
-The RELAY Suite.
-          </h2>
-          <p class="band-sub" data-reveal style="--i:2">
-            Three products, one idea. Technology should strengthen the
-            relationships inside a school: between a student and their teacher,
-            a teacher and a parent, a centre and a home. Never replace them.
-          </p>
-        </div>
-      </section>
-
-      <!-- ══ PRODUCTS ══ -->
-      <div class="container">
-        <section class="suite-list" aria-label="The RELAY Suite">
-
-          <article class="suite-card suite-card--flagship" data-reveal style="--accent: var(--c-relay); --i:0">
-            <div>
-              <div class="suite-card-meta">
-                <span class="suite-tag suite-tag--flagship">Flagship product</span>
-                <span class="suite-tag">In pilot</span>
-              </div>
-              <h2><a href="https://relaybyeqv.com" target="_blank" rel="noopener">RELAY</a></h2>
-              <p>Students explain their thinking in a space with no grade and no judgement. Where confusion appears in their own words, the teacher sees it in time to act, well before a summative assessment.</p>
-
-              <div class="suite-card-foot">
-                <ul class="solve-chips">
-                  <li><a class="chip" href="relay.html#tab-ask">Students who speak up</a></li>
-                  <li><a class="chip" href="relay.html#tab-home">Support at home</a></li>
-                  <li><a class="chip" href="relay.html#tab-live">Gaps closed in real time</a></li>
-                </ul>
-                <a class="learn-more" href="relay.html#how">See how it works <span aria-hidden="true">&rarr;</span></a>
-              </div>
-            </div>
-            <a class="suite-arrow-link" href="https://relaybyeqv.com" target="_blank" rel="noopener" aria-label="RELAY">
-              <span class="suite-arrow" aria-hidden="true">&rarr;</span>
-            </a>
-          </article>
-
-          <article class="suite-card" data-reveal style="--accent: var(--c-relayjr); --i:1">
-            <div>
-              <div class="suite-card-meta">
-                <span class="suite-tag suite-tag--soon">In development</span>
-              </div>
-              <h2><a href="relayjr.html">RELAY Jr</a></h2>
-              <p>Early learning. The learning story goes home to the parent and child, and the child leads it back into the room.</p>
-
-              <div class="suite-card-foot">
-                <ul class="solve-chips">
-                  <li><span class="chip">Learning that carries home</span></li>
-                  <li><span class="chip">Parents in the loop</span></li>
-                  <li><span class="chip">EYLF evidence, ready</span></li>
-                </ul>
-                <a class="learn-more" href="relayjr.html">Learn more <span aria-hidden="true">&rarr;</span></a>
-              </div>
-            </div>
-            <a class="suite-arrow-link" href="relayjr.html" aria-label="RELAY Jr">
-              <span class="suite-arrow" aria-hidden="true">&rarr;</span>
-            </a>
-          </article>
-
-          <article class="suite-card" data-reveal style="--accent: var(--c-memory); --i:2">
-            <div>
-              <div class="suite-card-meta">
-                <span class="suite-tag">Now onboarding</span>
-              </div>
-              <h2><a href="school-memory.html">School Memory</a></h2>
-              <p>The curriculum, the policies, and the way this school actually runs things, captured once, so a relief teacher, a new starter, or the AI tools your staff already use get the real answer instead of a guess.</p>
-
-              <div class="suite-card-foot">
-                <ul class="solve-chips">
-                  <li><span class="chip">Consistent answers, finally</span></li>
-                  <li><span class="chip">Knowledge that stays</span></li>
-                  <li><span class="chip">No student data, ever</span></li>
-                </ul>
-                <a class="learn-more" href="school-memory.html">Learn more <span aria-hidden="true">&rarr;</span></a>
-              </div>
-            </div>
-            <a class="suite-arrow-link" href="school-memory.html" aria-label="School Memory">
-              <span class="suite-arrow" aria-hidden="true">&rarr;</span>
-            </a>
-          </article>
-
-        </section>
-
-        <!-- ══ BEYOND SCHOOL ══ -->
-        <section class="beyond" data-reveal style="--accent: var(--c-adult);">
-          <div class="beyond-inner">
-            <div>
-              <p class="eyebrow beyond-eyebrow" style="margin-bottom:0.8rem;">Beyond school</p>
-              <h2 class="h-section" style="font-size:var(--step-2);">Adult Education</h2>
-              <p class="body-text" style="margin-top:0.6rem;">
-                Professional development, workshops, and RELAY adapted for adult
-                learning contexts, from defence to corporate training.
-              </p>
-            </div>
-            <a class="pill-btn pill-btn--accent" href="adult-education.html">Learn more</a>
-          </div>
-        </section>
-
-        <!-- ══ MOTTO ══ -->
-        <section class="motto" data-reveal>
-          <p class="motto-latin">Esse Quam Videri</p>
-          <p class="body-text" style="margin:0 auto; max-width:46ch;">
-            To be, rather than to seem to be. We build tools grounded in learning
-            science.
-          </p>
-          <p style="margin-top:1.4rem;">
-            <a class="cta-link" href="about.html">About EQV Group</a>
-          </p>
-        </section>
       </div>
+    </section>
+
+    <!-- ══ INTRODUCING THE SUITE ══ -->
+    <section class="sprawl" style="padding-top:32px;">
+      <div class="container">
+        <div class="sprawl-head">
+          <h2 class="sprawl-title" data-reveal>
+            Three products, one idea.<br />
+            <span class="faded">The RELAY Suite.</span>
+          </h2>
+          <p class="lede" data-reveal style="--i:1">
+            Technology should strengthen the relationships inside a school:
+            between a student and their teacher, a teacher and a parent, a
+            centre and a home. Never replace them.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ PRODUCTS ══ -->
+    <section class="section section--band" id="products">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow" data-reveal>Our offerings</p>
+          <h2 class="sprawl-title" data-reveal style="--i:1; margin-top:12px;">What we build.</h2>
+        </div>
+
+        <div class="offer-stack">
+          <a class="offer-row" href="https://relaybyeqv.com" target="_blank" rel="noopener">
+            <div class="offer-copy">
+              <span class="badge badge--brand">Flagship &middot; in pilot</span>
+              <h3 class="offer-title">RELAY</h3>
+              <p>
+                Students explain their thinking in a space with no grade and no
+                judgement. Where confusion appears in their own words, the
+                teacher sees it in time to act, well before a summative
+                assessment.
+              </p>
+              <ul class="chip-row">
+                <li class="chip">Students who speak up</li>
+                <li class="chip">Support at home</li>
+                <li class="chip">Gaps closed in real time</li>
+              </ul>
+              <span class="text-link">See how it works <span aria-hidden="true">&rarr;</span></span>
+            </div>
+            <div class="offer-art" aria-hidden="true">
+              <svg viewBox="0 0 380 260">
+                <circle cx="190" cy="130" r="104" fill="var(--ink-50)" />
+                <rect x="108" y="86" width="170" height="92" rx="18" fill="#fff" stroke="var(--ink-300)" stroke-width="2.5" />
+                <path d="M138 178 l-5 24 26 -24 Z" fill="#fff" stroke="var(--ink-300)" stroke-width="2.5" stroke-linejoin="round" />
+                <g fill="var(--ink-300)">
+                  <circle cx="150" cy="132" r="7" /><circle cx="190" cy="132" r="7" /><circle cx="230" cy="132" r="7" />
+                </g>
+                <g fill="none" stroke="var(--c-relay)" stroke-width="2.5" stroke-linecap="round">
+                  <path class="flow-line" d="M266 90 q26 -32 56 -22" opacity="0.55" />
+                </g>
+                <circle class="pulse-soft" cx="300" cy="60" r="26" fill="#fff" stroke="var(--terracotta)" stroke-width="2.5" />
+                <path d="M289 60 l7 7 14 -15" fill="none" stroke="var(--terracotta)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </div>
+          </a>
+
+          <a class="offer-row offer-row--flip" href="relayjr.html">
+            <div class="offer-copy">
+              <span class="badge badge--neutral">In development</span>
+              <h3 class="offer-title">RELAY Jr</h3>
+              <p>
+                Early learning. The learning story goes home to the parent and
+                child, and the child leads it back into the room.
+              </p>
+              <ul class="chip-row">
+                <li class="chip">Learning that carries home</li>
+                <li class="chip">Parents in the loop</li>
+                <li class="chip">EYLF evidence, ready</li>
+              </ul>
+              <span class="text-link">Learn more <span aria-hidden="true">&rarr;</span></span>
+            </div>
+            <div class="offer-art" aria-hidden="true">
+              <svg viewBox="0 0 380 260">
+                <circle cx="190" cy="130" r="100" fill="var(--ink-50)" />
+                <rect x="76" y="96" width="96" height="96" rx="16" fill="#fff" stroke="var(--ink-900)" stroke-width="2.5"/>
+                <rect x="208" y="96" width="96" height="96" rx="16" fill="#fff" stroke="var(--ink-300)" stroke-width="2.5"/>
+                <g fill="none" stroke="var(--c-relayjr)" stroke-width="2.5" stroke-linecap="round">
+                  <path class="flow-line" d="M180 144 H200" />
+                </g>
+                <g fill="var(--c-relayjr)">
+                  <circle class="bob" cx="124" cy="132" r="9"/>
+                  <circle class="bob bob--b" cx="256" cy="132" r="9"/>
+                </g>
+                <g stroke="var(--ink-300)" stroke-width="2.2" stroke-linecap="round">
+                  <path d="M100 164 H148 M232 164 H280"/>
+                </g>
+                <path d="M190 70 C 192 78 196 82 204 84 C 196 86 192 90 190 98 C 188 90 184 86 176 84 C 184 82 188 78 190 70 Z" fill="var(--terracotta)" opacity="0.6"/>
+              </svg>
+            </div>
+          </a>
+
+          <a class="offer-row" href="school-memory.html">
+            <div class="offer-copy">
+              <span class="badge badge--neutral">Now onboarding</span>
+              <h3 class="offer-title">School Memory</h3>
+              <p>
+                The curriculum, the policies, and the way this school actually
+                runs things, captured once, so a relief teacher, a new starter,
+                or the AI tools your staff already use get the real answer
+                instead of a guess.
+              </p>
+              <ul class="chip-row">
+                <li class="chip">Consistent answers, finally</li>
+                <li class="chip">Knowledge that stays</li>
+                <li class="chip">No student data, ever</li>
+              </ul>
+              <span class="text-link">Learn more <span aria-hidden="true">&rarr;</span></span>
+            </div>
+            <div class="offer-art" aria-hidden="true">
+              <svg viewBox="0 0 380 260">
+                <g transform="translate(120 96) rotate(-8)">
+                  <rect x="-44" y="-56" width="88" height="112" rx="8" fill="#fff" stroke="var(--ink-300)" stroke-width="2"/>
+                  <path d="M-26 -30 H26 M-26 -14 H16 M-26 2 H22" stroke="var(--ink-300)" stroke-width="2" stroke-linecap="round"/>
+                </g>
+                <g transform="translate(150 168) rotate(6)">
+                  <rect x="-44" y="-56" width="88" height="112" rx="8" fill="#fff" stroke="var(--ink-300)" stroke-width="2"/>
+                  <path d="M-26 -30 H26 M-26 -14 H16 M-26 2 H22" stroke="var(--ink-300)" stroke-width="2" stroke-linecap="round"/>
+                </g>
+                <g fill="none" stroke="var(--c-memory)" stroke-width="2.4" stroke-linecap="round">
+                  <path class="flow-line" d="M212 130 H252" />
+                </g>
+                <path d="M252 130 L238 123 L242 137 Z" fill="var(--c-memory)"/>
+                <rect x="268" y="66" width="80" height="128" rx="12" fill="#fff" stroke="var(--ink-900)" stroke-width="2.5"/>
+                <g fill="none" stroke="var(--c-memory)" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M286 108 l8 8 16 -18"/><path d="M286 148 l8 8 16 -18"/>
+                </g>
+              </svg>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ BEYOND SCHOOL ══ -->
+    <section class="section">
+      <div class="container">
+        <div class="cta-card" data-reveal>
+          <div>
+            <p class="eyebrow">Beyond school</p>
+            <h2 class="h2" style="margin:12px 0;">Adult Education</h2>
+            <p>
+              Professional development, workshops, and RELAY adapted for adult
+              learning contexts, from defence to corporate training.
+            </p>
+            <a class="btn-primary" href="adult-education.html" style="margin-top:24px;">Learn more</a>
+          </div>
+          <div class="cta-art" aria-hidden="true">
+            <svg viewBox="0 0 220 170" width="220" height="170">
+              <rect x="34" y="30" width="152" height="98" rx="10" fill="#fff" stroke="var(--ink-900)" stroke-width="2.5"/>
+              <path d="M58 96 C 82 90, 92 64, 114 64 C 136 64, 142 42, 168 34" fill="none" stroke="var(--c-adult)" stroke-width="3" stroke-linecap="round"/>
+              <circle cx="172" cy="32" r="5" fill="var(--c-adult)"/>
+              <g fill="#fff" stroke="var(--ink-900)" stroke-width="2.5">
+                <circle cx="72" cy="150" r="11"/><circle cx="110" cy="152" r="11"/><circle cx="148" cy="150" r="11"/>
+              </g>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ MOTTO ══ -->
+    <section class="band band--compact" data-reveal>
+      <div class="container" style="text-align:center;">
+        <p class="eyebrow">Esse Quam Videri</p>
+        <p class="band-title" style="margin-top:10px;">To be, rather than <span class="hl">to seem to be</span>.</p>
+        <p class="band-sub" style="margin-inline:auto;">
+          We build tools grounded in learning science.
+        </p>
+        <a class="btn-ghost btn-ghost--inverse" href="about.html" style="margin-top:20px; display:inline-block;">About EQV Group &rarr;</a>
+      </div>
+    </section>
 
     </main>
 
-    <footer class="site-footer">
-    <div class="container">
-        <p class="footer-note">EQV Group is a resident member of the <a href="https://www.mq.edu.au/partner/access-business-opportunities/innovation-entrepreneurship-and-it/incubator" target="_blank" rel="noopener">Macquarie University Incubator</a>.</p>
+    <!-- footer:start -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-map">
+      <div>
+        <a class="footer-brand" href="index.html">
+          <span class="fb-name">eqv</span>
+          <span class="fb-by">Group</span>
+        </a>
+        <p class="footer-blurb">We build AI-supported tools for Australian classrooms, grounded in learning science.</p>
       </div>
-      <div class="container footer-inner">
-        <span>&copy; 2026 Esse Quam Videri Group Pty. Limited</span>
-        <span class="footer-links">
-          <a href="mailto:hello@eqvgroup.com.au">hello@eqvgroup.com.au</a>
-          <a href="privacy.html">Privacy</a>
-          <a href="terms.html">Terms of Use</a>
-          <a class="footer-social" href="https://www.linkedin.com/company/esse-quam-videri-group/" target="_blank" rel="noopener" aria-label="EQV Group on LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05a3.74 3.74 0 0 1 3.37-1.85c3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg></a>
-        </span>
+      <div class="footer-col">
+        <h4>RELAY Suite</h4>
+        <a href="relay-suite.html">Overview</a>
+        <a href="https://relaybyeqv.com" target="_blank" rel="noopener">RELAY</a>
+        <a href="relayjr.html">RELAY Jr</a>
+        <a href="school-memory.html">School Memory</a>
       </div>
-    </footer>
+      <div class="footer-col">
+        <h4>More</h4>
+        <a href="adult-education.html">Adult Education</a>
+        <a href="about.html">About EQV</a>
+        <a href="ai.html">EQV on AI</a>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="contact.html">Contact</a>
+        <a href="mailto:hello@eqvgroup.com.au">hello@eqvgroup.com.au</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms of use</a>
+      </div>
+    </div>
+    <p class="footer-note">EQV Group is a resident member of the <a href="https://www.mq.edu.au/partner/access-business-opportunities/innovation-entrepreneurship-and-it/incubator" target="_blank" rel="noopener">Macquarie University Incubator</a>.</p>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Esse Quam Videri Group Pty. Limited</span>
+      <a class="social-link" href="https://www.linkedin.com/company/esse-quam-videri-group/" target="_blank" rel="noopener" aria-label="EQV Group on LinkedIn">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05a3.74 3.74 0 0 1 3.37-1.85c3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg>
+      </a>
+    </div>
+  </div>
+</footer>
+  <!-- footer:end -->
   </div>
 
-  <script src="nav.js"></script>
+  <script src="nav.js?v=0b65763e"></script>
   <script>
     /* Hide the scroll cue as soon as the visitor starts moving: it has
        done its job and shouldn't sit over the content. */

@@ -27,8 +27,8 @@
   <link rel="apple-touch-icon" href="apple-touch-icon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500&display=swap" />
-  <link rel="stylesheet" href="shared.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&display=swap" />
+  <link rel="stylesheet" href="shared.css?v=65f4635c" />
   <style>
     /* AI runs on the shared tokens. Only the section layout below is local. */
 
@@ -115,58 +115,68 @@
   <!-- nav:start -->
 <a class="skip-link" href="#main">Skip to content</a>
 <nav class="site-nav" aria-label="Primary">
-  <a class="nav-brand" href="index.html">
-    <span class="brand-eqv">eqv</span>
-    <span class="brand-group">Group</span>
-  </a>
-  <ul class="nav-links">
-    <li><a href="index.html" class="nav-link" data-nav="index.html">Home</a></li>
-    <li class="nav-item" data-nav-group>
-      <div class="nav-group">
-        <a href="relay-suite.html" class="nav-link" data-nav="relay-suite.html">RELAY Suite</a>
-        <button class="nav-caret" type="button" aria-expanded="false" aria-controls="suite-menu" aria-label="Show RELAY Suite products">
-          <svg viewBox="0 0 10 6" fill="none" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </button>
-      </div>
-      <ul class="nav-submenu" id="suite-menu">
-        <li><a href="https://relaybyeqv.com" target="_blank" rel="noopener">
-          <span class="nav-sub-name">RELAY</span>
-          <span class="nav-sub-desc">Students and teachers, K&ndash;12</span>
-        </a></li>
-        <li><a href="relayjr.html" data-nav="relayjr.html">
-          <span class="nav-sub-name">RELAY Jr</span>
-          <span class="nav-sub-desc">Early learning</span>
-        </a></li>
-        <li><a href="school-memory.html" data-nav="school-memory.html">
-          <span class="nav-sub-name">School Memory</span>
-          <span class="nav-sub-desc">What your school already knows</span>
-        </a></li>
-      </ul>
-    </li>
-    <li><a href="adult-education.html" class="nav-link" data-nav="adult-education.html">Adult Education</a></li>
-    <li class="nav-item" data-nav-group>
-      <div class="nav-group">
-        <a href="about.html" class="nav-link" data-nav="about.html">About</a>
-        <button class="nav-caret" type="button" aria-expanded="false" aria-controls="about-menu" aria-label="Show About pages">
-          <svg viewBox="0 0 10 6" fill="none" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </button>
-      </div>
-      <ul class="nav-submenu" id="about-menu">
-        <li><a href="about.html" data-nav="about.html">
-          <span class="nav-sub-name">About EQV</span>
-          <span class="nav-sub-desc">Who we are</span>
-        </a></li>
-        <li><a href="ai.html" data-nav="ai.html">
-          <span class="nav-sub-name">EQV on AI</span>
-          <span class="nav-sub-desc">Where we stand</span>
-        </a></li>
-      </ul>
-    </li>
-    <li><a href="contact.html" class="nav-link" data-nav="contact.html">Contact Us</a></li>
-  </ul>
-  <button class="nav-hamburger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="primary-menu">
-    <span></span><span></span><span></span>
-  </button>
+  <div class="nav-inner">
+    <a class="nav-brand" href="index.html">
+      <span class="brand-eqv">eqv</span>
+      <span class="brand-group">Group</span>
+    </a>
+    <button class="nav-hamburger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="primary-menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="primary-menu">
+      <li><a href="index.html" class="nav-link" data-nav="index.html">Home</a></li>
+      <li class="nav-item" data-nav-group>
+        <div class="nav-group">
+          <a href="relay-suite.html" class="nav-link" data-nav="relay-suite.html">RELAY Suite</a>
+          <button class="nav-caret" type="button" aria-expanded="false" aria-controls="suite-menu" aria-label="Show RELAY Suite products">
+            <svg class="nav-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+        </div>
+        <div class="nav-submenu" id="suite-menu">
+          <ul class="nav-submenu-panel">
+            <li><a href="https://relaybyeqv.com" target="_blank" rel="noopener">
+              <span class="nav-sub-name">RELAY</span>
+              <span class="nav-sub-desc">Students and teachers, K&ndash;12</span>
+            </a></li>
+            <li><a href="relayjr.html" data-nav="relayjr.html">
+              <span class="nav-sub-name">RELAY Jr</span>
+              <span class="nav-sub-desc">Early learning</span>
+            </a></li>
+            <li><a href="school-memory.html" data-nav="school-memory.html">
+              <span class="nav-sub-name">School Memory</span>
+              <span class="nav-sub-desc">What your school already knows</span>
+            </a></li>
+          </ul>
+        </div>
+      </li>
+      <li><a href="adult-education.html" class="nav-link" data-nav="adult-education.html">Adult Education</a></li>
+      <li class="nav-item" data-nav-group>
+        <div class="nav-group">
+          <a href="about.html" class="nav-link" data-nav="about.html">About</a>
+          <button class="nav-caret" type="button" aria-expanded="false" aria-controls="about-menu" aria-label="Show About pages">
+            <svg class="nav-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+        </div>
+        <div class="nav-submenu" id="about-menu">
+          <ul class="nav-submenu-panel">
+            <li><a href="about.html" data-nav="about.html">
+              <span class="nav-sub-name">About EQV</span>
+              <span class="nav-sub-desc">Who we are</span>
+            </a></li>
+            <li><a href="ai.html" data-nav="ai.html">
+              <span class="nav-sub-name">EQV on AI</span>
+              <span class="nav-sub-desc">Where we stand</span>
+            </a></li>
+          </ul>
+        </div>
+      </li>
+      <li><a href="contact.html" class="nav-link" data-nav="contact.html">Contact</a></li>
+      <li class="nav-mobile-cta"><a class="btn-primary" href="contact.html">Get in touch</a></li>
+    </ul>
+    <div class="nav-right">
+      <a class="nav-cta" href="contact.html">Get in touch</a>
+    </div>
+  </div>
 </nav>
   <!-- nav:end -->
 
@@ -194,8 +204,8 @@
             them skip it.
           </p>
           <div class="ai-cta-row" data-reveal style="--i:3;">
-            <a class="pill-btn pill-btn--navy" href="contact.html">Talk to us</a>
-            <a class="pill-btn pill-btn--outline" href="https://relaybyeqv.com" target="_blank" rel="noopener">See how it shows up in RELAY</a>
+            <a class="btn-primary" href="contact.html">Talk to us</a>
+            <a class="btn-secondary" href="https://relaybyeqv.com" target="_blank" rel="noopener">See how it shows up in RELAY</a>
           </div>
         </div>
       </section>
@@ -295,23 +305,51 @@
     </main>
 
 
-    <footer class="site-footer">
-    <div class="container">
-        <p class="footer-note">EQV Group is a resident member of the <a href="https://www.mq.edu.au/partner/access-business-opportunities/innovation-entrepreneurship-and-it/incubator" target="_blank" rel="noopener">Macquarie University Incubator</a>.</p>
+    <!-- footer:start -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-map">
+      <div>
+        <a class="footer-brand" href="index.html">
+          <span class="fb-name">eqv</span>
+          <span class="fb-by">Group</span>
+        </a>
+        <p class="footer-blurb">We build AI-supported tools for Australian classrooms, grounded in learning science.</p>
       </div>
-      <div class="container footer-inner">
-        <span>&copy; 2026 Esse Quam Videri Group Pty. Limited</span>
-        <span class="footer-links">
-          <a href="mailto:hello@eqvgroup.com.au">hello@eqvgroup.com.au</a>
-          <a href="privacy.html">Privacy</a>
-          <a href="terms.html">Terms of Use</a>
-          <a class="footer-social" href="https://www.linkedin.com/company/esse-quam-videri-group/" target="_blank" rel="noopener" aria-label="EQV Group on LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05a3.74 3.74 0 0 1 3.37-1.85c3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg></a>
-        </span>
+      <div class="footer-col">
+        <h4>RELAY Suite</h4>
+        <a href="relay-suite.html">Overview</a>
+        <a href="https://relaybyeqv.com" target="_blank" rel="noopener">RELAY</a>
+        <a href="relayjr.html">RELAY Jr</a>
+        <a href="school-memory.html">School Memory</a>
       </div>
-    </footer>
+      <div class="footer-col">
+        <h4>More</h4>
+        <a href="adult-education.html">Adult Education</a>
+        <a href="about.html">About EQV</a>
+        <a href="ai.html">EQV on AI</a>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="contact.html">Contact</a>
+        <a href="mailto:hello@eqvgroup.com.au">hello@eqvgroup.com.au</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms of use</a>
+      </div>
+    </div>
+    <p class="footer-note">EQV Group is a resident member of the <a href="https://www.mq.edu.au/partner/access-business-opportunities/innovation-entrepreneurship-and-it/incubator" target="_blank" rel="noopener">Macquarie University Incubator</a>.</p>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Esse Quam Videri Group Pty. Limited</span>
+      <a class="social-link" href="https://www.linkedin.com/company/esse-quam-videri-group/" target="_blank" rel="noopener" aria-label="EQV Group on LinkedIn">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05a3.74 3.74 0 0 1 3.37-1.85c3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg>
+      </a>
+    </div>
+  </div>
+</footer>
+  <!-- footer:end -->
   </div>
 
-  <script src="nav.js"></script>
+  <script src="nav.js?v=0b65763e"></script>
   <!-- analytics:start -->
   <script>
     window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };

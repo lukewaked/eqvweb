@@ -273,6 +273,7 @@ img, svg { display: block; max-width: 100%; }
   opacity: 1; visibility: visible;
 }
 .nav-submenu-panel {
+  list-style: none;
   background: var(--ink-0);
   border: 1px solid var(--ink-200);
   border-radius: var(--radius-md);

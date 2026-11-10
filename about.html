@@ -28,7 +28,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&display=swap" />
-  <link rel="stylesheet" href="shared.css?v=00596af9" />
+  <link rel="stylesheet" href="shared.css?v=16832755" />
   <style>
     /* About runs on the shared tokens. Only the people layout is local. */
 
@@ -483,10 +483,30 @@
     </div>
   </div>
 </footer>
+
+<!-- podcast-promo: Hub Chats ep. 37. Delete this block (and .pod-promo in
+     shared.css / the pop-up section of nav.js) to retire it. -->
+<aside class="pod-promo" id="podPromo" aria-label="Podcast episode" hidden>
+  <a class="pod-promo__link" href="podcast.html">
+    <span class="pod-promo__photo">
+      <img src="images/founder/luke-waked.jpg" width="64" height="64" alt="" decoding="async" />
+      <span class="pod-promo__badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg></span>
+    </span>
+    <span class="pod-promo__body">
+      <span class="pod-promo__eyebrow">Podcast &middot; Hub Chats</span>
+      <span class="pod-promo__title">Hear Luke Waked on RELAY, EdTech and AI in education</span>
+      <span class="pod-promo__meta">Macquarie University Teachers&rsquo; Learning Hub &middot; 31 min</span>
+      <span class="pod-promo__cta">Listen now <span aria-hidden="true">&rarr;</span></span>
+    </span>
+  </a>
+  <button class="pod-promo__close" type="button" aria-label="Close podcast message">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+  </button>
+</aside>
   <!-- footer:end -->
   </div>
 
-  <script src="nav.js?v=0b65763e"></script>
+  <script src="nav.js?v=a501a579"></script>
   <!-- analytics:start -->
   <script>
     window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };

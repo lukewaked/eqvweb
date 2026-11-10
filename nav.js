@@ -249,3 +249,42 @@
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(reaim);
   });
 })();
+
+/* ── Podcast pop-up ──
+   Slides in a few seconds after load in the bottom-right corner. Once a
+   visitor closes it or clicks through, it stays gone on that browser. The
+   key names the episode, so a future episode can use a new key and show
+   again. Never shown on the podcast page itself. */
+(function () {
+  var promo = document.getElementById('podPromo');
+  if (!promo) return;
+
+  var KEY = 'podpromo:hubchats-37';
+  var page = location.pathname.split('/').pop();
+  var seen = false;
+  try { seen = !!localStorage.getItem(KEY); } catch (e) {}
+  if (seen || page === 'podcast.html' || page === 'podcast') {
+    promo.parentNode.removeChild(promo);
+    return;
+  }
+
+  var remember = function () {
+    try { localStorage.setItem(KEY, '1'); } catch (e) {}
+  };
+
+  promo.querySelector('.pod-promo__link').addEventListener('click', remember);
+  promo.querySelector('.pod-promo__close').addEventListener('click', function () {
+    remember();
+    promo.classList.remove('is-in');
+    setTimeout(function () {
+      if (promo.parentNode) promo.parentNode.removeChild(promo);
+    }, 320);
+  });
+
+  setTimeout(function () {
+    promo.hidden = false;
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () { promo.classList.add('is-in'); });
+    });
+  }, 2500);
+})();

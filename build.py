@@ -66,6 +66,12 @@ PAGES = {
         "Esse Quam Videri. To be, rather than to seem to be. The people and "
         "the principle behind EQV Group.",
     ),
+    "podcast.html": (
+        "Podcast: AI to support student learning | EQV Group",
+        "Luke Waked talks RELAY, EdTech and AI in education with Dr Jodie "
+        "Torrington on Hub Chats, from Macquarie University's Teachers' "
+        "Learning Hub. Listen in your browser, on Spotify or Apple Podcasts.",
+    ),
     "privacy.html": (
         "Privacy Policy | EQV Group",
         "How EQV Group handles personal information, under the Privacy Act 1988 "
